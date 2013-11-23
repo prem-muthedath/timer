@@ -3,9 +3,7 @@ Timer
 
 Refactored version of Kent Beck's timer for timing methods.  
 
-After reading Beck's excellent book Implementation Patterns, I decided to put what I had learned into practice.  
-
-This refactoring was driven by really two things I saw in the code: 
+After reading Beck's excellent book Implementation Patterns, I decided to put what I had learned into practice.  This refactoring was driven by really two things I saw in the code: 
 
 1. MethodsTimer had more than one responsibility; 
 2. Violation of the Rate of Change principle (see Beck's book).
