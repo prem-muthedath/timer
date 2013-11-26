@@ -19,12 +19,12 @@ HOW TO RUN THE TESTS FROM A TERMINAL:
 1. cd to timer directory -- the top directory of the app containing this README file.
 2. Type the following command to compile: 
 
-		javac -d bin -sourcepath src/main:src/tests  src/tests/timer/Runner.java
+		javac -d bin -sourcepath src/main:src/tests  src/tests/timer/Tests.java
 
 3. Press enter.
 4. Type the following command to run the tests:
 	
- 		java -classpath bin timer.Runner
+ 		java -classpath bin timer.Tests
 
 5. Press enter.
 6. You will see the following output: for each method, clocked times for various collection sizes.
