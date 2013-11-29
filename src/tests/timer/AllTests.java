@@ -1,8 +1,8 @@
 package timer;
 
-public class Tests {
+public class AllTests {
 	public static void main(String[] args) throws Exception {
-		Tests tests=new Tests();
+		AllTests tests=new AllTests();
 		tests.testList();
 		tests.testSetVsArray();
 	}
