@@ -14,7 +14,7 @@ public class MethodTimerFactory {
 
 	public MethodTimer create() throws Exception {
 		TestMethod testMethod=testMethod();
-		TestMethod overhead=overheadTimerFactory(dummy(), size).testMethod();
+		TestMethod overhead=overheadTimerFactory(size).testMethod();
 		return new MethodTimer(testMethod, overhead);
 	}
 
@@ -27,11 +27,8 @@ public class MethodTimerFactory {
 		return constructor.newInstance(new Object[]{size});
 	}
 
-	private static MethodTimerFactory overheadTimerFactory(Method dummy, int size) throws Exception { 
+	private static MethodTimerFactory overheadTimerFactory(int size) throws Exception { 
+		Method dummy=Dummy.class.getMethod("nothing", new Class[0]);
 		return new MethodTimerFactory(dummy, size);
-	}
-
-	private Method dummy() throws Exception {
-		return Dummy.class.getMethod("nothing", new Class[0]);
 	}
 }
