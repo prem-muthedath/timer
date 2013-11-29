@@ -1,26 +1,27 @@
 package timer;
 
 public class MethodTimer {
-	private TestMethod method;  
+	private TestMethod test;  
 	private TestMethod overhead;
 
-	public MethodTimer(TestMethod method, TestMethod overhead) {
-		this.method= method;
+	public MethodTimer(TestMethod test, TestMethod overhead) {
+		this.test= test;
 		this.overhead=overhead;
 	}
 
-	public double time() throws Exception {
-		return compute().methodTime(overhead);
-	}
-
-	private MethodTimerResults compute() throws Exception {
+	public double time() throws Exception {		
 		int iterations=1;
 		long totalTime=0L;
 		while (true) {
-			totalTime=method.timeFor(iterations);
+			totalTime=test.timeFor(iterations);
 			if(totalTime > MethodsTimer.ONE_SECOND) break;
 			iterations*=2;
 		}
-		return new MethodTimerResults(iterations, totalTime);
+		return average(iterations, totalTime);
+	}
+
+	private double average(int iterations, long totalTime) throws Exception { 
+		long overheadTime=overhead.timeFor(iterations);
+		return (double) (totalTime - overheadTime) / (double) iterations;
 	}
 }
