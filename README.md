@@ -3,7 +3,7 @@ Timer
 
 My refactored version of Kent Beck's timer for timing collection methods.  
 
-See Kent Beck's book Implementation Patterns (Appendix A) for the timer source code. 
+See Kent Beck's book "Implementation Patterns" (Appendix A) for the timer source code. 
 
 After reading Beck's excellent book, I decided to put my learnings into practice.  Beck's code (see the book) is really good, but I personally felt two areas needed refactoring: 
 
