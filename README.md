@@ -1,7 +1,7 @@
 Timer
 =======
 
-My refactored version of Kent Beck's timer for timing collection methods.  
+My refactored version of Kent Beck's timer framework for timing collection methods.  
 
 See Kent Beck's book "Implementation Patterns" (Appendix A) for the timer source code. 
 
