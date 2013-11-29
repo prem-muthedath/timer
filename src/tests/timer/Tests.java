@@ -4,7 +4,7 @@ public class Tests {
 	public static void main(String[] args) throws Exception {
 		Tests tests=new Tests();
 		tests.testList();
-		tests.testSetVsArray();
+	/*	tests.testSetVsArray();*/
 	}
 
 	public void testList() throws Exception {

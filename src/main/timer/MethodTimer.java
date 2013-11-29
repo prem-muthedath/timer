@@ -1,10 +1,10 @@
 package timer;
 
 public class MethodTimer {
-	private TimedMethod method;  
-	private TimedMethod overhead;
+	private TestMethod method;  
+	private TestMethod overhead;
 
-	public MethodTimer(TimedMethod method, TimedMethod overhead) {
+	public MethodTimer(TestMethod method, TestMethod overhead) {
 		this.method= method;
 		this.overhead=overhead;
 	}

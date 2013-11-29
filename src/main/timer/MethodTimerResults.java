@@ -9,7 +9,7 @@ public class MethodTimerResults {
 		this.totalTime=totalTime;
 	}
 
-	public double methodTime(TimedMethod overhead) throws Exception { 
+	public double methodTime(TestMethod overhead) throws Exception { 
 		long overheadTime=overhead.timeFor(iterations);
 		return (double) (totalTime - overheadTime) / (double) iterations;
 	}

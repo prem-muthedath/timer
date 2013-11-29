@@ -13,13 +13,13 @@ public class MethodTimerFactory {
 	}
 
 	public MethodTimer create() throws Exception {
-		TimedMethod timedMethod=timedMethod();
-		TimedMethod overhead=overheadTimerFactory(dummy(), size).timedMethod();
-		return new MethodTimer(timedMethod, overhead);
+		TestMethod testMethod=testMethod();
+		TestMethod overhead=overheadTimerFactory(dummy(), size).testMethod();
+		return new MethodTimer(testMethod, overhead);
 	}
 
-	private TimedMethod timedMethod() throws Exception {
-		return new TimedMethod(method, createInstance());
+	private TestMethod testMethod() throws Exception {
+		return new TestMethod(method, createInstance());
 	}
 
 	private Object createInstance() throws Exception { 
