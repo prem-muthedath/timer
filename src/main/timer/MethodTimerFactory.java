@@ -28,7 +28,12 @@ public class MethodTimerFactory {
 	}
 
 	private static MethodTimerFactory overheadTimerFactory(int size) throws Exception { 
-		Method dummy=Dummy.class.getMethod("nothing", new Class[0]);
+		Method dummy=MethodTimerFactory.Overhead.class.getMethod("nothing", new Class[0]);
 		return new MethodTimerFactory(dummy, size);
+	}
+
+	public static class Overhead {
+		public Overhead(int size) {}
+		public void nothing() {}
 	}
 }
