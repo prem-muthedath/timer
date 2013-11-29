@@ -29,5 +29,5 @@ HOW TO RUN THE TESTS FROM A TERMINAL:
  		java -classpath bin timer.Tests
 
 5. Press enter.
-6. You will see the following output: for each method, clocked times for various collection sizes (1, 10, 100, 1000, 10,000, etc.).
+6. Output: for each method, clocked times for various collection sizes (1, 10, 100, 1000, 10,000, etc.).
 	
