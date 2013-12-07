@@ -5,7 +5,7 @@ My refactored version of Kent Beck's timer framework for timing collection metho
 
 See Kent Beck's book "Implementation Patterns" (Appendix A) for the timer source code. 
 
-After reading Beck's excellent book, I decided to put my learnings into practice.  Beck's code (see the book) is really good, but I personally felt, for clarity, few areas needed refactoring: 
+After reading Beck's excellent book, I decided to put my learnings into practice.  Beck's code (see the book) is really good, but I personally felt, for clarity, a few areas needed refactoring: 
 
 1. Code (mainly related to reflection) not in the right objects;
 2. One class -- MethodTimer class in Beck's code -- had more than one responsibility;
