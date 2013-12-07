@@ -5,7 +5,7 @@ import java.util.TreeMap;
 import java.lang.reflect.Method;
 
 public class Timings  {
-	private Map<String, Double> methodsTime=new TreeMap<String, Double>();
+	private Map<String, String> methodsTime=new TreeMap<String, String>();
 
 	public void run(Method method, TimingTests tests) throws Exception {
 		if(skip(method)) return;
@@ -18,12 +18,19 @@ public class Timings  {
 	}
 
 	private void add(Method method, double time)  {
-		methodsTime.put(method.getName(), new Double(time));
+		methodsTime.put(method.getName(), String.valueOf(time));
 	}
 
 	public void print(int size)  {
-		System.out.print(size+"\t");
-		for (String each : methodsTime.keySet())
-			System.out.print(String.format("%.2f\t", methodsTime.get(each)));
+		if(size==1) printHeader();
+		printValues(size);
 	}
-}
+
+	private void printHeader()  {
+		Format.textFormat().print("size", methodsTime.keySet());
+	}
+
+	private void printValues(int size)  {
+		Format.numberFormat().print(String.valueOf(size), methodsTime.values());
+	}
+}	

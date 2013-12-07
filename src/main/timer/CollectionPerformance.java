@@ -2,13 +2,13 @@ package timer;
 
 import java.lang.reflect.Constructor;
 
-public class CollectionTimer {
+public class CollectionPerformance {
 	private static final int MAXIMUM_SIZE= 100000;
 	static final int ONE_SECOND= 1000000000;	
 
 	private TimingTests tests;
 
-	public CollectionTimer(TimingTests tests) {
+	public CollectionPerformance(TimingTests tests) {
 		this.tests=tests;
 	}
 
@@ -17,7 +17,6 @@ public class CollectionTimer {
 		for (int size= 1; size <= MAXIMUM_SIZE; size*= 10) {
 			createInstance(size).run(timings);
 			timings.print(size);
-			System.out.println();
 		}
 	}
 
