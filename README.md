@@ -1,4 +1,4 @@
-Timer
+Collection Timer
 =======
 
 My refactored version of Kent Beck's timer framework for timing collection methods.  
