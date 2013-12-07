@@ -12,7 +12,7 @@ After reading Beck's excellent book, I decided to put my learnings into practice
 3. Rate of Change principle violation (see Beck's book);
 4. Better object names (I felt so).
 
-As I refactored, these concerns led me to a different design with a new set of small objects, each doing just 1 thing.  After much struggle, I picked up the object names from Beck's own description of his timer framework in his book!
+As I refactored, these concerns led me to a different design with a new set of small objects, each doing just 1 thing.  After much struggle, I found the object names from Beck's own description of his timer framework!
 
 I have re-used the tests in Beck's book.
 
