@@ -5,12 +5,14 @@ My refactored version of Kent Beck's timer framework for timing collection metho
 
 See Kent Beck's book "Implementation Patterns" (Appendix A) for the timer source code. 
 
-After reading Beck's excellent book, I decided to put my learnings into practice.  Beck's code (see the book) is really good, but I personally felt, for clarity, two areas needed refactoring: 
+After reading Beck's excellent book, I decided to put my learnings into practice.  Beck's code (see the book) is really good, but I personally felt, for clarity, few areas needed refactoring: 
 
-1. Violation of the Rate of Change principle (see Beck's book);
-2. One class -- MethodTimer -- had more than one responsibility.
+1. Code (mainly related to reflection) not in the right objects;
+2. One class -- MethodTimer class in Beck's code -- had more than one responsibility;
+3. Rate of Change principle violation (see Beck's book);
+4. Better object names (I felt so).
 
-In this refactoring, I have addressed these concerns through small objects, each doing just 1 thing.  
+As I refactored, these concerns led me to a different design with a new set of small objects, each doing just 1 thing.  After much struggle, I picked up the object names from Beck's own description of his timer framework in his book!
 
 I have re-used the tests in Beck's book.
 
