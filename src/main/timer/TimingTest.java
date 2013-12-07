@@ -2,11 +2,11 @@ package timer;
 
 import java.lang.reflect.Method;
 
-public class TestMethod {
+public class TimingTest {
 	private Method method;
 	private Object instance;
 
-	public TestMethod(Method method, Object instance) {
+	public TimingTest(Method method, Object instance) {
 		this.method=method;
 		this.instance=instance;
 	}

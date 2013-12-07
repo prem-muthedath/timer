@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.Collection;
 import java.util.Iterator;
 
-public class SetVsArrayList {
+public class SetVsArrayList extends TimingTests {
 	private Collection<String> set;
 	private Collection<String> arrayList;
 	

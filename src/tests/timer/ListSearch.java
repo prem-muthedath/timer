@@ -3,7 +3,7 @@ package timer;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListSearch {
+public class ListSearch extends TimingTests {
 	private List<Integer> numbers;
 	private int probe;
 	
