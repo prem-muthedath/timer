@@ -31,5 +31,5 @@ HOW TO RUN THE TESTS FROM A TERMINAL:
  		java -classpath bin timer.AllTests
 
 5. Press enter.
-6. Output: for each method, clocked times (nano secs) per run for collection sizes 1, 10, 100, 1000, ...
+6. Output: for each method, average time (nano secs) per run for collection sizes 1, 10, 100, 1000, ...
 	
