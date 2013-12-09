@@ -22,15 +22,15 @@ public class Timings  {
 	}
 
 	public void print(int size)  {
-		if(size==1) printHeader();
+		if(size==CollectionTimer.MINIMUM_SIZE) printHeader();
 		printValues(size);
 	}
 
 	private void printHeader()  {
-		Format.textFormat().print("size", methodsTime.keySet());
+		Format.headerFormat().print("size", methodsTime.keySet());
 	}
 
 	private void printValues(int size)  {
-		Format.numberFormat().print(String.valueOf(size), methodsTime.values());
+		Format.dataFormat().print(String.valueOf(size), methodsTime.values());
 	}
 }	

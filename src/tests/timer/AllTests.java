@@ -8,12 +8,12 @@ public class AllTests {
 	}
 
 	public void testListSearch() throws Exception {
-		CollectionPerformance timer= new CollectionPerformance(new ListSearch(1));
+		CollectionTimer timer= new CollectionTimer(new ListSearch(1));
 		timer.report();		
 	}
 
 	public void testSetVsArray() throws Exception {
-		CollectionPerformance timer= new CollectionPerformance(new SetVsArrayList(1));
+		CollectionTimer timer= new CollectionTimer(new SetVsArrayList(1));
 		timer.report();		
 	}
 }

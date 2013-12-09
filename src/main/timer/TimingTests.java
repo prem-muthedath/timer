@@ -17,7 +17,7 @@ public abstract class TimingTests {
 		totalTime=0L;
 		while (true) {
 			totalTime=test.timeFor(iterations);
-			if(totalTime > CollectionPerformance.ONE_SECOND) break;
+			if(totalTime > CollectionTimer.ONE_SECOND) break;
 			iterations*=2;
 		}
 		return average(overhead());

@@ -10,26 +10,26 @@ public abstract class Format {
 		System.out.println();
 	}
 
-	public abstract String size(String size);
-	public abstract String value(String data);
+	protected abstract String size(String size);
+	protected abstract String value(String data);
 
-	public static Format textFormat()  {
+	public static Format headerFormat()  {
 		return new Format() {
-			public String size(String size) {
-				return String.format("%-10s\t", size);
+			protected String size(String sizeHeader) {
+				return String.format("%-10s\t", sizeHeader);
 			}
-			public String value(String data) {
-				return String.format("%-25s\t", data);
+			protected String value(String dataHeader) {
+				return String.format("%-25s\t", dataHeader);
 			}
 		};
 	}
 
-	public static Format numberFormat()  {
+	public static Format dataFormat()  {
 		return new Format() {
-			public String size(String size) {
+			protected String size(String size) {
 				return String.format("%-10d\t", Integer.parseInt(size));
 			}
-			public String value(String data) {
+			protected String value(String data) {
 				return String.format("%-25.2f\t", Double.parseDouble(data));
 			}
 		};
