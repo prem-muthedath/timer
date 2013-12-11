@@ -5,7 +5,7 @@ import java.util.TreeMap;
 import java.util.Collection;
 
 class Format {
-	Map<String, String>timings=new TreeMap<String, String>();
+	private Map<String, String>timings=new TreeMap<String, String>();
 
 	public void print(int size, Timings timings) {
 		timings.export(this);
