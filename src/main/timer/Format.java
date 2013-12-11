@@ -3,35 +3,43 @@ package timer;
 import java.util.Collection;
 
 public abstract class Format {
-	public void print(String size, Collection<String> values) {
-		System.out.print(size(size));
-		for (String each : values)
-			System.out.print(value(each));
+	public void print(Formatable[] items) {
+		for (Formatable each : items)
+			System.out.print(format(each));
 		System.out.println();
 	}
 
-	protected abstract String size(String size);
-	protected abstract String value(String data);
+	protected abstract String format(Formatable item);
 
 	public static Format headerFormat()  {
 		return new Format() {
-			protected String size(String sizeHeader) {
-				return String.format("%-10s\t", sizeHeader);
-			}
-			protected String value(String dataHeader) {
-				return String.format("%-25s\t", dataHeader);
+			protected String format(Formatable item) {
+				return item.header(this);
 			}
 		};
 	}
 
 	public static Format dataFormat()  {
 		return new Format() {
-			protected String size(String size) {
-				return String.format("%-10d\t", Integer.parseInt(size));
-			}
-			protected String value(String data) {
-				return String.format("%-25.2f\t", Double.parseDouble(data));
+			protected String format(Formatable item) {
+				return item.value(this);
 			}
 		};
+	}
+
+	public String simpleHeader(String header) {
+		return String.format("%-10s\t", header);
+	}
+
+	public String bigHeader(String header) {
+		return String.format("%-25s\t", header);
+	}
+
+	public String value(int value) {
+		return String.format("%-10d\t", value);
+	}
+
+	public String value(double value) {
+		return String.format("%-25.2f\t", value);
 	}
 }	

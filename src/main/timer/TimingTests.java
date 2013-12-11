@@ -8,11 +8,10 @@ public abstract class TimingTests {
 
 	public void run(Timings timings) throws Exception {
 		for (Method each : this.getClass().getMethods()) 
-			timings.run(each, this);
+			new TimingTest(each, this).run(timings);
 	}
 
-	double time(Method method) throws Exception {
-		TimingTest test=new TimingTest(method, this);
+	double time(TimingTest test) throws Exception {
 		iterations=1;
 		totalTime=0L;
 		while (true) {

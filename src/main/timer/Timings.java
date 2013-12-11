@@ -1,36 +1,38 @@
 package timer;
 
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.lang.reflect.Method;
 
 public class Timings  {
-	private Map<String, String> methodsTime=new TreeMap<String, String>();
+	private List<MethodTime> methodsTime=new ArrayList<MethodTime>();
 
-	public void run(Method method, TimingTests tests) throws Exception {
-		if(skip(method)) return;
-		add(method, tests.time(method));
+	public void run(TimingTest test) throws Exception {
+		add(test.time());
 	} 
 
-	private boolean skip(Method method) throws Exception {
-		Class itsClass=method.getDeclaringClass();
-		return (itsClass.equals(Object.class) || itsClass.equals(TimingTests.class));
+	private void add(MethodTime methodTime)  {
+		methodsTime.add(methodTime);
 	}
 
-	private void add(Method method, double time)  {
-		methodsTime.put(method.getName(), String.valueOf(time));
+	public void printHeader(Formatable size)  {
+		Format.headerFormat().print(items(size));
 	}
 
-	public void print(int size)  {
-		if(size==CollectionTimer.MINIMUM_SIZE) printHeader();
-		printValues(size);
+	public void printValues(Formatable size) {
+		Format.dataFormat().print(items(size));
 	}
 
-	private void printHeader()  {
-		Format.headerFormat().print("size", methodsTime.keySet());
+	private Formatable[] items(Formatable size) {
+		List<Formatable> items=new ArrayList<Formatable>(Arrays.asList(size));
+		items.addAll(Arrays.asList(timings()));
+		return items.toArray(new Formatable[methodsTime.size()+1]);
 	}
 
-	private void printValues(int size)  {
-		Format.dataFormat().print(String.valueOf(size), methodsTime.values());
+	private Formatable[] timings() {
+		MethodTime[] timings=methodsTime.toArray(new MethodTime[methodsTime.size()]);
+		Arrays.sort(timings);
+		return timings;		
 	}
 }	
