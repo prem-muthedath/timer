@@ -2,8 +2,6 @@ package timer;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.lang.reflect.Method;
 
 public class Timings  {
 	private List<MethodTime> methodsTime=new ArrayList<MethodTime>();
