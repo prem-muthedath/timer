@@ -1,6 +1,6 @@
 package timer;
 
-public class MethodTime implements Comparable, Formatable {
+public class MethodTime {
 	private String name;
 	private double time;
 
@@ -9,18 +9,7 @@ public class MethodTime implements Comparable, Formatable {
 		this.time=time;
 	}
 
-	public String header(Format format) {
-		return format.bigHeader(name);
-	}
-
-	public String value(Format format) {
-		return format.value(time);
-	}
-
-	public int compareTo(Object another) {
-		if(!(another instanceof MethodTime)) 
-			throw new ClassCastException("MethodTime expected");
-		MethodTime anotherMethodTime=(MethodTime) another;
-		return this.name.compareTo(anotherMethodTime.name);
+	public void export(Format format) {
+		format.add(name, time);
 	}
 }
