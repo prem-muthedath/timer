@@ -13,13 +13,10 @@ public class CollectionTimer {
 		this.tests=tests;
 	}
 
-	public void report(Format format) throws Exception { 
-		Timings timings;
-		for (int size= MINIMUM_SIZE; size <= MAXIMUM_SIZE; size*= 10) {
-			timings=new Timings();
-			testsInstance(size).run(timings);
-			format.print(size, timings);
-		}
+	public void report(Report report) throws Exception { 
+		for (int size= MINIMUM_SIZE; size <= MAXIMUM_SIZE; size*= 10)
+			testsInstance(size).run(report);
+		report.print();
 	}
 
 	private TimingTests testsInstance(int size) throws Exception {

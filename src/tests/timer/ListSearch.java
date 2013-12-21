@@ -17,4 +17,8 @@ public class ListSearch extends TimingTests {
 	public void search() {
 		numbers.contains(probe);
 	}
+
+	protected int size()  {
+		return numbers.size();
+	}
 }

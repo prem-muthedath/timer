@@ -22,6 +22,10 @@ public class SetVsArrayList extends TimingTests {
 		probe= String.format("a%d", size / 2);
 	}
 
+	protected int size()  {
+		return arrayList.size();
+	}
+
 	public void setMembership() {
 		set.contains(probe);
 	}

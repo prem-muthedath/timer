@@ -1,35 +1,34 @@
 package timer;
 
+import java.util.List;
+import java.util.ArrayList;
 import java.lang.reflect.Method;
 
-public abstract class TimingTests {
-	private int iterations;
-	private long totalTime;	
-
-	public void run(Timings timings) throws Exception {
-		for (Method each : this.getClass().getMethods()) 
-			new TimingTest(each, this).run(timings);
-	}
-
-	double time(TimingTest test) throws Exception {
-		iterations=1;
-		totalTime=0L;
-		while (true) {
-			totalTime=test.timeFor(iterations);
-			if(totalTime > CollectionTimer.ONE_SECOND) break;
-			iterations*=2;
+ public abstract class TimingTests {
+	public void run(Report report) throws Exception {
+		List<Timing> timings=new ArrayList<Timing>();
+		for (Method each : this.getClass().getMethods()) {
+			if(skip(each)) continue;
+			timings.add(new TimingTest(each, this).run());
 		}
-		return average(overhead());
+		report.add(size(), timings.toArray(new Timing[timings.size()]));
 	}
 
-	private long overhead() throws Exception {
+	private boolean skip(Method method) throws Exception {
+		Class methodClass=method.getDeclaringClass();
+		return (methodClass.equals(Object.class) || methodClass.equals(TimingTests.class));
+	}
+
+	protected abstract int size();
+
+	double timing(IterationsTime iterationsTime) throws Exception {
+		return iterationsTime.timing(overhead());
+	}
+
+	private TimingTest overhead() throws Exception {
 		Method method=getClass().getMethod("nothing", new Class[0]);
-		return new TimingTest(method, this).timeFor(iterations);
+		return new TimingTest(method, this);
 	}
 
 	public void nothing() {}
-
-	private double average(long overheadTime) throws Exception { 
-		return (double) (totalTime - overheadTime) / (double) iterations;
-	}	
 }
