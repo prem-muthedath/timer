@@ -3,7 +3,6 @@ package timer;
 import java.lang.reflect.Constructor;
 
 public class CollectionTimer {
-	static final int MINIMUM_SIZE=1;			
 	private static final int MAXIMUM_SIZE= 100000;
 	static final int ONE_SECOND= 1000000000;	
 
@@ -14,7 +13,7 @@ public class CollectionTimer {
 	}
 
 	public void report(Report report) throws Exception { 
-		for (int size= MINIMUM_SIZE; size <= MAXIMUM_SIZE; size*= 10)
+		for (int size= 1; size <= MAXIMUM_SIZE; size*= 10)
 			testsInstance(size).run(report);
 		report.print();
 	}

@@ -1,41 +1,42 @@
 package timer;
 
 public class Report {
-	private Timings timings=new Timings(this);
+	private Content content=new Content();
+	private StringBuffer headers=new StringBuffer();
 
-	public void add(int size, Timing[] timings) {	
-		for (Timing each : timings)
-			each.export(size, this);
-	}
-
-	public void addTiming(int size, String method, double timing)  {
-		timings.add(key(size, method(method)), timing(timing));
-	}
-
-	protected SortKey key(int size, String method)  {
-		return new SortKey(size, method);
-	}
-
-	private String method(String method)  {
-		return String.format("%-25s\t", method);
-	}
-
-	private String timing(double timing)  {
-		return String.format("%-25.2f\t", timing);
-	}
-
-	public String size(int size) {
-		return String.format("%-15s\t", "size="+size);
+	public void addTests(int size, Timing[] timings) {	
+		content.addTests(size, timings);
 	}
 
 	public void print() {
-		timings.print();
+		content.print(this, Test.Order.BY_SIZE);
 	}
 
-	public void print(String header, StringBuffer[] data)	{
-		String headerMargin=String.format("%-15s\t", "");		
-		System.out.println(headerMargin+header);
-		for (StringBuffer each : data)
+	public void groupTest(int size, String method, double timing) {
+		addHeader(method);
+		content.addGroup(format(size(size)), format(timing));
+	}
+
+	protected void addHeader(String header)  {
+		if(headers.indexOf(header) < 0) 
+			headers.append(format(header));
+	}
+
+	protected String format(String data)  {
+		return String.format("%-25s", data);
+	}
+
+	protected String format(double data)  {
+		return String.format("%-25.2f", data);
+	}
+
+	protected String size(int size) {
+		return "size="+size;
+	}
+
+	public void print(String[] contents)	{
+		System.out.println(format("")+headers);
+		for (String each : contents)
 			System.out.println(each);
 	}
 }

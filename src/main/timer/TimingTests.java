@@ -1,17 +1,17 @@
 package timer;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.lang.reflect.Method;
+import java.util.Arrays;
 
  public abstract class TimingTests {
 	public void run(Report report) throws Exception {
-		List<Timing> timings=new ArrayList<Timing>();
+		int timedMethods=0;
+		Timing[] timings=new Timing[this.getClass().getMethods().length];
 		for (Method each : this.getClass().getMethods()) {
 			if(skip(each)) continue;
-			timings.add(new TimingTest(each, this).run());
+			timings[timedMethods++]=new TimingTest(each, this).run();
 		}
-		report.add(size(), timings.toArray(new Timing[timings.size()]));
+		report.addTests(size(), Arrays.copyOf(timings, timedMethods));
 	}
 
 	private boolean skip(Method method) throws Exception {
