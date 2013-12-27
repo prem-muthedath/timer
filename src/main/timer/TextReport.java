@@ -17,11 +17,11 @@ public class TextReport extends Report {
 			header.append(aHeader);
 	}
 
-	protected String size(int size) {
+	private String size(int size) {
 		return String.format("%-25s", "size="+size);		
 	}
 
-	protected String method(String method) {
+	private String method(String method) {
 		return String.format("%-25s", method);		
 	}	
 
