@@ -2,29 +2,37 @@ package timer;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class Content  {
-	private List<Test> tests=new ArrayList<Test>();
-	private TestGroups groups=new TestGroups();
+	private List<TestGroup> groups=new ArrayList<TestGroup>();
+	private StringBuffer headers=new StringBuffer();
 
-	public void addTests(int size, Timing[] timings) {	
-		for (Timing each : timings)
-			each.export(size, this);
+	public void add(String headerMargin, String header, TestGroup group)  {
+		add(headerMargin, header);
+		add(group);
 	}
 
-	public void addTest(int size, String method, double timing)  {
-		tests.add(new Test(size, method, timing));
+	private void add(String headerMargin, String header)  {
+		if(headers.length()==0)
+			headers.append(headerMargin);
+		if(headers.indexOf(header) < 0) 
+			headers.append(header);
 	}
 
-	public void print(Report report, Test.Order order) {
-		Collections.sort(tests, Test.comparator(order));
-		for (Test each : tests)
-			each.group(report);
-		groups.print(report);
+	private void add(TestGroup group) {
+		for(int i=0; i < groups.size(); i++)
+			groups.set(i, sum(groups.get(i), group));
+		if(!groups.contains(group))
+			groups.add(group);
 	}
 
-	public void addGroup(String group, String timing)  {
-		groups.add(group, timing);
-	}	
+	private TestGroup sum(TestGroup addend, TestGroup augend) {
+		return addend.add(augend)==null  ?  addend  :  addend.add(augend);
+	}
+
+	public void print()  {
+		System.out.println(headers);
+		for (TestGroup each : groups)
+			System.out.println(each);
+	}
 }

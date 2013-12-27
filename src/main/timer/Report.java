@@ -1,42 +1,33 @@
 package timer;
 
-public class Report {
-	private Content content=new Content();
-	private StringBuffer headers=new StringBuffer();
+import java.util.List;
+import java.util.ArrayList;
+
+public abstract class Report {
+	protected List<Test> tests=new ArrayList<Test>();
+	private Format format;
+
+	public Report(Format format)  {
+		this.format=format;
+	}
 
 	public void addTests(int size, Timing[] timings) {	
-		content.addTests(size, timings);
+		for (Timing each : timings)
+			each.export(size, this);
 	}
+
+	public void addTest(int size, String method, double timing) {
+		tests.add(format.test(size, method, timing));
+	}	
 
 	public void print() {
-		content.print(this, Test.Order.BY_SIZE);
+		Content content=new Content();
+		sort();
+		for (Test each : tests)
+			export(each, content);
+		content.print();
 	}
 
-	public void groupTest(int size, String method, double timing) {
-		addHeader(method);
-		content.addGroup(format(size(size)), format(timing));
-	}
-
-	protected void addHeader(String header)  {
-		if(headers.indexOf(header) < 0) 
-			headers.append(format(header));
-	}
-
-	protected String format(String data)  {
-		return String.format("%-25s", data);
-	}
-
-	protected String format(double data)  {
-		return String.format("%-25.2f", data);
-	}
-
-	protected String size(int size) {
-		return "size="+size;
-	}
-
-	public void print(String[] contents)	{
-		System.out.println(format("")+headers);
-		for (String each : contents)
-			System.out.println(each);
-	}
+	protected abstract void sort();
+	protected abstract void export(Test test, Content content);
 }

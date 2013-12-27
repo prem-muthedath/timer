@@ -2,12 +2,10 @@ package timer;
 
 import java.util.Comparator;
 
-public class Test {
-	private int size;
-	private String method;
-	private double timing;
-
-	public enum Order {BY_METHOD, BY_SIZE}
+public abstract class Test implements Comparable<Test> {
+	protected int size;
+	protected String method;
+	protected double timing;
 
 	public Test(int size, String method, double timing) {
 		this.size=size;
@@ -15,34 +13,29 @@ public class Test {
 		this.timing=timing;
 	}
 
-	public void group(Report report)  {
-		report.groupTest(size, method, timing);
+	public void export(Content content)  {
+		content.add(headerMargin(), sizeHeader(), methodGroup());
 	}
 
-	public static Comparator<Test> comparator(Test.Order order)  {
-		if(order==Test.Order.BY_METHOD) {
-			return new Comparator<Test>() {
-				public int compare(Test one, Test another)  {
-					return one.method.compareTo(another.method)==0  ?  one.size-another.size  :  one.method.compareTo(another.method);				
-				}	
-			};
-		}	
+	public void exportBySize(Content content)  {
+		content.add(headerMargin(), methodHeader(), sizeGroup());
+	}
+
+	protected abstract String headerMargin();
+	protected abstract String sizeHeader();
+	protected abstract TestGroup methodGroup();
+	protected abstract String methodHeader();	
+	protected abstract TestGroup sizeGroup();
+
+	public int compareTo(Test another)  {
+		return method.compareTo(another.method)==0  ?  size-another.size  :  method.compareTo(another.method);				
+	}
+
+	public static Comparator<Test> sizeComparator()  {
 		return new Comparator<Test>() {
 			public int compare(Test one, Test another)  {
 				return one.size-another.size==0  ?  one.method.compareTo(another.method)  :  one.size-another.size;
 			}	
 		};
 	}
-
-	public int hashCode() {
-		return size+method.hashCode();
-	}
-
-	public boolean equals(Object another)  {
-		if(another instanceof Test) {
-			Test that=(Test) another;
-			return that.method.equals(this.method) && that.size==this.size;
-		}
-		return false;
-	}	
-}
+}	
