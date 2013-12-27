@@ -5,7 +5,7 @@ public enum LayoutType {
 
 	public Layout instance()  {
 		switch(this)  {
-			case BY_METHOD:	return new Layout() {
+			case BY_METHOD: 	return new Layout() {
 				public void addTest(int size, String method, double timing)  {	
 					add(Test.methodOrderedTest(size, method, timing));
 				}
