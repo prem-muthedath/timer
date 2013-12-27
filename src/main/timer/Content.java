@@ -5,18 +5,18 @@ import java.util.ArrayList;
 
 public class Content  {
 	private List<TestGroup> groups=new ArrayList<TestGroup>();
-	private StringBuffer headers=new StringBuffer();
+	private Report report;
 
-	public void add(String headerMargin, String header, TestGroup group)  {
-		add(headerMargin, header);
-		add(group);
+	public Content(Report report)  {
+		this.report=report;
 	}
 
-	private void add(String headerMargin, String header)  {
-		if(headers.length()==0)
-			headers.append(headerMargin);
-		if(headers.indexOf(header) < 0) 
-			headers.append(header);
+	public void addMethodGroup(int size, String method, double timing)  {
+		add(report.methodGroup(size, method, timing));
+	}
+
+	public void addSizeGroup(int size, String method, double timing)  {
+		add(report.sizeGroup(size, method, timing));
 	}
 
 	private void add(TestGroup group) {
@@ -30,9 +30,7 @@ public class Content  {
 		return addend.add(augend)==null  ?  addend  :  addend.add(augend);
 	}
 
-	public void print()  {
-		System.out.println(headers);
-		for (TestGroup each : groups)
-			System.out.println(each);
+	public void print() {
+		report.print(groups.toArray(new TestGroup[groups.size()]));
 	}
 }

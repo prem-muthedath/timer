@@ -9,7 +9,7 @@ public class Timing {
 		this.time=time;
 	}
 
-	public void export(int size, Report report) {
-		report.addTest(size, method, time);
+	public Test export(int size, Order order) {
+		return order.test(size, method, time);
 	}
 }

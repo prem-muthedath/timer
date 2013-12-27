@@ -9,11 +9,11 @@ public class AllTests {
 
 	public void testListSearch() throws Exception {
 		CollectionTimer timer= new CollectionTimer(new ListSearch(1));
-		timer.report(Order.BY_METHOD.report(Format.TEXT));		
+		timer.report(new TextReport(Order.BY_SIZE));		
 	}
 
 	public void testSetVsArray() throws Exception {
 		CollectionTimer timer= new CollectionTimer(new SetVsArrayList(1));
-		timer.report(Order.BY_METHOD.report(Format.TEXT));		
+		timer.report(new TextReport(Order.BY_SIZE));		
 	}
 }

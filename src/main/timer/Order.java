@@ -1,28 +1,22 @@
 package timer;
 
-import java.util.Collections;
-
 public enum Order {
 	BY_METHOD, BY_SIZE;
+
+	public Test[] tests(int size, Timing[] timings)  {
+		int i=0;
+		Test[] tests=new Test[timings.length];
+		for (Timing each : timings)
+			tests[i++]=each.export(size, this);
+		return tests;
+	}
 	
-	public Report report(Format format)  {
+	public Test test(int size, String method, double timing)  {
 		switch(this)  {
-			case BY_METHOD:	return new Report(format) {
-				protected void sort()  {
-					Collections.sort(tests);
-				}
-				protected void export(Test test, Content content)  {
-					test.export(content);
-				}
-			};	
-			case BY_SIZE: return new Report(format) {
-				protected void sort()  {
-					Collections.sort(tests, Test.sizeComparator());
-				}
-				protected void export(Test test, Content content)  {
-					test.exportBySize(content);
-				}
-			};	
+			case BY_METHOD:	
+				return Test.methodOrderedInstance(size, method, timing);
+			case BY_SIZE: 
+				return Test.sizeOrderedInstance(size, method, timing);			
 		}
 		throw new RuntimeException("Unknown order: "+this);
 	}
