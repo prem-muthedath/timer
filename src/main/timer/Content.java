@@ -30,7 +30,7 @@ public class Content  {
 		return addend.add(augend)==null  ?  addend  :  addend.add(augend);
 	}
 
-	public void print() {
-		report.print(groups.toArray(new TestGroup[groups.size()]));
+	public void print(Layout layout) {
+		layout.print(report, groups.toArray(new TestGroup[groups.size()]));
 	}
 }

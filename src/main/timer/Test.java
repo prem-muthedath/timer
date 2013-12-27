@@ -14,7 +14,7 @@ public abstract class Test implements Comparable<Test> {
 	public abstract void export(Content content);
 	public abstract int compareTo(Test another);
 
-	public static Test methodOrderedInstance(final int size, final String method, final double timing)  {
+	public static Test methodOrderedTest(final int size, final String method, final double timing)  {
 		return new Test(size, method, timing) {
 			public void export(Content content)  {
 				content.addMethodGroup(size, method, timing);
@@ -25,7 +25,7 @@ public abstract class Test implements Comparable<Test> {
 		};	
 	}
 		
-	public static Test sizeOrderedInstance(final int size, final String method, final double timing)  {
+	public static Test sizeOrderedTest(final int size, final String method, final double timing)  {
 		return new Test(size, method, timing) {
 			public void export(Content content)  {
 				content.addSizeGroup(size, method, timing);
