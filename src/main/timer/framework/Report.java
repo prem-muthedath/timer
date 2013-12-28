@@ -1,4 +1,4 @@
-package timer;
+package timer.framework;
 
 public abstract class Report {
 	private Layout layout;

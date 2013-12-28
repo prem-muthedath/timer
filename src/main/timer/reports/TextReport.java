@@ -1,4 +1,8 @@
-package timer;
+package timer.reports;
+
+import timer.framework.Report;
+import timer.framework.Layout;
+import timer.framework.TestGroup;
 
 public class TextReport extends Report {
 	private StringBuffer header=new StringBuffer();

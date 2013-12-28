@@ -1,4 +1,4 @@
-package timer;
+package timer.framework;
 
 public enum LayoutType {
 	BY_METHOD, BY_SIZE;

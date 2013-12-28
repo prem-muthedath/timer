@@ -1,4 +1,4 @@
-package timer;
+package timer.framework;
 
 public abstract class Test implements Comparable<Test> {
 	private int size;

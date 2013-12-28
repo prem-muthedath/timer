@@ -1,5 +1,10 @@
 package timer;
 
+import timer.framework.CollectionTimer;
+import timer.framework.LayoutType;
+
+import timer.reports.TextReport;
+
 public class AllTests {
 	public static void main(String[] args) throws Exception {
 		AllTests tests=new AllTests();

@@ -1,11 +1,11 @@
-package timer;
+package timer.framework;
 
 import java.util.List;
 import java.util.ArrayList;
 
 public class Content  {
+	private Report report;	
 	private List<TestGroup> groups=new ArrayList<TestGroup>();
-	private Report report;
 
 	public Content(Report report)  {
 		this.report=report;

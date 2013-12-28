@@ -3,6 +3,8 @@ package timer;
 import java.util.ArrayList;
 import java.util.List;
 
+import timer.framework.TimingTests;
+
 public class ListSearch extends TimingTests {
 	private List<Integer> numbers;
 	private int probe;

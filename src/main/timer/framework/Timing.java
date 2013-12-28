@@ -1,4 +1,4 @@
-package timer;
+package timer.framework;
 
 public class Timing {
 	private String method;
