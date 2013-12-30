@@ -1,9 +1,9 @@
-package timer.framework;
+package timer.reporting.base;
 
 public class Title {
-	private TestGroup title;
+	private Content title;
 
-	public void add(TestGroup testTitle) {
+	public void add(Content testTitle) {
 		this.title=this.title==null  ?  testTitle  :  title.addUnique(testTitle);
 	}
 

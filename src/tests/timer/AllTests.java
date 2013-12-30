@@ -2,8 +2,9 @@ package timer;
 
 import timer.framework.CollectionTimer;
 import timer.framework.Timings;
-import timer.framework.ReportType;
-import timer.framework.Format;
+
+import timer.reporting.base.ReportType;
+import timer.reporting.base.Format;
 
 public class AllTests {
 	public static void main(String[] args) throws Exception {

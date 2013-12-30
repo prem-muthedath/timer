@@ -2,6 +2,8 @@ package timer.framework;
 
 import java.lang.reflect.Method;
 
+import timer.reporting.base.TestResult;
+
 public class TimingTest {
 	private Method method;
 	private TimingTests instance;
@@ -11,8 +13,8 @@ public class TimingTest {
 		this.instance=instance;
 	}
 
-	public TestResult run() throws Exception {
-		return new TestResult(this, timing());
+	public TestTiming run() throws Exception {
+		return new TestTiming(this, timing());
 	}
 
 	private double timing() throws Exception {
@@ -33,8 +35,8 @@ public class TimingTest {
  		return System.nanoTime() - start;
  	}
 
- 	public void export(TestResultExport export)  {
-		export.method(method.getName());
-		instance.export(export);		
+ 	public void export(TestResult result)  {
+		result.method(method.getName());
+		instance.export(result);		
 	}	
  }

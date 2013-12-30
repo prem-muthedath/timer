@@ -3,6 +3,8 @@ package timer.framework;
 import java.lang.reflect.Method;
 import java.util.Arrays;
 
+import timer.reporting.base.TestResult;
+
  public abstract class TimingTests {
 	public void run(Timings timings) throws Exception {
 		for (Method each : this.getClass().getMethods()) {
@@ -29,7 +31,7 @@ import java.util.Arrays;
 
 	public void nothing() {}
 
- 	public void export(TestResultExport export)  {
-		export.size(size());
+ 	public void export(TestResult result)  {
+		result.size(size());
 	}		
 }
