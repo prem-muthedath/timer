@@ -12,10 +12,9 @@ public class CollectionTimer {
 		this.tests=tests;
 	}
 
-	public void report(Report report) throws Exception { 
+	public void report(Timings timings) throws Exception { 
 		for (int size= 1; size <= MAXIMUM_SIZE; size*= 10)
-			testsInstance(size).run(report);
-		report.print();
+			testsInstance(size).run(timings);
 	}
 
 	private TimingTests testsInstance(int size) throws Exception {

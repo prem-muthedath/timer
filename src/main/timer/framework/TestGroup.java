@@ -11,9 +11,13 @@ public class TestGroup  {
 		this.footer=footer;
 	}
 
+	public TestGroup addUnique(TestGroup another)  {
+		return content.indexOf(another.content) >=0   ?  this  :  add(another);
+	}
+
 	public TestGroup add(TestGroup another)  {
 		String newContent=this.content+another.content;
-		return this.equals(another) ?  new TestGroup(header, newContent, footer) :  null;
+		return this.equals(another) ?  new TestGroup(header, newContent, footer) :  this;
 	}
 
 	public String toString() {

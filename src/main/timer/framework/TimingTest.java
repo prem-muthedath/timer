@@ -11,8 +11,8 @@ public class TimingTest {
 		this.instance=instance;
 	}
 
-	public Timing run() throws Exception {
-		return new Timing(method.getName(), timing());
+	public TestResult run() throws Exception {
+		return new TestResult(this, timing());
 	}
 
 	private double timing() throws Exception {
@@ -32,4 +32,9 @@ public class TimingTest {
  			method.invoke(instance, new Object[0]);
  		return System.nanoTime() - start;
  	}
+
+ 	public void export(TestResultExport export)  {
+		export.method(method.getName());
+		instance.export(export);		
+	}	
  }

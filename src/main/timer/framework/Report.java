@@ -1,21 +1,36 @@
 package timer.framework;
 
+import java.util.List;
+import java.util.ArrayList;
+
 public abstract class Report {
-	private Layout layout;
-
-	public Report(Layout layout)  {
-		this.layout=layout;
+	private List<TestGroup> groups=new ArrayList<TestGroup>();
+	
+	public void print(Format format, Timings timings) {
+		format.print(this, timings);
 	}
 
-	public void addTests(int size, Timing[] timings) {	
-		layout.addTests(size, timings);
+	public void print(TestResultExport[] exports) {
+		sort(exports);  
+		Title title=new Title();
+		for (TestResultExport each : exports)
+			export(each, title);
+		print(title);
 	}
 
-	public void print() {
-		layout.print(this);
+	protected abstract void sort(TestResultExport[] exports);
+	protected abstract void export(TestResultExport export, Title title);
+
+	public void add(TestGroup group) {
+		for(int i=0; i < groups.size(); i++)
+			groups.set(i, groups.get(i).add(group));
+		if(!groups.contains(group))
+			groups.add(group);
 	}
 
-	public abstract TestGroup methodGroup(int size, String method, double timing);
-	public abstract TestGroup sizeGroup(int size, String method, double timing);
-	public abstract String header();
+	private void print(Title title)  {
+		System.out.println(title);
+		for (TestGroup each : groups)
+			System.out.println(each);
+	}
 }

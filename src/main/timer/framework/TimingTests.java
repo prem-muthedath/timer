@@ -4,14 +4,11 @@ import java.lang.reflect.Method;
 import java.util.Arrays;
 
  public abstract class TimingTests {
-	public void run(Report report) throws Exception {
-		int timedMethods=0;
-		Timing[] timings=new Timing[this.getClass().getMethods().length];
+	public void run(Timings timings) throws Exception {
 		for (Method each : this.getClass().getMethods()) {
 			if(skip(each)) continue;
-			timings[timedMethods++]=new TimingTest(each, this).run();
+			timings.run(new TimingTest(each, this));
 		}
-		report.addTests(size(), Arrays.copyOf(timings, timedMethods));
 	}
 
 	private boolean skip(Method method) throws Exception {
@@ -31,4 +28,8 @@ import java.util.Arrays;
 	}
 
 	public void nothing() {}
+
+ 	public void export(TestResultExport export)  {
+		export.size(size());
+	}		
 }
