@@ -2,9 +2,12 @@ package timer.reporting;
 
 import timer.reporting.base.TestResult;
 import timer.reporting.base.Content;
-import timer.reporting.base.Title;
 
 public class TextTestResult extends TestResult {
+	public TextTestResult(int size, String method, double timing) {
+		super(size, method, timing);
+	}
+
 	public Content methodContent() {
 		return new Content(method(), timing(), "");
 	}	
@@ -25,12 +28,12 @@ public class TextTestResult extends TestResult {
 		return String.format("%-25s", "size="+size);		
 	}
 
-	protected void sizeHeader(Title title) {
-		title.add(new Content(margin(), method(), ""));
+	protected Content sizeHeader() {
+		return new Content(margin(), method(), "");
 	}	
 
-	protected void methodHeader(Title title) {
-		title.add(new Content(margin(), size(), ""));
+	protected Content methodHeader() {
+		return new Content(margin(), size(), "");
 	}	
 
 	private String margin() {

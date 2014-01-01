@@ -7,38 +7,30 @@ public abstract class TestResult implements Comparable<TestResult>, Comparator<T
 	protected String method;
 	protected double timing;
 
-	public void timing(double timing) {
+	public TestResult (int size, String method, double timing) {
+		this.size=size;
+		this.method=method;
 		this.timing=timing;
 	}
 
-	public void method(String method)  {
-		this.method=method;
+	public void exportBySize(Contents contents) {
+		contents.add(sizeHeader(), sizeContent());
 	}
 
-	public void size(int size)  {
-		this.size=size;
-	}
-
-	public void exportBySize(Report report, Title title) {
-		sizeHeader(title);
-		report.add(sizeContent());
-	}
-
-	public void exportByMethod(Report report,  Title title) {
-		methodHeader(title);
-		report.add(methodContent());
+	public void exportByMethod(Contents contents) {
+		contents.add(methodHeader(), methodContent());
 	}
 
 	protected abstract Content sizeContent();
 	protected abstract Content methodContent();
-	protected abstract void sizeHeader(Title title);
-	protected abstract void methodHeader(Title title);
-
-	public int compare(TestResult one, TestResult another)  {
-		return one.method.compareTo(another.method)==0  ?  one.size-another.size  :  one.method.compareTo(another.method);				
-	}	
+	protected abstract Content sizeHeader();
+	protected abstract Content methodHeader();
 
 	public int compareTo(TestResult another)  {
 		return size-another.size==0  ?  method.compareTo(another.method)  :  size-another.size;
+	}
+
+	public int compare(TestResult one, TestResult another)  {
+		return one.method.compareTo(another.method)==0  ?  one.size-another.size  :  one.method.compareTo(another.method);				
 	}	
 }

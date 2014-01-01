@@ -1,15 +1,12 @@
 package timer.framework;
 
 import java.lang.reflect.Method;
-import java.util.Arrays;
 
-import timer.reporting.base.TestResult;
-
- public abstract class TimingTests {
-	public void run(Timings timings) throws Exception {
+public abstract class TimingTests {
+	public void run(Report report) throws Exception {
 		for (Method each : this.getClass().getMethods()) {
 			if(skip(each)) continue;
-			timings.run(new TimingTest(each, this));
+			report.run(each, this);
 		}
 	}
 
@@ -30,8 +27,4 @@ import timer.reporting.base.TestResult;
 	}
 
 	public void nothing() {}
-
- 	public void export(TestResult result)  {
-		result.size(size());
-	}		
 }
