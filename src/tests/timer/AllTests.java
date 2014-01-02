@@ -9,16 +9,16 @@ import timer.reporting.types.Format;
 public class AllTests {
 	public static void main(String[] args) throws Exception {
 		AllTests tests=new AllTests();
-		tests.testListSearch();
-		tests.testSetVsArray();
+		tests.runListSearchTest();
+		tests.runSetVsArrayListTest();
 	}
 
-	public void testListSearch() throws Exception {
+	public void runListSearchTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(new ListSearch(0));
 		timer.report(report());		
 	}
 
-	public void testSetVsArray() throws Exception {
+	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(new SetVsArrayList(0));
 		timer.report(report());	
 	}
