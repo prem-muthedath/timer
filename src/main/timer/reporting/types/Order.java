@@ -1,15 +1,19 @@
-package timer.reporting.base;
+package timer.reporting.types;
 
 import timer.framework.Report;
 
+import timer.reporting.base.OrderedReport;
+import timer.reporting.base.TestResult;
+import timer.reporting.base.Contents;
+
 import java.util.Collections;
 
-public enum ReportType {
+public enum Order {
 	BY_SIZE, BY_METHOD;
 
-	public Report instance(TestResultType format)  {
+	public Report report(Format format)  {
 		switch(this)  {
-			case BY_SIZE: return new TestResultsReport(format) {
+			case BY_SIZE: return new OrderedReport(format) {
 				protected void sort()  {	
 					Collections.sort(results);
 				}
@@ -17,7 +21,7 @@ public enum ReportType {
 					result.exportBySize(contents);
 				}
 			};
-			case BY_METHOD: return new TestResultsReport(format) {
+			case BY_METHOD: return new OrderedReport(format) {
 				protected void sort()  {	
 					Collections.sort(results, results.isEmpty()  ?   null  :  results.get(0));
 				}
@@ -26,6 +30,6 @@ public enum ReportType {
 				}
 			};					
 		}
-		throw new RuntimeException("Unknown ReportType: "+this);
+		throw new RuntimeException("Unknown Order: "+this);
 	}
 }

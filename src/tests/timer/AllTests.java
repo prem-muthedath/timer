@@ -3,8 +3,8 @@ package timer;
 import timer.framework.CollectionTimer;
 import timer.framework.Report;
 
-import timer.reporting.base.ReportType;
-import timer.reporting.base.TestResultType;
+import timer.reporting.types.Order;
+import timer.reporting.types.Format;
 
 public class AllTests {
 	public static void main(String[] args) throws Exception {
@@ -24,6 +24,6 @@ public class AllTests {
 	}
 
 	private Report report() {
-		return ReportType.BY_METHOD.instance(TestResultType.TEXT);
+		return Order.BY_METHOD.report(Format.TEXT);
 	}
 }

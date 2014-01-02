@@ -5,16 +5,18 @@ import timer.framework.Report;
 import java.util.List;
 import java.util.ArrayList;
 
-public abstract class TestResultsReport extends Report {
-	protected List<TestResult> results=new ArrayList<TestResult>();
-	private TestResultType format;
+import timer.reporting.types.Format;
 
-	public TestResultsReport(TestResultType format)  {
+public abstract class OrderedReport extends Report {
+	protected List<TestResult> results=new ArrayList<TestResult>();
+	private Format format;
+
+	public OrderedReport(Format format)  {
 		this.format=format;
 	}	
 
 	protected void add(int size, String method, double timing)	{
-		results.add(format.instance(size, method, timing));
+		results.add(format.testResult(size, method, timing));
 	}
 
 	public void print() {

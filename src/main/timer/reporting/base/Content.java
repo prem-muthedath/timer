@@ -2,26 +2,30 @@ package timer.reporting.base;
 
 public class Content  {
 	private String header;
-	private String data;
+	private String content;
 	private String footer;
 
-	public Content(String header, String data, String footer)  {
+	public Content() {
+		this("", "", "");
+	}
+	
+	public Content(String header, String content, String footer)  {
 		this.header=header;
-		this.data=data;
+		this.content=content;
 		this.footer=footer;
 	}
 
 	public Content addUnique(Content another)  {
-		return data.indexOf(another.data) >=0   ?  this  :  add(another);
+		return content.indexOf(another.content) >=0   ?  this  :  add(another);
 	}
 
 	public Content add(Content another)  {
-		String newData=this.data+another.data;
-		return this.equals(another) ?  new Content(header, newData, footer) :  this;
+		String newContent=this.content+another.content;
+		return this.equals(another) ?  new Content(header, newContent, footer) :  this;
 	}
 
 	public String toString() {
-		return header+data+footer;
+		return header+content+footer;
 	}
 
 	public int hashCode() {
@@ -29,10 +33,6 @@ public class Content  {
 	}
 
 	public boolean equals(Object another)  {
-		if(another instanceof Content) {
-			Content that=(Content) another;
-			return that.header.equals(this.header) && that.footer.equals(this.footer);
-		}
-		return false;
+		return another instanceof Content ? ((Content) another).header.equals(header) && ((Content) another).footer.equals(footer) : false;
 	}			
 }

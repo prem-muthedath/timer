@@ -1,13 +1,24 @@
 package timer.reporting.base;
 
 public class Title {
-	private Content title;
+	private Content header;
+	private Content footer;
 
-	public void add(Content testTitle) {
-		this.title=this.title==null  ?  testTitle  :  title.addUnique(testTitle);
+	public Title() {
+		this(new NullContent(), new NullContent());
 	}
 
-	public String toString() {
-		return title==null  ?   ""  :  title.toString();
+	public Title(Content header, Content footer) {
+		this.header=header;
+		this.footer=footer;
+	}	
+
+	public void append(Title title) {
+		header=header.addUnique(title.header);
+		footer=footer.addUnique(title.footer);
 	}
+
+	public void print(Contents contents) {
+		contents.print(header, footer);
+	}	
 }

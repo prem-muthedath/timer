@@ -14,17 +14,17 @@ public abstract class TestResult implements Comparable<TestResult>, Comparator<T
 	}
 
 	public void exportBySize(Contents contents) {
-		contents.add(sizeHeader(), sizeContent());
+		contents.add(sizeTitle(), sizeContent());
 	}
 
 	public void exportByMethod(Contents contents) {
-		contents.add(methodHeader(), methodContent());
+		contents.add(methodTitle(), methodContent());
 	}
 
-	protected abstract Content sizeContent();
-	protected abstract Content methodContent();
-	protected abstract Content sizeHeader();
-	protected abstract Content methodHeader();
+	protected abstract Title sizeTitle();
+	protected abstract Content sizeContent();	
+	protected abstract Title methodTitle();
+	protected abstract Content methodContent();	
 
 	public int compareTo(TestResult another)  {
 		return size-another.size==0  ?  method.compareTo(another.method)  :  size-another.size;

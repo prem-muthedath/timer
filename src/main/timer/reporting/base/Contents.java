@@ -7,8 +7,8 @@ public class Contents {
 	private List<Content> contents=new ArrayList<Content>();
 	private Title title=new Title();
 
-	public void add(Content contentTitle, Content content) {
-		title.add(contentTitle);
+	public void add(Title aTitle, Content content) {
+		title.append(aTitle);
 		add(content);
 	}	
 
@@ -20,8 +20,13 @@ public class Contents {
 	}
 
 	public void print()  {
-		System.out.println(title);
+		title.print(this);
+	}
+
+	void print(Content header, Content footer)  {
+		System.out.println(header);
 		for (Content each : contents)
 			System.out.println(each);
+		System.out.println(footer);		
 	}
 }
