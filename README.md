@@ -14,7 +14,7 @@ After reading Beck's excellent book, I decided to put my learnings into practice
 
 These concerns led me to a different design with a new set of small objects, each doing just 1 thing.  After much struggle, I found my object names from Beck's own description of his timer framework!
 
-Just for fun, I have designed a reporting model that can -- (a) output timings sorted by collection sizes OR by methods; and (b) in different formats (e.g., text, xml, etc.).
+Just for fun, I have designed a reporting model that can -- (a) output timings sorted by collection sizes OR by method names; and (b) in different formats (e.g., text, xml, etc.).
 
 I have re-used the tests in Beck's book.
 
@@ -33,5 +33,5 @@ HOW TO RUN THE TESTS FROM A TERMINAL:
  		java -classpath bin timer.AllTests
 
 5. Press enter.
-6. Output: for each method, timings (in nano secs) in different formats (text, xml, etc.) sorted either by collection sizes OR by method names.
+6. Output: method timings (nano secs) in different formats (text, xml, etc.) sorted by collection sizes OR method names.
 	
