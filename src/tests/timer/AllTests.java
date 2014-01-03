@@ -14,12 +14,12 @@ public class AllTests {
 	}
 
 	public void runListSearchTest() throws Exception {
-		CollectionTimer timer= new CollectionTimer(new ListSearch(0));
+		CollectionTimer timer= new CollectionTimer(ListSearch.class);
 		timer.report(report());		
 	}
 
 	public void runSetVsArrayListTest() throws Exception {
-		CollectionTimer timer= new CollectionTimer(new SetVsArrayList(0));
+		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
 	}
 
