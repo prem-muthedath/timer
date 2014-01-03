@@ -14,6 +14,8 @@ After reading Beck's excellent book, I decided to put my learnings into practice
 
 These concerns led me to a different design with a new set of small objects, each doing just 1 thing.  After much struggle, I found my object names from Beck's own description of his timer framework!
 
+Just for fun, I have designed a reporting model that can - (a) output timings sorted by sizes OR by methods; and (b) in different formats (e.g., text, xml, etc.).
+
 I have re-used the tests in Beck's book.
 
 
