@@ -33,5 +33,5 @@ HOW TO RUN THE TESTS FROM A TERMINAL:
  		java -classpath bin timer.AllTests
 
 5. Press enter.
-6. Output: method timings (nano secs) in different formats (text, etc.) sorted by collection sizes or method names.
+6. Output: method timings (nano secs) in text format, sorted by collection sizes or method names.
 	
