@@ -23,15 +23,16 @@ I have re-used the tests in Beck's book.
 HOW TO RUN THE TESTS FROM A TERMINAL:
 
 1. cd to timer directory -- the top directory of the app containing this README file.
-2. Type the following command to compile: 
+2. Create an empty directory called bin, directly under the top timer directory.
+3. Type the following command to compile: 
 
 		javac -d bin -sourcepath src/main:src/tests  src/tests/timer/AllTests.java
 
-3. Press enter.
-4. Type the following command to run the tests:
+4. Press enter.
+5. Type the following command to run the tests:
 	
  		java -classpath bin timer.AllTests
 
-5. Press enter.
-6. Output: method timings (nano secs) in text format, sorted by collection sizes or method names.
+6. Press enter.
+7. Output: method timings (nano secs) in text format, sorted by collection sizes or method names.
 	
