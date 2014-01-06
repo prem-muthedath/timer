@@ -6,12 +6,12 @@ public class TimingTest {
 	private Method method;
 	private TimingTests instance;
 
-	public TimingTest(Method method, TimingTests instance) {
+	TimingTest(Method method, TimingTests instance) {
 		this.method=method;
 		this.instance=instance;
 	}
 
-	public double timing() throws Exception {
+	double timing() throws Exception {
 		int iterations=1;
 		long totalTime=0L;
 		while (true) {

@@ -6,11 +6,11 @@ public class NullContent extends Content {
 		super();
 	}
 
-	public Content addUnique(Content another)  {
+	Content addUnique(Content another)  {
 		return add(another);
 	}
 
-	public Content add(Content another)  {
+	Content add(Content another)  {
 		return another;
 	}
 }

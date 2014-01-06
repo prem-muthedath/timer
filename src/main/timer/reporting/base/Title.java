@@ -13,12 +13,12 @@ public class Title {
 		this.footer=footer;
 	}	
 
-	public void append(Title title) {
+	void append(Title title) {
 		header=header.addUnique(title.header);
 		footer=footer.addUnique(title.footer);
 	}
 
-	public void print(Contents contents) {
+	void print(Contents contents) {
 		contents.print(header, footer);
 	}	
 }

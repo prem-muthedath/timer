@@ -15,11 +15,11 @@ public class Content  {
 		this.footer=footer;
 	}
 
-	public Content addUnique(Content another)  {
+	Content addUnique(Content another)  {
 		return content.indexOf(another.content) >=0   ?  this  :  add(another);
 	}
 
-	public Content add(Content another)  {
+	Content add(Content another)  {
 		String newContent=this.content+another.content;
 		return this.equals(another) ?  new Content(header, newContent, footer) :  this;
 	}

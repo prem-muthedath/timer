@@ -7,7 +7,7 @@ public class Contents {
 	private List<Content> contents=new ArrayList<Content>();
 	private Title title=new Title();
 
-	public void add(Title aTitle, Content content) {
+	void add(Title aTitle, Content content) {
 		title.append(aTitle);
 		add(content);
 	}	
@@ -19,7 +19,7 @@ public class Contents {
 			contents.add(content);
 	}
 
-	public void print()  {
+	void print()  {
 		title.print(this);
 	}
 
