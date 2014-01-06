@@ -23,4 +23,8 @@ public class ListSearch extends TimingTests {
 	protected int size()  {
 		return numbers.size();
 	}
+
+	protected TimingTests copy() {
+		return new ListSearch(size());
+	}
 }

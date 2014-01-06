@@ -8,7 +8,7 @@ public enum Format {
 	public TestResult testResult(int size, String method, double timing)  {
 		switch(this)  {
 			case TEXT: return new TextTestResult(size, method, timing);
-			case XML: return null;  // not implemented yet.
+			case XML: return null;  // not yet implemented.
 		}
 		throw new RuntimeException("Unknown Format: "+this);
 	}	

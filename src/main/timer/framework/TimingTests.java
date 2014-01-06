@@ -1,12 +1,12 @@
 package timer.framework;
 
 import java.lang.reflect.Method;
-
+	
 public abstract class TimingTests {
 	public void run(Report report) throws Exception {
 		for (Method each : this.getClass().getMethods()) {
 			if(skip(each)) continue;
-			report.run(each, this);
+			report.run(each, copy());
 		}
 	}
 
@@ -15,6 +15,12 @@ public abstract class TimingTests {
 		return (methodClass.equals(Object.class) || methodClass.equals(TimingTests.class));
 	}
 
+	/** 
+	 * copy() needed for accurate method timing; else, if, for a given size, 
+	 * we use the same instance for all methods, JVM caches the instance across methods, 
+	 * resulting in lower reported method timings, especially for later methods and large sizes. 
+	 */
+	protected abstract TimingTests copy(); 
 	protected abstract int size();
 
 	double timing(IterationsTime iterationsTime) throws Exception {

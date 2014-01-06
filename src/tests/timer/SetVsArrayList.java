@@ -28,6 +28,10 @@ public class SetVsArrayList extends TimingTests {
 		return arrayList.size();
 	}
 
+	protected TimingTests copy() {
+		return new SetVsArrayList(size());
+	}
+
 	public void setMembership() {
 		set.contains(probe);
 	}
