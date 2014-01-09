@@ -19,8 +19,10 @@ public abstract class TimingTests {
 	 * copy() needed for accurate method timing.  
 	 * For a given collection size, when we time all methods using the SAME instance of TimingTests,
 	 * the JVM caches the instance across methods when it executes method.invoke(instance, new Object[0]).
-	 * This results in lower reported method timings, especially when the collection size gets LARGE (>= 1000) 
-	 * and the method has HIGH execution times (>= 200 ns) and uses the SAME collection used by an earlier method. 
+	 * For methods whose timings INCREASE with collection size, timings become dependent on execution order.
+	 * That is, if method A uses the SAME collection as method B, timings reported when method A is executed 
+	 * BEFORE method B is DIFFERENT from the timings reported when method A is executed AFTER method B.
+	 * The errors get big for LARGE collection sizes (>= 1000) and LONG method execution times (>= 200 ns). 
 	 * With copy(), we supply a new instance for each method, thus avoiding the caching problem.
 	 */
 	protected abstract TimingTests copy(); 
