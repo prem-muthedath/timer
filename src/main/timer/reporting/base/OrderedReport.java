@@ -21,12 +21,12 @@ public abstract class OrderedReport extends Report {
 
 	public void print() {
 		sort();  
-		Contents contents=new Contents();
+		Layout layout=new Layout();
 		for (TestResult each : results)
-			export(each, contents);
-		contents.print();
+			export(each, layout);
+		layout.print();
 	}
 
 	protected abstract void sort();
-	protected abstract void export(TestResult result, Contents contents);
+	protected abstract void export(TestResult result, Layout layout);
 }

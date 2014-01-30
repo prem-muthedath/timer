@@ -18,7 +18,7 @@ public class Title {
 		footer=footer.addUnique(title.footer);
 	}
 
-	void print(Contents contents) {
-		contents.print(header, footer);
+	void print(Layout layout) {
+		layout.print(header, footer);
 	}	
 }

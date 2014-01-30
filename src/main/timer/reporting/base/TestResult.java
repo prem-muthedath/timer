@@ -13,12 +13,12 @@ public abstract class TestResult implements Comparable<TestResult>, Comparator<T
 		this.timing=timing;
 	}
 
-	public void exportBySize(Contents contents) {
-		contents.add(sizeTitle(), sizeContent());
+	public void exportBySize(Layout layout) {
+		layout.add(sizeTitle(), sizeContent());
 	}
 
-	public void exportByMethod(Contents contents) {
-		contents.add(methodTitle(), methodContent());
+	public void exportByMethod(Layout layout) {
+		layout.add(methodTitle(), methodContent());
 	}
 
 	protected abstract Title sizeTitle();

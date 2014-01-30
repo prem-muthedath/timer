@@ -3,7 +3,7 @@ package timer.reporting.base;
 import java.util.List;
 import java.util.ArrayList;
 
-public class Contents {
+public class Layout {
 	private List<Content> contents=new ArrayList<Content>();
 	private Title title=new Title();
 
