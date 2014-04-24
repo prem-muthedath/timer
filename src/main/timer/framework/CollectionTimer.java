@@ -15,7 +15,6 @@ public class CollectionTimer {
 	public void report(Report report) throws Exception { 
 		for (int size= 1; size <= MAXIMUM_SIZE; size*= 10)
 			testsInstance(size).run(report);
-		report.print();
 	}
 
 	private TimingTests testsInstance(int size) throws Exception {

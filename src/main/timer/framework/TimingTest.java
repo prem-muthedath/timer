@@ -11,7 +11,11 @@ public class TimingTest {
 		this.instance=instance;
 	}
 
-	double timing() throws Exception {
+	public void run(Report report) throws Exception {
+		report.run(this);
+	}
+
+	TestResult run() throws Exception {
 		int iterations=1;
 		long totalTime=0L;
 		while (true) {
@@ -19,7 +23,7 @@ public class TimingTest {
 			if(totalTime > CollectionTimer.ONE_SECOND) break;
 			iterations*=2;
 		}
-		return instance.timing(new IterationsTime(iterations, totalTime));
+		return instance.testResult(method, new IterationsTime(iterations, totalTime));
 	}
 
 	long totalTime(int iterations) throws Exception {

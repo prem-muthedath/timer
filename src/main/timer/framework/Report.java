@@ -1,12 +1,28 @@
 package timer.framework;
 
-import java.lang.reflect.Method;
+import java.util.List;
+import java.util.ArrayList;
+
+import timer.output.base.Format;
 
 public abstract class Report {
-	public void run(Method method, TimingTests instance) throws Exception {
-		add(instance.size(), method.getName(), new TimingTest(method, instance).timing());
+	protected List<TestResult> results=new ArrayList<TestResult>();
+
+	public void run(TimingTest test) throws Exception  {
+		results.add(test.run());
 	}
 
-	protected abstract void add(int size, String method, double timing);
-	public abstract void print();
+	private void add(TestResult result)	{
+		results.add(result);
+	}
+
+	public void print(Format format) {
+		sort();  
+		for (TestResult each : results)
+			export(each, format);
+		format.print();
+	}
+
+	protected abstract void sort();
+	protected abstract void export(TestResult result, Format format);
 }

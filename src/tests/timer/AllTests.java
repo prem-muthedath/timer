@@ -3,10 +3,12 @@ package timer;
 import timer.framework.CollectionTimer;
 import timer.framework.Report;
 
-import timer.reporting.types.Order;
-import timer.reporting.types.Format;
+import timer.output.base.Order;
+import timer.output.types.TextFormat;
 
 public class AllTests {
+	private Report report;
+
 	public static void main(String[] args) throws Exception {
 		AllTests tests=new AllTests();
 		tests.runListSearchTest();
@@ -16,14 +18,17 @@ public class AllTests {
 	public void runListSearchTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(ListSearch.class);
 		timer.report(report());		
+		report.print(new TextFormat());
 	}
 
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
+		report.print(new TextFormat());		
 	}
 
 	private Report report() {
-		return Order.BY_METHOD.report(Format.TEXT);
+		this.report=Order.BY_METHOD.report();
+		return this.report;
 	}
 }
