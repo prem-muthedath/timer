@@ -1,39 +1,42 @@
 package timer.output.base;
 
-import java.util.Map;
-import java.util.LinkedHashMap;
-
 public abstract class Format {
-	private Row columns=new Row();
-	private Map<String, Row> rows=new LinkedHashMap<String, Row>();
+	protected TableBuilder builder;
+	protected NodeFactory factory;
 
-	public abstract void addBySize(int size, String method, double timing);
-	public abstract void addByMethod(int size, String method, double timing);
+	public Format(NodeFactory factory, TableBuilder builder) {
+		this.factory=factory;
+		this.builder=builder;
+	}
+
+	public void addBySize(int size, String method, double timing) {
+		add(method(method), size(size), timing(timing));
+	}
+
+	public void addByMethod(int size, String method, double timing)  {
+		add(size(size), method(method), timing(timing));
+	}
+
+	protected abstract String method(String method);
+	protected abstract String timing(double timing);
+	protected abstract String size(int size);
 	
-	protected void add(String column, String row, String content)  {
-		columns.addUnique(new Header(column));
-		row(row).add(new Content(content));
+	protected abstract void add(String column, String row, String content);
+
+	protected void add(Node column, Node row, Node content) {
+		builder.add(column, row, content);
 	}
 
-	private Row row(String row) {
-		if(!rows.containsKey(row))
-			rows.put(row, new Row());
-		return rows.get(row);
+	public void print()  {
+		builder.table(factory).print(this);
 	}
 
-	public void print() {
-		printRow("", columns);
-		for (String each : rows.keySet()) 
-			printRow(each, rows.get(each));
+	protected void printHeading(String heading) {
+		printText(heading);
 	}
 
-	private void printRow(String header, Row row)  {
-		row.print(header, this);	
-		printContent(rowSeperator());
+	protected void printText(String text) {
+		System.out.print(text);
 	}
-
-	protected abstract void printHeader(String header);
-	protected abstract void printContent(String content);	
-	protected abstract String rowSeperator();	
 }
 
