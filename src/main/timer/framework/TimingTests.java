@@ -28,13 +28,13 @@ public abstract class TimingTests {
 	protected abstract TimingTests copy(); 
 	protected abstract int size();
 
-	TestResult testResult(Method method, IterationsTime iterationsTime) throws Exception {
-		return new TestResult(size(), method.getName(), iterationsTime.timing(overhead()));
+	TestTiming timing(Method method, TestCalibration calibration) throws Exception {
+		return new TestTiming(size(), method.getName(), calibration.timing(overhead()));
 	}
 
 	private TimingTest overhead() throws Exception {
 		Method method=getClass().getMethod("nothing", new Class[0]);
-		return new TimingTest(method, this);
+		return new TimingTest(method, copy());
 	}
 
 	public void nothing() {}

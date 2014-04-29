@@ -1,10 +1,10 @@
 package timer.framework;
 
- public class IterationsTime  {
+ public class TestCalibration  {
  	private int iterations;
  	private long totalTime;
 
- 	IterationsTime(int iterations, long totalTime)  {
+ 	TestCalibration(int iterations, long totalTime)  {
  		this.iterations=iterations;
  		this.totalTime=totalTime;
  	}

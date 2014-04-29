@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class NodeFactory  {
 	public Node node() {
-		return new Node("") {
+		return new NamedNode("") {
 			protected void printName(Format format) {}
 		};
 	}
@@ -16,11 +16,11 @@ public class NodeFactory  {
 	}
 
 	public Node node(String name) {
-		return new Node(name);
+		return new NamedNode(name);
 	}
 
 	public Node textNode(final String name) {
-		return new Node(name) {
+		return new NamedNode(name) {
 			protected void printName(Format format) {
 				format.printText(name);
 			}
@@ -28,7 +28,7 @@ public class NodeFactory  {
 	}
 
 	public Node titledNode(String header, String footer) {
-		return new TitledNode(header, node(footer));
+		return new TitledNode(node(header), node(footer));
 	}
 
 	public Node tagNode(String tag) {

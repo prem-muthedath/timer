@@ -4,7 +4,7 @@ public class Tag  {
 	private String name;
 
 	public Tag(String name) {
-		this.name=name;
+		this.name=name.trim();
 	}
 
 	public Node titledNode(NodeFactory factory)  {
@@ -24,6 +24,6 @@ public class Tag  {
 	}
 
 	private String nameWithoutAttributes() {
-		return name.indexOf(" ") >=0  ?  name.substring(0, name.indexOf(" "))  :  name;		
+		return name.indexOf(" ") > 0  ?  name.substring(0, name.indexOf(" "))  :  name;		
 	}
 }

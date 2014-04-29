@@ -6,23 +6,19 @@ import java.util.ArrayList;
 import timer.output.base.Format;
 
 public abstract class Report {
-	protected List<TestResult> results=new ArrayList<TestResult>();
+	protected List<TestTiming> timings=new ArrayList<TestTiming>();
 
 	public void run(TimingTest test) throws Exception  {
-		results.add(test.run());
-	}
-
-	private void add(TestResult result)	{
-		results.add(result);
+		timings.add(test.run());
 	}
 
 	public void print(Format format) {
 		sort();  
-		for (TestResult each : results)
+		for (TestTiming each : timings)
 			export(each, format);
 		format.print();
 	}
 
 	protected abstract void sort();
-	protected abstract void export(TestResult result, Format format);
+	protected abstract void export(TestTiming timings, Format format);
 }

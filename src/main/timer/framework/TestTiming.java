@@ -4,12 +4,12 @@ import java.util.Comparator;
 
 import timer.output.base.Format;
 
-public class TestResult implements Comparable<TestResult>, Comparator<TestResult> {
+public class TestTiming implements Comparable<TestTiming>, Comparator<TestTiming> {
 	private int size;
 	private String method;
 	private double timing;
 
-	public TestResult (int size, String method, double timing) {
+	public TestTiming(int size, String method, double timing) {
 		this.size=size;
 		this.method=method;
 		this.timing=timing;
@@ -23,11 +23,11 @@ public class TestResult implements Comparable<TestResult>, Comparator<TestResult
 		format.addByMethod(size, method, timing);
 	}
 
-	public int compareTo(TestResult another)  {
+	public int compareTo(TestTiming another)  {
 		return size-another.size==0  ?  method.compareTo(another.method)  :  size-another.size;
 	}
 
-	public int compare(TestResult one, TestResult another)  {
+	public int compare(TestTiming one, TestTiming another)  {
 		return one.method.compareTo(another.method)==0  ?  one.size-another.size  :  one.method.compareTo(another.method);				
 	}	
 }

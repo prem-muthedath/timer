@@ -1,7 +1,7 @@
 package timer.output.base;
 
 import timer.framework.Report;
-import timer.framework.TestResult;
+import timer.framework.TestTiming;
 
 import java.util.Collections;
 
@@ -12,18 +12,18 @@ public enum Order {
 		switch(this)  {
 			case BY_SIZE: return new Report() {
 				protected void sort()  {	
-					Collections.sort(results);
+					Collections.sort(timings);
 				}
-				protected void export(TestResult result, Format format) {
-					result.exportBySize(format);
+				protected void export(TestTiming timing, Format format) {
+					timing.exportBySize(format);
 				}
 			};
 			case BY_METHOD: return new Report() {
 				protected void sort()  {	
-					Collections.sort(results, results.isEmpty()  ?   null  :  results.get(0));
+					Collections.sort(timings, timings.isEmpty()  ?   null  :  timings.get(0));
 				}
-				protected void export(TestResult result, Format format) {
-					result.exportByMethod(format);
+				protected void export(TestTiming timing, Format format) {
+					timing.exportByMethod(format);
 				}
 			};					
 		}
