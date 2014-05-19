@@ -1,6 +1,12 @@
 package timer.output.base;
 
+import java.util.List;
+import java.util.ArrayList;
+
+import timer.framework.Field;
+
 public abstract class Format {
+	protected List<String> fields=new ArrayList<String>();	
 	protected TableBuilder builder;
 	protected NodeFactory factory;
 
@@ -9,18 +15,18 @@ public abstract class Format {
 		this.builder=builder;
 	}
 
-	public void addBySize(int size, String method, double timing) {
-		add(method(method), size(size), timing(timing));
+	public void add(Field[] newFields) {
+		fields.clear();
+		for(Field each : newFields)
+			each.addTo(this);
+		add(fields.get(0), fields.get(1), fields.get(2));
 	}
 
-	public void addByMethod(int size, String method, double timing)  {
-		add(size(size), method(method), timing(timing));
-	}
+	public abstract void addSize(int size);
+	public abstract void addMethod(String method);
+	public abstract void addTiming(double timing);
 
-	protected abstract String method(String method);
-	protected abstract String timing(double timing);
-	protected abstract String size(int size);
-	
+
 	protected abstract void add(String column, String row, String content);
 
 	protected void add(Node column, Node row, Node content) {

@@ -14,16 +14,16 @@ public class TextFormat extends Format {
 		super(factory, new TableBuilder(factory.titledNode(FIRST_COLUMN_HEADER, LAST_COLUMN_HEADER)));
 	}
 
-	protected String method(String method) {
-		return String.format("%-25s", method);		
+	public void addMethod(String method) {
+		fields.add(String.format("%-25s", method));		
 	}	
 
-	protected String timing(double timing) {
-		return String.format("%-25.2f", timing);		
+	public void addTiming(double timing) {
+		fields.add(String.format("%-25.2f", timing));		
 	}
 
-	protected String size(int size) {
-		return String.format("%-25s", "size="+size);		
+	public void addSize(int size) {
+		fields.add(String.format("%-25s", "size="+size));		
 	}
 
 	protected void add(String column, String row, String content) {

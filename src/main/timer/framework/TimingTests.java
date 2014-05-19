@@ -29,7 +29,7 @@ public abstract class TimingTests {
 	protected abstract int size();
 
 	TestTiming timing(Method method, TestCalibration calibration) throws Exception {
-		return new TestTiming(size(), method.getName(), calibration.timing(overhead()));
+		return new TestTiming(new Size(size()), new Name(method.getName()), calibration.timing(overhead()));
 	}
 
 	private TimingTest overhead() throws Exception {

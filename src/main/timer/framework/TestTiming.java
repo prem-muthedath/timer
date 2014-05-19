@@ -5,29 +5,29 @@ import java.util.Comparator;
 import timer.output.base.Format;
 
 public class TestTiming implements Comparable<TestTiming>, Comparator<TestTiming> {
-	private int size;
-	private String method;
-	private double timing;
+	private Size size;
+	private Name name;
+	private Timing timing;
 
-	public TestTiming(int size, String method, double timing) {
+	public TestTiming(Size size, Name name, Timing timing) {
 		this.size=size;
-		this.method=method;
+		this.name=name;
 		this.timing=timing;
 	}
 
 	public void exportBySize(Format format) {
-		format.addBySize(size, method, timing);
+		format.add(new Field[]{name, size, timing});
 	}
 
 	public void exportByMethod(Format format) {
-		format.addByMethod(size, method, timing);
+		format.add(new Field[]{size, name, timing});
 	}
 
 	public int compareTo(TestTiming another)  {
-		return size-another.size==0  ?  method.compareTo(another.method)  :  size-another.size;
+		return size.compareTo(another.size)==0  ?  name.compareTo(another.name)  :  size.compareTo(another.size);
 	}
 
 	public int compare(TestTiming one, TestTiming another)  {
-		return one.method.compareTo(another.method)==0  ?  one.size-another.size  :  one.method.compareTo(another.method);				
+		return one.name.compareTo(another.name)==0  ?  one.size.compareTo(another.size)  :  one.name.compareTo(another.name);				
 	}	
 }

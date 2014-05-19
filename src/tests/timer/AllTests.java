@@ -20,7 +20,7 @@ public class AllTests {
 
 	The reason for this advice is this -- for Beck's code AS WELL AS for this code, I noticed that the results 
 	are slightly different if we run the ListSearch test first, followed by SetVsArrayList, one after the other, 
-	in SAME JVM, VERSUS if we run SetVsArrayList test WITHOUT running the ListSearch first.  Specifically,
+	in the SAME JVM, VERSUS if we run SetVsArrayList test WITHOUT running the ListSearch first.  Specifically,
 	we get slightly different timings for sizes 100 and 1000 for the arrayListMembership test. For size 100, 
 	we notice 160-170 ms vs 200-210 ms, and for size 1000, we notice 1600-1800 vs 2000-2100 ms.  The lower 
 	values are reported when we run ListSearch first, followed immediately by SetVsArrayList in the same JVM,
@@ -50,11 +50,11 @@ public class AllTests {
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
-		report.print(new XmlFormat(new NodeFactory()));		
+		report.print(new TextFormat(new NodeFactory()));		
 	}
 
 	private Report report() {
-		this.report=Order.BY_SIZE.report();
+		this.report=Order.BY_METHOD.report();
 		return this.report;
 	}
 }
