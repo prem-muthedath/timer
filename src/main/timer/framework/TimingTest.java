@@ -11,15 +11,15 @@ public class TimingTest {
 		this.instance=instance;
 	}
 
-	public void run(Report report) throws Exception {
-		report.run(this);
+	public void run(Report report, TestInstance testInstance) throws Exception {
+		report.run(testInstance, this);
 	}
 
-	TestTiming run() throws Exception {
-		return instance.timing(method, calibrate());
+	Timing run() throws Exception {
+		return instance.timing(calibrate());
 	}
 
-	private TestCalibration calibrate() throws Exception {
+	private TestRun calibrate() throws Exception {
 		int iterations=1;
 		long totalTime=0L;
 		while (true) {
@@ -27,7 +27,7 @@ public class TimingTest {
 			if(totalTime > CollectionTimer.ONE_SECOND) break;
 			iterations*=2;
 		}
-		return new TestCalibration(iterations, totalTime);		
+		return new TestRun(iterations, totalTime);		
 	}
 
 	public long totalTime(int iterations) throws Exception {

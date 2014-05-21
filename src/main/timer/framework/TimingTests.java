@@ -6,12 +6,12 @@ public abstract class TimingTests {
 	public void run(Report report) throws Exception {
 		for (Method each : this.getClass().getMethods()) {
 			if(skip(each)) continue;
-			new TimingTest(each, copy()).run(report);
+			new TimingTest(each, copy()).run(report, new TestInstance(each, this));
 		}
 	}
 
 	private boolean skip(Method method) throws Exception {
-		Class methodClass=method.getDeclaringClass();
+		Class<?> methodClass=method.getDeclaringClass();
 		return (methodClass.equals(Object.class) || methodClass.equals(TimingTests.class));
 	}
 
@@ -25,11 +25,12 @@ public abstract class TimingTests {
 	 * The errors get big for LARGE collection sizes (>= 1000) and LONG method execution times (>= 200 ns). 
 	 * With copy(), we supply a new instance for each method, thus avoiding the caching problem.
 	 */
+
 	protected abstract TimingTests copy(); 
 	protected abstract int size();
 
-	TestTiming timing(Method method, TestCalibration calibration) throws Exception {
-		return new TestTiming(new Size(size()), new Name(method.getName()), calibration.timing(overhead()));
+	Timing timing(TestRun run) throws Exception {
+		return run.timing(overhead());
 	}
 
 	private TimingTest overhead() throws Exception {

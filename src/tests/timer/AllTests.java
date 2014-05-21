@@ -2,8 +2,8 @@ package timer;
 
 import timer.framework.CollectionTimer;
 import timer.framework.Report;
+import timer.framework.Order;
 
-import timer.output.base.Order;
 import timer.output.base.NodeFactory;
 
 import timer.output.types.TextFormat;
@@ -54,7 +54,7 @@ public class AllTests {
 	}
 
 	private Report report() {
-		this.report=Order.BY_METHOD.report();
+		this.report=Order.BY_SIZE.report();
 		return this.report;
 	}
 }

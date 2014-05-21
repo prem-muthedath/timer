@@ -1,24 +1,24 @@
 package timer.framework;
 
-import java.util.List;
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.HashMap;
 
 import timer.output.base.Format;
 
 public abstract class Report {
-	protected List<TestTiming> timings=new ArrayList<TestTiming>();
+	protected Map<TestInstance, Timing> timings=new HashMap<TestInstance, Timing>();
 
-	public void run(TimingTest test) throws Exception  {
-		timings.add(test.run());
+	public void run(TestInstance testInstance, TimingTest test) throws Exception  {
+		timings.put(testInstance, test.run());
 	}
 
 	public void print(Format format) {
-		sort();  
-		for (TestTiming each : timings)
-			export(each, format);
+		Map<TestInstance, Timing> sorted=sort();
+		for(TestInstance each : sorted.keySet())
+			export(each, sorted.get(each), format);
 		format.print();
 	}
 
-	protected abstract void sort();
-	protected abstract void export(TestTiming timings, Format format);
+	protected abstract Map<TestInstance, Timing> sort();
+	protected abstract void export(TestInstance testInstance, Timing timing, Format format);
 }

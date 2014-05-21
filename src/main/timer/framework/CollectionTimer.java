@@ -14,10 +14,10 @@ public class CollectionTimer {
 
 	public void report(Report report) throws Exception { 
 		for (int size= 1; size <= MAXIMUM_SIZE; size*= 10)
-			testsInstance(size).run(report);
+			tests(size).run(report);
 	}
 
-	private TimingTests testsInstance(int size) throws Exception {
+	private TimingTests tests(int size) throws Exception {
 		Constructor<?> constructor= timingTests.getConstructor(new Class[]{int.class});
 		return (TimingTests) constructor.newInstance(new Object[]{size});
 	}
