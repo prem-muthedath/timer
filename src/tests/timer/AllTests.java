@@ -54,7 +54,7 @@ public class AllTests {
 	}
 
 	private Report report() {
-		this.report=Order.BY_METHOD.report();
+		this.report=Order.BY_SIZE.report();
 		return this.report;
 	}
 }

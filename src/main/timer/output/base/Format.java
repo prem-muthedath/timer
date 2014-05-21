@@ -6,7 +6,6 @@ import java.util.ArrayList;
 import timer.framework.Field;
 
 public abstract class Format {
-	private List<String> fields=new ArrayList<String>();	
 	private TableBuilder builder;
 	protected NodeFactory factory;
 
@@ -15,22 +14,16 @@ public abstract class Format {
 		this.builder=builder;
 	}
 
-	public void add(Field[] newFields) {
-		fields.clear();
-		for(Field each : newFields)
-			each.addTo(this);
-		add(fields.get(0), fields.get(1), fields.get(2));
+	public void add(Field[] fields) {
+		String[] contents=new String[fields.length];		
+		for(int i=0; i < fields.length; i++)
+			contents[i]=fields[i].format(this);
+		add(contents[0], contents[1], contents[2]);
 	}
 
-
-	public abstract void addSize(int size);
-	public abstract void addMethod(String method);
-	public abstract void addTiming(double timing);
-
-	protected void add(String item) {
-		fields.add(item);
-	}
-	
+	public abstract String size(int size);
+	public abstract String method(String method);
+	public abstract String timing(double timing);
 	protected abstract void add(String column, String row, String content);
 
 	protected void add(Node column, Node row, Node content) {

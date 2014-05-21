@@ -9,8 +9,8 @@ public class Size implements Field, Comparable<Size> {
 		this.value=value;
 	} 
 
-	public void addTo(Format format) {
-		format.addSize(value);
+	public String format(Format format) {
+		return format.size(value);
 	}
 
 	public int compareTo(Size another)  {

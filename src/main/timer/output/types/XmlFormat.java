@@ -13,16 +13,16 @@ public class XmlFormat extends Format {
 		super(factory, new TableBuilder(factory.titledNode(FIRST_COLUMN_HEADER, LAST_COLUMN_HEADER)));
 	}
 
-	public void addMethod(String method) {
-		add(String.format("method name=\"%s\"", method));		
+	public String method(String method) {
+		return String.format("method name=\"%s\"", method);		
 	}	
 
-	public void addTiming(double timing) {
-		add(String.format("%.2f\n", timing));		
+	public String timing(double timing) {
+		return String.format("%.2f\n", timing);		
 	}
 
-	public void addSize(int size) {
-		add(String.format("size value=\"%s\"", size));		
+	public String size(int size) {
+		return String.format("size value=\"%s\"", size);		
 	}
 
 	protected void add(String column, String row, String content) {

@@ -9,7 +9,7 @@ public class Timing implements Field {
 		this.value=value;
 	} 
 
-	public void addTo(Format format) {
-		format.addTiming(value);
+	public String format(Format format) {
+		return format.timing(value);
 	}
 }

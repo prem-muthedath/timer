@@ -9,8 +9,8 @@ public class Name implements Field, Comparable<Name> {
 		this.value=value;
 	} 
 
-	public void addTo(Format format) {
-		format.addMethod(value);
+	public String format(Format format) {
+		return format.method(value);
 	}
 
 	public int compareTo(Name another)  {
