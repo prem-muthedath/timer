@@ -14,15 +14,15 @@ public class XmlFormat extends Format {
 	}
 
 	public void addMethod(String method) {
-		fields.add(String.format("method name=\"%s\"", method));		
+		add(String.format("method name=\"%s\"", method));		
 	}	
 
 	public void addTiming(double timing) {
-		fields.add(String.format("%.2f\n", timing));		
+		add(String.format("%.2f\n", timing));		
 	}
 
 	public void addSize(int size) {
-		fields.add(String.format("size value=\"%s\"", size));		
+		add(String.format("size value=\"%s\"", size));		
 	}
 
 	protected void add(String column, String row, String content) {
@@ -43,6 +43,6 @@ public class XmlFormat extends Format {
 		String declaration="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
 		factory.node(declaration).
 			add(factory.tagNode("timings").
-				add(builder.table(factory))).print(this);
+				add(table())).print(this);
 	}	
 }

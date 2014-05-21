@@ -15,15 +15,15 @@ public class TextFormat extends Format {
 	}
 
 	public void addMethod(String method) {
-		fields.add(String.format("%-25s", method));		
+		add(String.format("%-25s", method));		
 	}	
 
 	public void addTiming(double timing) {
-		fields.add(String.format("%-25.2f", timing));		
+		add(String.format("%-25.2f", timing));		
 	}
 
 	public void addSize(int size) {
-		fields.add(String.format("%-25s", "size="+size));		
+		add(String.format("%-25s", "size="+size));		
 	}
 
 	protected void add(String column, String row, String content) {

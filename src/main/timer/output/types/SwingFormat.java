@@ -26,7 +26,7 @@ public class SwingFormat extends TextFormat {
 	private void resetDisplay() {
 		frame.getContentPane().removeAll();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);				
-		frame.getContentPane().setLayout(new GridLayout(builder.table(factory).children(), 0));  //? how to get the column count?
+		frame.getContentPane().setLayout(new GridLayout(table().children(), 0));  //? how to get the column count?
 	}
 
 	protected void printHeading(String item)  {
