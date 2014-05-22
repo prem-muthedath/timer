@@ -1,16 +1,11 @@
 package timer.output.base;
 
-import java.util.List;
-import java.util.ArrayList;
-
 import timer.framework.Field;
 
 public abstract class Format {
 	private TableBuilder builder;
-	protected NodeFactory factory;
 
-	public Format(NodeFactory factory, TableBuilder builder) {
-		this.factory=factory;
+	public Format(TableBuilder builder) {
 		this.builder=builder;
 	}
 
@@ -26,16 +21,14 @@ public abstract class Format {
 	public abstract String timing(double timing);
 	protected abstract void add(String column, String row, String content);
 
-	protected void add(Node column, Node row, Node content) {
-		builder.add(column, row, content);
+	protected void add(Id column, Id row, Component cell) {
+		builder.add(column, row, cell);
 	}
 
-	public void print()  {
-		table().print(this);
-	}
+	public abstract void print();
 
-	protected Node table() {
-		return builder.table(factory);
+	protected Component table() {
+		return builder.table();
 	}
 
 	protected void printHeading(String heading) {

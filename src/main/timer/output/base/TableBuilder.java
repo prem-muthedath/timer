@@ -1,43 +1,52 @@
 package timer.output.base;
 
-import java.util.ArrayList;
+import java.util.Map;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.ArrayList;
 
 public class TableBuilder {
-	private List<Node> rows=new ArrayList<Node>();
+	private Row columns;
+	private Map<Id, Row> rows=new LinkedHashMap<Id, Row>();
 
-	public TableBuilder(Node headers) {
-		this.rows.add(headers);
+	public TableBuilder(Id firstColumn) {
+		columns=new Row(firstColumn); // Row(Id)
 	}
 
-	public void add(Node column, Node row, Node cell)  {
-		fetch(row).add(cell);
-		if(contentRows().size()==1)
-			headers().add(column);
+	public void add(Id column, Id row, Component cell)  {
+		row(row).add(cell);            // Row.add(Component)
+		if(repeatColumn()) return;
+		columns.add(new Row(column));  // Row(Id), Row.add(Component)
 	}
 
-	private Node fetch(Node row) {
-		for(Node each : contentRows())
-			if(each.namedAs(row)) return each;
-		rows.add(row);
-		return row;	
+	private Row row(Id row) {  // Flyweight pattern
+		return rows.containsKey(row) ?  rows.get(row)  :  create(row);
 	}
 
-	private List<Node> contentRows() {
-		return rows.size()  >  1  ?  rows.subList(1, rows.size()) : new ArrayList<Node>();
-	}	
-
-	private Node headers() {
-		return rows.get(0);
+	private Row create(Id row) {
+		rows.put(row, new Row());  // Row()
+		return rows.get(row);		
 	}
 
-	public Node table(NodeFactory factory) {
-		validate(new SizeValidator(headers().meAndDescendants()));				
-		return factory.node().add(rows.toArray(new Node[rows.size()]));
+	private boolean repeatColumn() {
+		return rows.size() > 1;
 	}
 
-	private void validate(SizeValidator validator) {
-		for(Node each : contentRows())
-			each.validate(validator);
-	}	
+	public Component table() {		
+		List<Component> table=new ArrayList<Component>();
+		table.add(columns);
+		for(Id each : rows.keySet())
+			add(table, new Row(each, rows.get(each)));         // Row(Id, Component)
+		return new Row().add(table.toArray(new Component[0])); // Row().add(Component[])
+	}
+
+	private void add(List<Component> table, Row row) {
+		validate(table.get(0).all(), row.all());
+		table.add(row);
+	}
+
+	private void validate(int expected, int actual) {
+		if(expected==actual) return;
+		throw new RuntimeException("Invalid Row Size: EXPECTED:  "+expected+"  FOUND: "+actual);		
+	}
 }

@@ -6,7 +6,7 @@ public abstract class TimingTests {
 	public void run(Report report) throws Exception {
 		for (Method each : this.getClass().getMethods()) {
 			if(skip(each)) continue;
-			new TimingTest(each, copy()).run(report, new TestInstance(each, this));
+			new TimingTest(each, copy()).run(report, testInstance(each));
 		}
 	}
 
@@ -28,6 +28,10 @@ public abstract class TimingTests {
 
 	protected abstract TimingTests copy(); 
 	protected abstract int size();
+
+	private TestInstance testInstance(Method method) {
+		return new TestInstance(new Size(size()), new timer.framework.Method(method));
+	}
 
 	Timing timing(TestRun run) throws Exception {
 		return run.timing(overhead());

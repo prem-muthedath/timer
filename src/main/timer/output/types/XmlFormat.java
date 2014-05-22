@@ -1,16 +1,19 @@
 package timer.output.types;
 
 import timer.output.base.Format;
-import timer.output.base.NodeFactory;
 import timer.output.base.TableBuilder;
-import timer.output.base.Node;
+import timer.output.base.Cell;
+import timer.output.base.Id;
+import timer.output.base.Row;
+import timer.output.base.Tag;
+import timer.output.base.Component;
 
 public class XmlFormat extends Format {
 	private static final String FIRST_COLUMN_HEADER="";
 	private static final String LAST_COLUMN_HEADER="";
 
-	public XmlFormat(NodeFactory factory) {
-		super(factory, new TableBuilder(factory.titledNode(FIRST_COLUMN_HEADER, LAST_COLUMN_HEADER)));
+	public XmlFormat() {
+		super(new TableBuilder(new Id(FIRST_COLUMN_HEADER, LAST_COLUMN_HEADER)));
 	}
 
 	public String method(String method) {
@@ -26,23 +29,19 @@ public class XmlFormat extends Format {
 	}
 
 	protected void add(String column, String row, String content) {
-		Node xmlContent=xmlContent(column, content);
-		add(column(xmlContent), factory.tagNode(row), xmlContent);
+		add(new Id(""), new Id(new Tag(row)), xmlContent(column, content));
 	}
 
-	private Node xmlContent(String column, String content) {
-		Node xml=factory.tagNode("timing", content);
-		return factory.tagNode(column).add(xml);
-	}
-
-	private Node column(Node content)  {
-		return factory.node(content.meAndDescendants()-1);
+	private Cell xmlContent(String column, String content) {
+		Row contentRow=new Row(new Id(new Tag("timing")), Cell.textCell(content));
+		return Cell.textCell(new Row(new Id(new Tag(column)), contentRow).toString());
 	}
 
 	public void print()  {
 		String declaration="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
-		factory.node(declaration).
-			add(factory.tagNode("timings").
-				add(table())).print(this);
+		new Row(new Component[] {  								// Row(Component[])
+			Cell.textCell(declaration),
+			new Row(new Id(new Tag("timings")), table())    // Row(Id, Component)
+		}).print(this);
 	}	
 }

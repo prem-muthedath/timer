@@ -4,7 +4,6 @@ import timer.framework.CollectionTimer;
 import timer.framework.Report;
 import timer.framework.Order;
 
-import timer.output.base.NodeFactory;
 
 import timer.output.types.TextFormat;
 import timer.output.types.XmlFormat;
@@ -44,17 +43,17 @@ public class AllTests {
 	public void runListSearchTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(ListSearch.class);
 		timer.report(report());		
-		report.print(new XmlFormat(new NodeFactory()));
+		report.print(new XmlFormat());
 	}
 
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
-		report.print(new TextFormat(new NodeFactory()));		
+		report.print(new TextFormat());		
 	}
 
 	private Report report() {
-		this.report=Order.BY_SIZE.report();
+		this.report=Order.BY_METHOD.report();
 		return this.report;
 	}
 }

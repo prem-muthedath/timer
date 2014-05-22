@@ -1,17 +1,16 @@
 package timer.output.types;
 
 import timer.output.base.Format;
-import timer.output.base.NodeFactory;
 import timer.output.base.TableBuilder;
-import timer.output.base.Node;
-
+import timer.output.base.Cell;
+import timer.output.base.Id;
 
 public class TextFormat extends Format {
 	private static final String FIRST_COLUMN_HEADER=String.format("%-25s", "\n");
 	private static final String LAST_COLUMN_HEADER="\n";
 
-	public TextFormat(NodeFactory factory) {
-		super(factory, new TableBuilder(factory.titledNode(FIRST_COLUMN_HEADER, LAST_COLUMN_HEADER)));
+	public TextFormat() {
+		super(new TableBuilder(new Id(FIRST_COLUMN_HEADER, LAST_COLUMN_HEADER)));
 	}
 
 	public String method(String method) {
@@ -27,6 +26,10 @@ public class TextFormat extends Format {
 	}
 
 	protected void add(String column, String row, String content) {
-		add(factory.node(column), factory.titledNode(row, "\n"), factory.textNode(content));
+		add(new Id(column), new Id(row, "\n"), Cell.textCell(content));
 	}
+
+	public void print()  {
+		table().print(this);
+	}	
 }
