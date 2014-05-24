@@ -6,25 +6,25 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class TableBuilder {
-	private Row columns;
-	private Map<Id, Row> rows=new LinkedHashMap<Id, Row>();
+	private RowBuilder columns;
+	private Map<Id, RowBuilder> rows=new LinkedHashMap<Id, RowBuilder>();
 
 	public TableBuilder(Id firstColumn) {
-		columns=new Row(firstColumn); // Row(Id)
+		columns=new RowBuilder(firstColumn); 			// RowBuilder(Id)
 	}
 
 	public void add(Id column, Id row, Component cell)  {
-		row(row).add(cell);            // Row.add(Component)
+		row(row).add(cell);            					// RowBuilder.add(Component)
 		if(repeatColumn()) return;
-		columns.add(new Row(column));  // Row(Id), Row.add(Component)
+		columns.add(new RowBuilder(column));  		    // RowBuilder.add(new RowBuilder(Id))
 	}
 
-	private Row row(Id row) {  // Flyweight pattern
+	private RowBuilder row(Id row) {  // Flyweight pattern
 		return rows.containsKey(row) ?  rows.get(row)  :  create(row);
 	}
 
-	private Row create(Id row) {
-		rows.put(row, new Row());  // Row()
+	private RowBuilder create(Id row) {
+		rows.put(row, new RowBuilder());  				// RowBuilder()
 		return rows.get(row);		
 	}
 
@@ -34,10 +34,10 @@ public class TableBuilder {
 
 	public Component table() {		
 		List<Component> table=new ArrayList<Component>();
-		table.add(columns);
+		table.add(columns.row());							// RowBuilder.row()
 		for(Id each : rows.keySet())
-			add(table, new Row(each, rows.get(each)));         // Row(Id, Component)
-		return new Row().add(table.toArray(new Component[0])); // Row().add(Component[])
+			add(table, each.toRow(rows.get(each)));         // id.toRow(RowBuilder)
+		return new Row(table.toArray(new Component[0])); 	// Row(Component[])
 	}
 
 	private void add(List<Component> table, Row row) {
