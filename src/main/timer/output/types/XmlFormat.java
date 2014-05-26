@@ -3,9 +3,11 @@ package timer.output.types;
 import timer.output.base.Format;
 import timer.output.base.Cell;
 import timer.output.base.RowId;
-import timer.output.base.RowBuilder;
 import timer.output.base.Tag;
 import timer.output.base.TableBuilder;
+import timer.output.base.TitledComponent;
+import timer.output.base.Row;
+import timer.output.base.Component;
 
 public class XmlFormat extends Format {
 	private static final String FIRST_COLUMN_HEADER="";
@@ -33,26 +35,19 @@ public class XmlFormat extends Format {
 
 	private Cell cell(String column, String content) {
 		return new Cell(
-			new RowBuilder(new Tag(column))    				// RowBuilder(Tag)
-				.add(new RowBuilder(
-						new Tag("timing"), 
-						new Cell(content)
-					) 										// RowBuilder.add(new RowBuilder(Tag, Component))
-				)  									
-				.row()
-			);
-	}
-
+			new TitledComponent(new Tag(column), 
+				new TitledComponent(new Tag("timing"), new Cell(content))
+			)
+		);
+	}		
+		
 	public void print()  {
 		String declaration="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
-		new RowBuilder()
-			.add(new Cell(declaration))
-			.add(new RowBuilder(
-					new Tag("timings"), 
-					table()
-				)   									// RowBuilder.add(new RowBuilder(Tag, Component))
-			)  
-			.row()
+		new Row(
+			new Component[] {
+				new Cell(declaration), 
+				new TitledComponent(new Tag("timings"), table())
+			})
 			.print(this);
 	}	
 }

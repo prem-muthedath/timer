@@ -1,11 +1,25 @@
 package timer.output.base;
 
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Arrays;
+
 public class Row implements Component {
-	private Component[] components;
+	private List<Component> components=new ArrayList<Component>();
+
+	public Row() {}
 
 	public Row(Component[] components) {
-		this.components=components;
+		add(components);
 	}
+
+	public void add(Component component) {
+		add(new Component[]{component});
+	}	
+
+	public void add(Component[] components) {
+		this.components.addAll(Arrays.asList(components));
+	}	
 
 	public void print(Format format)  {
 		for(Component each : components)

@@ -18,11 +18,11 @@ public abstract class Id {
 		return 41*(41+header().hashCode())+footer().hashCode();
 	}
 
-	public Row toRow(RowBuilder builder)  {
-		return builder.row(this);
+	public void addTo(Row row)  {
+		row.add(new Component[] {header(), footer()});
 	}
 
-	public Row toRow(Row row)  {
-		return new Row(new Component[] {header(), row, footer()});
+	public Row toRow(Component component)  {
+		return new Row(new Component[] {header(), component, footer()});
 	}
 }

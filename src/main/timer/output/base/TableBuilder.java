@@ -1,52 +1,36 @@
 package timer.output.base;
 
-import java.util.Map;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.ArrayList;
 
 public class TableBuilder {
-	private RowBuilder columns;
-	private Map<Id, RowBuilder> rows=new LinkedHashMap<Id, RowBuilder>();
+	private List<Id> columns=new ArrayList<Id>();
+	private Rows rows=new Rows();
 
 	public TableBuilder(Id firstColumn) {
-		columns=new RowBuilder(firstColumn); 			// RowBuilder(Id)
+		columns.add(firstColumn);
 	}
 
 	public void add(Id column, Id row, Component cell)  {
-		row(row).add(cell);            					// RowBuilder.add(Component)
-		if(repeatColumn()) return;
-		columns.add(new RowBuilder(column));  		    // RowBuilder.add(new RowBuilder(Id))
+		int rowCount=rows.add(row, cell);
+		if(repeatColumn(rowCount)) return;
+		columns.add(column);
 	}
 
-	private RowBuilder row(Id row) {  // Flyweight pattern
-		return rows.containsKey(row) ?  rows.get(row)  :  create(row);
+	private boolean repeatColumn(int rowCount) {
+		return rowCount > 1;
 	}
 
-	private RowBuilder create(Id row) {
-		rows.put(row, new RowBuilder());  				// RowBuilder()
-		return rows.get(row);		
+	public Table table() {	
+		Table table=new Table(header());
+		rows.fill(table);
+		return table;
 	}
 
-	private boolean repeatColumn() {
-		return rows.size() > 1;
-	}
-
-	public Component table() {		
-		List<Component> table=new ArrayList<Component>();
-		table.add(columns.row());							// RowBuilder.row()
-		for(Id each : rows.keySet())
-			add(table, each.toRow(rows.get(each)));         // id.toRow(RowBuilder)
-		return new Row(table.toArray(new Component[0])); 	// Row(Component[])
-	}
-
-	private void add(List<Component> table, Row row) {
-		validate(table.get(0).all(), row.all());
-		table.add(row);
-	}
-
-	private void validate(int expected, int actual) {
-		if(expected==actual) return;
-		throw new RuntimeException("Invalid Row Size: EXPECTED:  "+expected+"  FOUND: "+actual);		
+	public Component header() {
+		Row header=new Row();
+		for(int i=1; i < columns.size(); i++)
+			columns.get(i).addTo(header);
+		return new TitledComponent(columns.get(0), header);
 	}
 }
