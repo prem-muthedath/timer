@@ -13,7 +13,7 @@ public abstract class Report {
 		timings.put(testInstance, test.run());
 	}
 
-	public void print(View view) {
+	public void render(View view) {
 		Map<TestInstance, Timing> sorted=sort();
 		for(TestInstance each : sorted.keySet())
 			export(each, sorted.get(each), view);

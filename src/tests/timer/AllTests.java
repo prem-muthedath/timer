@@ -44,13 +44,13 @@ public class AllTests {
 	public void runListSearchTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(ListSearch.class);
 		timer.report(report());		
-		report.print(new PlainView(new XmlFormat()));
+		report.render(new PlainView(new XmlFormat()));
 	}
 
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
-		report.print(new PlainView(new XmlFormat()));
+		report.render(new PlainView(new XmlFormat()));
 	}
 
 	private Report report() {
