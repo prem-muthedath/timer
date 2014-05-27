@@ -1,6 +1,6 @@
 package timer.framework;
 
-import timer.output.base.Format;
+import timer.output.base.View;
 
 import java.util.Map;
 import java.util.TreeMap;
@@ -15,8 +15,8 @@ public enum Order {
 				protected Map<TestInstance, Timing> sort()  {	
 					return new TreeMap<TestInstance, Timing>(timings);
 				}
-				protected void export(TestInstance testInstance, Timing timing, Format format) {
-					testInstance.exportBySize(timing, format);
+				protected void export(TestInstance testInstance, Timing timing, View view) {
+					testInstance.exportBySize(timing, view);
 				}
 			};
 			case BY_METHOD: return new Report() {
@@ -28,8 +28,8 @@ public enum Order {
 				private TestInstance comparator() {
 					return timings.isEmpty()  ?   null  :  timings.keySet().toArray(new TestInstance[0])[0];
 				}
-				protected void export(TestInstance testInstance, Timing timing, Format format) {
-					testInstance.exportByMethod(timing, format);
+				protected void export(TestInstance testInstance, Timing timing, View view) {
+					testInstance.exportByMethod(timing, view);
 				}
 			};					
 		}

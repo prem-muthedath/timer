@@ -4,6 +4,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 import timer.output.base.Format;
+import timer.output.base.View;
 
 public abstract class Report {
 	protected Map<TestInstance, Timing> timings=new HashMap<TestInstance, Timing>();
@@ -12,13 +13,15 @@ public abstract class Report {
 		timings.put(testInstance, test.run());
 	}
 
-	public void print(Format format) {
+	public void print(View view) {
 		Map<TestInstance, Timing> sorted=sort();
 		for(TestInstance each : sorted.keySet())
-			export(each, sorted.get(each), format);
-		format.print();
+			export(each, sorted.get(each), view);
+		view.render();
 	}
 
 	protected abstract Map<TestInstance, Timing> sort();
-	protected abstract void export(TestInstance testInstance, Timing timing, Format format);
-}
+	protected abstract void export(TestInstance testInstance, Timing timing, View view);
+}			
+
+			

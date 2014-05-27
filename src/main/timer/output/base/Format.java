@@ -25,18 +25,9 @@ public abstract class Format {
 		builder.add(column, row, cell);
 	}
 
-	public abstract void print();
+	public abstract void render(View view);
 
 	protected Component table() {
 		return builder.table();
 	}
-
-	protected void printHeading(String heading) {
-		printText(heading);
-	}
-
-	protected void printText(String text) {
-		System.out.print(text);
-	}
 }
-

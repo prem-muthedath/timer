@@ -7,7 +7,8 @@ import timer.framework.Order;
 
 import timer.output.types.TextFormat;
 import timer.output.types.XmlFormat;
-import timer.output.types.SwingFormat;
+import timer.output.types.PlainView;
+import timer.output.types.SwingView;
 
 public class AllTests {
 	private Report report;
@@ -43,13 +44,13 @@ public class AllTests {
 	public void runListSearchTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(ListSearch.class);
 		timer.report(report());		
-		report.print(new XmlFormat());
+		report.print(new PlainView(new XmlFormat()));
 	}
 
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
-		report.print(new TextFormat());		
+		report.print(new PlainView(new XmlFormat()));
 	}
 
 	private Report report() {

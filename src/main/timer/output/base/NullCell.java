@@ -9,7 +9,7 @@ public class NullCell extends Cell {
 		super("");
 	}
 
-	public void print(Format format) {}
+	public void render(View view) {}
 
 	public int all() {
 		return 0;

@@ -2,7 +2,7 @@ package timer.framework;
 
 import java.util.Comparator;
 
-import timer.output.base.Format;
+import timer.output.base.View;
 
 public class TestInstance implements Comparable<TestInstance>, Comparator<TestInstance> {
 	private Size size;
@@ -13,12 +13,12 @@ public class TestInstance implements Comparable<TestInstance>, Comparator<TestIn
 		this.method=method;				
 	}
 
-	public void exportBySize(Timing timing, Format format) {
-		format.add(new Field[]{method, size, timing});
+	public void exportBySize(Timing timing, View view) {
+		view.add(new Field[]{method, size, timing});
 	}
 
-	public void exportByMethod(Timing timing, Format format) {
-		format.add(new Field[]{size, method, timing});
+	public void exportByMethod(Timing timing, View view) {
+		view.add(new Field[]{size, method, timing});
 	}
 
 	public int compareTo(TestInstance another)  {

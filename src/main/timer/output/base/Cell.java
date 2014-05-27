@@ -11,8 +11,8 @@ public class Cell implements Component {
 		this.content=component.toString();
 	}
 
-	public void print(Format format) {
-		format.printText(content);
+	public void render(View view) {
+		view.renderText(content);
 	}
 
 	public int size() {

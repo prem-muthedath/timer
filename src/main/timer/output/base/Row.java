@@ -3,6 +3,8 @@ package timer.output.base;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Iterator;
 
 public class Row implements Component {
 	private List<Component> components=new ArrayList<Component>();
@@ -21,29 +23,24 @@ public class Row implements Component {
 		this.components.addAll(Arrays.asList(components));
 	}	
 
-	public void print(Format format)  {
+	public void render(View view)  {
 		for(Component each : components)
-			each.print(format);	
+			each.render(view);	
 	}
 
 	public int size() {
-		int size=0;
-		for (Component each : components)
-			size+=each.all()==0  ?  0 : 1;
-		return size;
+		return RowCounts.size(iterator()).total();
 	}
 
+	private Iterator<Component> iterator() {	
+		return Collections.unmodifiableCollection(components).iterator();
+	}
+	
 	public int all() {
-		int size=0;
-		for (Component each : components)
-			size+=each.all();
-		return size;
+		return RowCounts.all(iterator()).total();
 	}
 
 	public String toString() {
-		StringBuffer result=new StringBuffer("");
-		for (Component each : components)
-			result.append(each.toString());
-		return result.toString();
+		return new RowContent(iterator()).toString();
 	}	
 }

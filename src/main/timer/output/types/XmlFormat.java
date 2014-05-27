@@ -8,6 +8,7 @@ import timer.output.base.TableBuilder;
 import timer.output.base.TitledComponent;
 import timer.output.base.Row;
 import timer.output.base.Component;
+import timer.output.base.View;
 
 public class XmlFormat extends Format {
 	private static final String FIRST_COLUMN_HEADER="";
@@ -40,14 +41,17 @@ public class XmlFormat extends Format {
 			)
 		);
 	}		
+
+	public void render(View view)  {
+		view.render(document());
+	}	
 		
-	public void print()  {
+	public Component document()  {
 		String declaration="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
-		new Row(
+		return new Row(
 			new Component[] {
 				new Cell(declaration), 
 				new TitledComponent(new Tag("timings"), table())
-			})
-			.print(this);
+			});
 	}	
 }

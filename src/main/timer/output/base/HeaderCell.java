@@ -9,7 +9,7 @@ public class HeaderCell extends Cell {
 		super(component);
 	}
 
-	public void print(Format format) {
-		format.printHeading(toString());
+	public void render(View view) {
+		view.renderHeading(toString());
 	}
 }

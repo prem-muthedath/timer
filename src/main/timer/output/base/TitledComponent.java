@@ -7,8 +7,8 @@ public class TitledComponent implements Component {
 		this.component=id.toRow(component);
 	}
 
-	public void print(Format format)  {
-		component.print(format);
+	public void render(View view)  {
+		component.render(view);
 	}
 
 	public int size() {

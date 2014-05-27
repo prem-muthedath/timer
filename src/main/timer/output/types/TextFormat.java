@@ -4,6 +4,7 @@ import timer.output.base.Format;
 import timer.output.base.TableBuilder;
 import timer.output.base.Cell;
 import timer.output.base.RowId;
+import timer.output.base.View;
 
 public class TextFormat extends Format {
 	private static final String FIRST_COLUMN_HEADER=String.format("%-25s", "\n");
@@ -29,7 +30,7 @@ public class TextFormat extends Format {
 		add(new RowId(column), new RowId(row, "\n"), new Cell(content));
 	}
 
-	public void print()  {
-		table().print(this);
+	public void render(View view)  {
+		view.render(table());
 	}	
 }
