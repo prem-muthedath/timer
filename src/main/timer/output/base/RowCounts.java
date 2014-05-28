@@ -1,11 +1,9 @@
 package timer.output.base;
 
-import java.util.List;
-import java.util.ArrayList;
 import java.util.Iterator;
 
 abstract class RowCounts extends RowAggregate {
-	private List<Integer> counts=new ArrayList<Integer>();
+	private int counts=0;
 
 	RowCounts(Iterator<Component> iterator) {
 		super(iterator);
@@ -13,34 +11,15 @@ abstract class RowCounts extends RowAggregate {
 
 	public int total() {		
 		process();
-		int total=0;
-		for(Integer each : counts)
-			total+=each.intValue();
-		return total;
+		return counts;
 	}
 
 	void add(int count) {
-		counts.add(new Integer(count));
+		counts+=count;
 	}	
 
 	public String toString() {
 		return new Integer(total()).toString();
-	}
-
-	static RowAggregate size(final Iterator<Component> iterator)	{
-		return new RowCounts(iterator) {
-			void process(Component child) {
-				add(child.all()==0 ? 0 : 1);
-			}
-		};
-	}
-
-	static RowAggregate all(final Iterator<Component> iterator)	{
-		return new RowCounts(iterator) {
-			void process(Component child) {
-				add(child.all());
-			}
-		};
 	}
 }
 

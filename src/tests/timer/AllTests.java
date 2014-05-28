@@ -50,7 +50,7 @@ public class AllTests {
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
-		report.render(new PlainView(new XmlFormat()));
+		report.render(new PlainView(new TextFormat()));
 	}
 
 	private Report report() {

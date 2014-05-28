@@ -29,7 +29,7 @@ public class Row implements Component {
 	}
 
 	public int size() {
-		return RowCounts.size(iterator()).total();
+		return RowAggregate.size(iterator());
 	}
 
 	private Iterator<Component> iterator() {	
@@ -37,10 +37,10 @@ public class Row implements Component {
 	}
 	
 	public int all() {
-		return RowCounts.all(iterator()).total();
+		return RowAggregate.all(iterator());
 	}
 
 	public String toString() {
-		return new RowContent(iterator()).toString();
+		return RowAggregate.toString(iterator());
 	}	
 }

@@ -15,6 +15,30 @@ abstract class RowAggregate {
 	}
 
 	abstract void process(Component child);
-	abstract public int total();
-	abstract public String toString();
+	public abstract int total();
+	public abstract String toString();
+
+	static int size(final Iterator<Component> iterator)	{
+		return new RowCounts(iterator) {
+			void process(Component child) {
+				add(child.all()==0 ? 0 : 1);
+			}
+		}.total();
+	}
+
+	static int all(final Iterator<Component> iterator)	{
+		return new RowCounts(iterator) {
+			void process(Component child) {
+				add(child.all());
+			}
+		}.total();
+	}
+
+	static String toString(final Iterator<Component> iterator)	{
+		return new RowContent(iterator) {
+			void process(Component child) {
+				add(child.toString());
+			}
+		}.toString();
+	}	
 }

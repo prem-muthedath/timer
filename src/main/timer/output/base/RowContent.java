@@ -2,15 +2,15 @@ package timer.output.base;
 
 import java.util.Iterator;
 
-class RowContent extends RowAggregate  {
+abstract class RowContent extends RowAggregate  {
 	private StringBuffer content=new StringBuffer("");
 
 	RowContent(Iterator<Component> iterator) {
 		super(iterator);
 	}
 
-	void process(Component child) {
-		content.append(child.toString());
+	void add(String content) {
+		this.content.append(content);
 	}
 
 	public int total() {
