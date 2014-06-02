@@ -1,7 +1,8 @@
-package timer.framework;
+package timer.output.ordering;
 
 import java.util.Comparator;
 
+import timer.output.base.Field;
 import timer.output.base.View;
 
 public class TestInstance implements Comparable<TestInstance>, Comparator<TestInstance> {

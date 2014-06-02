@@ -1,4 +1,7 @@
-package timer.output.base;
+package timer.output.formatting;
+
+import timer.output.base.Id;
+import timer.output.base.Component;
 
 public class RowId extends Id {
 	private String header;
@@ -17,11 +20,11 @@ public class RowId extends Id {
 		this(null, null);
 	}
 
-	protected Component header() {
+	protected Component name() {
 		return component(header); 
 	}
 
-	protected Component footer() {
+	protected Component surname() {
 		return component(footer); 
 	}
 

@@ -1,4 +1,4 @@
-package timer.output.types;
+package timer.output.views;
 
 import timer.output.base.View;
 import timer.output.base.Format;

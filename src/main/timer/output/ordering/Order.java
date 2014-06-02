@@ -1,4 +1,6 @@
-package timer.framework;
+package timer.output.ordering;
+
+import timer.framework.Report;
 
 import timer.output.base.View;
 
@@ -11,7 +13,7 @@ public enum Order {
 
 	public Report report()  {
 		switch(this)  {
-			case BY_SIZE: return new Report() {
+			case BY_SIZE: return new OrderedReport() {
 				protected Map<TestInstance, Timing> sort()  {	
 					return new TreeMap<TestInstance, Timing>(timings);
 				}
@@ -19,7 +21,7 @@ public enum Order {
 					testInstance.exportBySize(timing, view);
 				}
 			};
-			case BY_METHOD: return new Report() {
+			case BY_METHOD: return new OrderedReport() {
 				protected Map<TestInstance, Timing> sort()  {	
 					Map<TestInstance, Timing> sorted=new TreeMap<TestInstance, Timing>(comparator());
 					sorted.putAll(timings);

@@ -1,7 +1,8 @@
-package timer.output.types;
+package timer.output.views;
 
 import timer.output.base.View;
 import timer.output.base.Component;
+import timer.output.formatting.TextFormat;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,7 +27,7 @@ public class SwingView extends View {
 	private void resetDisplay(Component component) {
 		frame.getContentPane().removeAll();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);				
-		frame.getContentPane().setLayout(new GridLayout(component.size(), 0));  //? how to get the column count?
+		frame.getContentPane().setLayout(new GridLayout(component.size(), 0));  
 	}
 
 	public void renderHeading(String heading) {

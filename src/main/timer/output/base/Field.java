@@ -1,6 +1,4 @@
-package timer.framework;
-
-import timer.output.base.Format;
+package timer.output.base;
 
 public interface Field {
 	public String format(Format format);

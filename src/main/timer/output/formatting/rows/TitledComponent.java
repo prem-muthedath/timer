@@ -1,10 +1,14 @@
-package timer.output.base;
+package timer.output.formatting.rows;
+
+import timer.output.base.Id;
+import timer.output.base.Component;
+import timer.output.base.View;
 
 public class TitledComponent implements Component {
 	private Component component;
 
-	public TitledComponent(Id id, Component component) {
-		this.component=id.toRow(component);
+	public TitledComponent(Id title, Component component) {
+		this.component=title.toRow(component);
 	}
 
 	public void render(View view)  {

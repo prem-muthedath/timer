@@ -1,13 +1,9 @@
 package timer.output.base;
 
-import timer.framework.Field;
+import timer.output.formatting.rows.TableBuilder;
 
 public abstract class Format {
-	private TableBuilder builder;
-
-	public Format(TableBuilder builder) {
-		this.builder=builder;
-	}
+	private TableBuilder builder=new TableBuilder();
 
 	public void add(Field[] fields) {
 		String[] contents=new String[fields.length];		
@@ -25,9 +21,13 @@ public abstract class Format {
 		builder.add(column, row, cell);
 	}
 
-	public abstract void render(View view);
+	public void render(View view) {
+		view.render(document());
+	}
 
-	protected Component table() {
-		return builder.table();
+	protected abstract Component document();
+
+	protected Component table(Id firstRow) {
+		return builder.table(firstRow);
 	}
 }

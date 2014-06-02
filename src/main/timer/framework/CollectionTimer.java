@@ -6,9 +6,9 @@ public class CollectionTimer {
 	private static final int MAXIMUM_SIZE= 100000;
 	static final int ONE_SECOND= 1000000000;	
 
-	private Class<?> timingTests;
+	private Class<? extends TimingTests> timingTests;
 
-	public CollectionTimer(Class<?> timingTests) {
+	public CollectionTimer(Class<? extends TimingTests> timingTests) {
 		this.timingTests=timingTests;
 	}
 
@@ -18,7 +18,7 @@ public class CollectionTimer {
 	}
 
 	private TimingTests tests(int size) throws Exception {
-		Constructor<?> constructor= timingTests.getConstructor(new Class[]{int.class});
+		Constructor<? extends TimingTests> constructor= timingTests.getConstructor(new Class[]{int.class});
 		return (TimingTests) constructor.newInstance(new Object[]{size});
 	}
 }

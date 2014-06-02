@@ -9,8 +9,8 @@ package timer.framework;
  		this.totalTime=totalTime;
  	}
 
- 	Timing timing(TimingTest overhead)  throws Exception {
+ 	double timing(TimingTest overhead)  throws Exception {
 		long overheadTime=overhead.totalTime(iterations);
-		return new Timing((double) (totalTime - overheadTime) / (double) iterations); 		
+		return (double) (totalTime - overheadTime) / (double) iterations; 		
  	}
  }	

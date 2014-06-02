@@ -1,5 +1,6 @@
-package timer.framework;
+package timer.output.ordering;
 
+import timer.output.base.Field;
 import timer.output.base.Format;
 
 public class Timing implements Field {

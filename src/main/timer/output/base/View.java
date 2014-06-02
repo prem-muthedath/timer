@@ -1,7 +1,5 @@
 package timer.output.base;
 
-import timer.framework.Field;
-
 public abstract class View  {
 	private Format format;
 

@@ -1,4 +1,6 @@
-package timer.output.base;
+package timer.output.formatting;
+
+import timer.output.base.View;
 
 public class NullCell extends Cell {
 	public NullCell(String content) {
@@ -6,7 +8,7 @@ public class NullCell extends Cell {
 	}
 
 	public NullCell() {
-		super("");
+		this("");
 	}
 
 	public void render(View view) {}

@@ -6,16 +6,12 @@ public class TimingTest {
 	private Method method;
 	private TimingTests instance;
 
-	TimingTest(Method method, TimingTests instance) {
+	public TimingTest(Method method, TimingTests instance) {
 		this.method=method;
 		this.instance=instance;
 	}
 
-	public void run(Report report, TestInstance testInstance) throws Exception {
-		report.run(testInstance, this);
-	}
-
-	Timing run() throws Exception {
+	public double timing() throws Exception {
 		return instance.timing(calibrate());
 	}
 

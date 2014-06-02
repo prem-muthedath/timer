@@ -1,4 +1,7 @@
-package timer.output.base;
+package timer.output.formatting.rows;
+
+import timer.output.base.Component;
+import timer.output.base.View;
 
 import java.util.List;
 import java.util.ArrayList;

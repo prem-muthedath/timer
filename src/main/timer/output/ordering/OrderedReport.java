@@ -1,16 +1,21 @@
-package timer.framework;
+package timer.output.ordering;
+
+import timer.framework.Report;
+
+import timer.output.base.View;
 
 import java.util.Map;
 import java.util.HashMap;
 
-import timer.output.base.Format;
-import timer.output.base.View;
-
-public abstract class Report {
+public abstract class OrderedReport extends Report {
 	protected Map<TestInstance, Timing> timings=new HashMap<TestInstance, Timing>();
 
-	public void run(TestInstance testInstance, TimingTest test) throws Exception  {
-		timings.put(testInstance, test.run());
+	protected void add(int size, String method, double timing)	{
+		timings.put(testInstance(size, method), new Timing(timing));
+	}
+
+	private TestInstance testInstance(int size, String method) {
+		return new TestInstance(new Size(size), new Method(method));
 	}
 
 	public void render(View view) {
@@ -22,6 +27,4 @@ public abstract class Report {
 
 	protected abstract Map<TestInstance, Timing> sort();
 	protected abstract void export(TestInstance testInstance, Timing timing, View view);
-}			
-
-			
+}

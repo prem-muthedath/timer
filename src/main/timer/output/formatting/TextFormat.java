@@ -1,18 +1,11 @@
-package timer.output.types;
+package timer.output.formatting;
 
 import timer.output.base.Format;
-import timer.output.base.TableBuilder;
-import timer.output.base.Cell;
-import timer.output.base.RowId;
-import timer.output.base.View;
+import timer.output.base.Component;
 
 public class TextFormat extends Format {
-	private static final String FIRST_COLUMN_HEADER=String.format("%-25s", "\n");
-	private static final String LAST_COLUMN_HEADER="\n";
-
-	public TextFormat() {
-		super(new TableBuilder(new RowId(FIRST_COLUMN_HEADER, LAST_COLUMN_HEADER)));
-	}
+	private static final String FIRST_COLUMN=String.format("%-25s", "\n");
+	private static final String LAST_COLUMN="\n";
 
 	public String method(String method) {
 		return String.format("%-25s", method);		
@@ -30,7 +23,7 @@ public class TextFormat extends Format {
 		add(new RowId(column), new RowId(row, "\n"), new Cell(content));
 	}
 
-	public void render(View view)  {
-		view.render(table());
+	public Component document()  {
+		return table(new RowId(FIRST_COLUMN, LAST_COLUMN));
 	}	
 }

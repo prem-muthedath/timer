@@ -1,4 +1,6 @@
-package timer.output.base;
+package timer.output.formatting.rows;
+
+import timer.output.base.Component;
 
 public class Table extends Row {
 	public Table(Component first)  {

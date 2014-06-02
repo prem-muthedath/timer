@@ -2,13 +2,13 @@ package timer;
 
 import timer.framework.CollectionTimer;
 import timer.framework.Report;
-import timer.framework.Order;
+import timer.output.ordering.Order;
 
 
-import timer.output.types.TextFormat;
-import timer.output.types.XmlFormat;
-import timer.output.types.PlainView;
-import timer.output.types.SwingView;
+import timer.output.formatting.TextFormat;
+import timer.output.formatting.XmlFormat;
+import timer.output.views.PlainView;
+import timer.output.views.SwingView;
 
 public class AllTests {
 	private Report report;
@@ -50,11 +50,11 @@ public class AllTests {
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
-		report.render(new PlainView(new TextFormat()));
+		report.render(new SwingView());
 	}
 
 	private Report report() {
-		this.report=Order.BY_METHOD.report();
+		this.report=Order.BY_SIZE.report();
 		return this.report;
 	}
 }

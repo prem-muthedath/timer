@@ -1,4 +1,7 @@
-package timer.output.base;
+package timer.output.formatting;
+
+import timer.output.base.Id;
+import timer.output.base.Component;
 
 public class Tag extends Id {
 	private String name;
@@ -23,11 +26,11 @@ public class Tag extends Id {
 		return goodName().indexOf(" ") > 0  ?  goodName().substring(0, goodName().indexOf(" "))  :  goodName();		
 	}
 
-	protected Component header() {
+	protected Component name() {
 		return component(startTag()); 
 	}
 
-	protected Component footer() {
+	protected Component surname() {
 		return component(endTag()); 
 	}
 }
