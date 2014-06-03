@@ -2,7 +2,7 @@ package timer.framework;
 
 import java.lang.reflect.Method;
 
-import timer.output.base.View;
+import timer.reporting.base.View;
 
 public abstract class Report {
 	public void run(Method method, TimingTests instance) throws Exception {

@@ -2,13 +2,14 @@ package timer;
 
 import timer.framework.CollectionTimer;
 import timer.framework.Report;
-import timer.output.ordering.Order;
 
+import timer.reporting.ordering.Order;
 
-import timer.output.formatting.TextFormat;
-import timer.output.formatting.XmlFormat;
-import timer.output.views.PlainView;
-import timer.output.views.SwingView;
+import timer.reporting.formatting.TextFormat;
+import timer.reporting.formatting.XmlFormat;
+
+import timer.reporting.rendering.PlainView;
+import timer.reporting.rendering.SwingView;
 
 public class AllTests {
 	private Report report;

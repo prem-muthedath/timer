@@ -6,7 +6,7 @@ public abstract class TimingTests {
 	public void run(Report report) throws Exception {
 		for (Method each : this.getClass().getMethods()) {
 			if(skip(each)) continue;
-			report.run(each, this);
+			report.run(each, copy());
 		}
 	}
 
@@ -38,5 +38,5 @@ public abstract class TimingTests {
 		return new TimingTest(method, copy());
 	}
 
-	public void nothing() {}
+	public final void nothing() {}
 }
