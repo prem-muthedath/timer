@@ -17,9 +17,9 @@ These concerns led me to a different design with a new set of small objects, eac
 
 Just for fun, I have also designed a reporting model that allows you to:
 
-(1) output method timings in different formats (text, xml, etc.);
-(2) order the output by collection sizes OR method names;
-(3) render the output in plain view (i.e., simple multi-line text) or in Java Swing grid layout.
+1.  Output method timings in different formats (text, xml, etc.);
+2.  Order the output by collection sizes OR method names;
+3.  Render the output in plain view (i.e., simple multi-line text) or in Java Swing grid layout.
 
 NOTE: You can select your output view and format by editing timer.AllTtests.java.
 
