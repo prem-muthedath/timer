@@ -21,7 +21,7 @@ Just for fun, I have also designed a reporting model that allows you to:
 2.  Order the output by collection sizes OR method names;
 3.  Render the output in plain view (i.e., simple multi-line text) or in Java Swing grid layout.
 
-NOTE: You can select your output view and format by editing timer.AllTtests.java.
+NOTE: You can select your output view, format, and order by editing timer.AllTtests.java.
 
 
 I have re-used the tests in Beck's book.
