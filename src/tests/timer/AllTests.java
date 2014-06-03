@@ -51,7 +51,16 @@ public class AllTests {
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
-		report.render(new SwingView());
+
+		/** To select your view and format options, overwrite report.render() below with copy-paste of one of the following:
+		**
+		** 		For Plain View and Text Format, copy-paste --> report.render(new PlainView(new TextFormat())); 
+		** 		For Plain View and XML Format, copy-paste --> report.render(new PlainView(new XmlFormat()));
+		** 		For Swing View, copy-paste --> report.render(new SwingView());  
+		**      NOTE: SwingView restricts itself to TextFormat by default. 
+		*/
+
+		report.render(new PlainView(new TextFormat()));
 	}
 
 	private Report report() {
