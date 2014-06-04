@@ -54,10 +54,10 @@ public class AllTests {
 
 		/** To select your view and format options, OVERWRITE report.render() code BELOW with copy-paste of ONE of the following:
 		**
-		** 		For Plain View and Text Format, copy-paste --> report.render(new PlainView(new TextDocument())); 
-		** 		For Plain View and XML Format, copy-paste --> report.render(new PlainView(new XmlDocument()));
-		** 		For Swing View, copy-paste --> report.render(new SwingView());  
-		**      NOTE: SwingView restricts itself to TextDocument by default. 
+		** 	For Plain View and Text Format, copy-paste --> report.render(new PlainView(new TextDocument())); 
+		** 	For Plain View and XML Format, copy-paste --> report.render(new PlainView(new XmlDocument()));
+		** 	For Swing View, copy-paste --> report.render(new SwingView());  
+		**  NOTE: SwingView restricts itself to TextDocument by default. 
 		*/
 
 		report.render(new PlainView(new TextDocument()));
