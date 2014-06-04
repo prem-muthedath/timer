@@ -60,7 +60,7 @@ public class AllTests {
 		**      NOTE: SwingView restricts itself to TextDocument by default. 
 		*/
 
-		report.render(new PlainView(new XmlDocument()));
+		report.render(new PlainView(new TextDocument()));
 	}
 
 	private Report report() {
