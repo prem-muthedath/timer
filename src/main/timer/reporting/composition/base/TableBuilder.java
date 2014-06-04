@@ -1,8 +1,6 @@
-package timer.reporting.base;
+package timer.reporting.composition.base;
 
-import timer.reporting.formatting.layouts.Row;
-import timer.reporting.formatting.layouts.TitledComponent;
-import timer.reporting.formatting.layouts.Table;
+import timer.reporting.composition.Table;
 
 import java.util.Map;
 import java.util.LinkedHashMap;
@@ -11,7 +9,7 @@ public class TableBuilder {
 	private Row header=new Row();
 	private Map<Id, Row> rows=new LinkedHashMap<Id, Row>();
 
-	public void add(Id column, Id row, Component cell)  {
+	public void add(Id column, Id row, Cell cell)  {
 		row(row).add(cell);            					
 		if(repeatColumn()) return;
 		column.addTo(header);
@@ -33,7 +31,7 @@ public class TableBuilder {
 	public Table table(Id firstRow) {	
 		Table table=new Table(new TitledComponent(firstRow, header));
 		for(Id each : rows.keySet())
-			table.add(new TitledComponent(each, rows.get(each)));         
+			table.add(new TitledComponent(each, rows.get(each)));  
 		return table;
 	}	
 }

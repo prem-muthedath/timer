@@ -1,9 +1,8 @@
-package timer.reporting.formatting;
+package timer.reporting.composition.base;
 
 import timer.reporting.base.Component;
-import timer.reporting.base.View;
 
-public class Cell implements Component {
+public abstract class Cell implements Component {
 	private String content;
 
 	public Cell(String content) {
@@ -12,10 +11,6 @@ public class Cell implements Component {
 
 	public Cell(Component component) {
 		this.content=component.toString();
-	}
-
-	public void render(View view) {
-		view.renderText(content);
 	}
 
 	public int size() {

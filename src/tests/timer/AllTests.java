@@ -5,8 +5,8 @@ import timer.framework.Report;
 
 import timer.reporting.ordering.Order;
 
-import timer.reporting.formatting.TextFormat;
-import timer.reporting.formatting.XmlFormat;
+import timer.reporting.composition.TextDocument;
+import timer.reporting.composition.XmlDocument;
 
 import timer.reporting.rendering.PlainView;
 import timer.reporting.rendering.SwingView;
@@ -45,22 +45,22 @@ public class AllTests {
 	public void runListSearchTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(ListSearch.class);
 		timer.report(report());		
-		report.render(new PlainView(new XmlFormat()));
+		report.render(new PlainView(new TextDocument()));
 	}
 
 	public void runSetVsArrayListTest() throws Exception {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
 
-		/** To select your view and format options, OVERWRITE report.render() BELOW with copy-paste of ONE of the following:
+		/** To select your view and format options, OVERWRITE report.render() code BELOW with copy-paste of ONE of the following:
 		**
-		** 		For Plain View and Text Format, copy-paste --> report.render(new PlainView(new TextFormat())); 
-		** 		For Plain View and XML Format, copy-paste --> report.render(new PlainView(new XmlFormat()));
+		** 		For Plain View and Text Format, copy-paste --> report.render(new PlainView(new TextDocument())); 
+		** 		For Plain View and XML Format, copy-paste --> report.render(new PlainView(new XmlDocument()));
 		** 		For Swing View, copy-paste --> report.render(new SwingView());  
-		**      NOTE: SwingView restricts itself to TextFormat by default. 
+		**      NOTE: SwingView restricts itself to TextDocument by default. 
 		*/
 
-		report.render(new PlainView(new TextFormat()));
+		report.render(new PlainView(new XmlDocument()));
 	}
 
 	private Report report() {
@@ -71,7 +71,7 @@ public class AllTests {
 		** To order by METHOD, copy-paste --> this.report=Order.BY_METHOD.report();
 		*/
 
-		this.report=Order.BY_SIZE.report();
+		this.report=Order.BY_METHOD.report();
 		return this.report;
 	}
 }

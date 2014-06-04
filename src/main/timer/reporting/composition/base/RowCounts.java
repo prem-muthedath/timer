@@ -1,4 +1,4 @@
-package timer.reporting.formatting.layouts;
+package timer.reporting.composition.base;
 
 import java.util.Iterator;
 

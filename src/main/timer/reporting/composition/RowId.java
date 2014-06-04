@@ -1,7 +1,7 @@
-package timer.reporting.formatting;
+package timer.reporting.composition;
 
-import timer.reporting.base.Id;
-import timer.reporting.base.Component;
+import timer.reporting.composition.base.Id;
+import timer.reporting.composition.base.Cell;
 
 public class RowId extends Id {
 	private String header;
@@ -20,15 +20,15 @@ public class RowId extends Id {
 		this(null, null);
 	}
 
-	protected Component name() {
+	protected Cell name() {
 		return component(header); 
 	}
 
-	protected Component surname() {
+	protected Cell surname() {
 		return component(footer); 
 	}
 
-	protected Component component(String title) {
-		return title==null ?  new NullCell()  :  super.component(title);
+	private Cell component(String title) {
+		return title==null ?  new NullCell()  :  new HeaderCell(title);
 	}
 }

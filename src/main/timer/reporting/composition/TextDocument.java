@@ -1,9 +1,9 @@
-package timer.reporting.formatting;
+package timer.reporting.composition;
 
-import timer.reporting.base.Format;
-import timer.reporting.base.Component;
+import timer.reporting.composition.base.Document;
+import timer.reporting.composition.base.Row;
 
-public class TextFormat extends Format {
+public class TextDocument extends Document {
 	private static final String FIRST_COLUMN=String.format("%-25s", "\n");
 	private static final String LAST_COLUMN="\n";
 
@@ -20,10 +20,10 @@ public class TextFormat extends Format {
 	}
 
 	protected void add(String column, String row, String content) {
-		add(new RowId(column), new RowId(row, "\n"), new Cell(content));
+		add(new RowId(column), new RowId(row, "\n"), new TextCell(content));
 	}
 
-	public Component document()  {
+	public Row contents()  {
 		return table(new RowId(FIRST_COLUMN, LAST_COLUMN));
 	}	
 }

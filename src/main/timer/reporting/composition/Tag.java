@@ -1,7 +1,7 @@
-package timer.reporting.formatting;
+package timer.reporting.composition;
 
-import timer.reporting.base.Id;
-import timer.reporting.base.Component;
+import timer.reporting.composition.base.Id;
+import timer.reporting.composition.base.Cell;
 
 public class Tag extends Id {
 	private String name;
@@ -26,11 +26,11 @@ public class Tag extends Id {
 		return goodName().indexOf(" ") > 0  ?  goodName().substring(0, goodName().indexOf(" "))  :  goodName();		
 	}
 
-	protected Component name() {
-		return component(startTag()); 
+	protected Cell name() {
+		return new TextCell(startTag()); 
 	}
 
-	protected Component surname() {
-		return component(endTag()); 
+	protected Cell surname() {
+		return new TextCell(endTag()); 
 	}
 }

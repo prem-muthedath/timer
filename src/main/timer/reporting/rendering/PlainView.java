@@ -1,11 +1,11 @@
 package timer.reporting.rendering;
 
 import timer.reporting.base.View;
-import timer.reporting.base.Format;
+import timer.reporting.base.Content;
 
 public class PlainView extends View {
-	public PlainView(Format format) {
-		super(format);
+	public PlainView(Content content) {
+		super(content);
 	}
 
 	public void renderHeading(String heading) {

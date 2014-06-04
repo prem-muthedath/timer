@@ -1,4 +1,6 @@
-package timer.reporting.formatting.layouts;
+package timer.reporting.composition;
+
+import timer.reporting.composition.base.Row;
 
 import timer.reporting.base.Component;
 

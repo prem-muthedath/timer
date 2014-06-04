@@ -2,7 +2,8 @@ package timer.reporting.rendering;
 
 import timer.reporting.base.View;
 import timer.reporting.base.Component;
-import timer.reporting.formatting.TextFormat;
+
+import timer.reporting.composition.TextDocument;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -14,7 +15,7 @@ public class SwingView extends View {
 	private JFrame frame=new JFrame("Test Timings");
 
 	public SwingView() {
-		super(new TextFormat());
+		super(new TextDocument());
 	}
 	
 	public void render(Component component)  {

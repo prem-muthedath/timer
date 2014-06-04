@@ -1,12 +1,12 @@
-package timer.reporting.formatting;
+package timer.reporting.composition;
 
-import timer.reporting.base.Format;
+import timer.reporting.composition.base.Document;
+import timer.reporting.composition.base.TitledComponent;
+import timer.reporting.composition.base.Row;
+
 import timer.reporting.base.Component;
 
-import timer.reporting.formatting.layouts.TitledComponent;
-import timer.reporting.formatting.layouts.Row;
-
-public class XmlFormat extends Format {
+public class XmlDocument extends Document {
 	public String method(String method) {
 		return String.format("method name=\"%s\"", method);		
 	}	
@@ -23,19 +23,19 @@ public class XmlFormat extends Format {
 		add(new RowId(), new Tag(row), cell(column, content));
 	}
 
-	private Cell cell(String column, String content) {
-		return new Cell(
+	private TextCell cell(String column, String content) {
+		return new TextCell(
 			new TitledComponent(new Tag(column), 
-				new TitledComponent(new Tag("timing"), new Cell(content))
+				new TitledComponent(new Tag("timing"), new TextCell(content))
 			)
 		);
 	}		
 
-	protected Component document()  {
+	protected Row contents()  {
 		String declaration="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
 		return new Row(
 			new Component[] {
-				new Cell(declaration), 
+				new TextCell(declaration), 
 				new TitledComponent(new Tag("timings"), table(new RowId()))
 			});
 	}	

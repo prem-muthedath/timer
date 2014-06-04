@@ -1,6 +1,5 @@
-package timer.reporting.formatting.layouts;
+package timer.reporting.composition.base;
 
-import timer.reporting.base.Id;
 import timer.reporting.base.Component;
 import timer.reporting.base.View;
 

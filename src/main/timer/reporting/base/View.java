@@ -1,18 +1,18 @@
 package timer.reporting.base;
 
 public abstract class View  {
-	private Format format;
+	private Content content;
 
-	public View(Format format) {
-		this.format=format;
+	public View(Content content) {
+		this.content=content;
 	}
 
 	public void add(Field[] fields) {
-		format.add(fields);
+		content.add(fields);
 	}
 
 	public void render() {
-		format.render(this);
+		content.render(this);
 	}
 
 	public void render(Component component) {

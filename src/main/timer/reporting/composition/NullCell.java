@@ -1,4 +1,6 @@
-package timer.reporting.formatting;
+package timer.reporting.composition;
+
+import timer.reporting.composition.base.Cell;
 
 import timer.reporting.base.View;
 
