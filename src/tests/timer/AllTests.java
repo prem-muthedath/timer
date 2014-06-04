@@ -52,12 +52,13 @@ public class AllTests {
 		CollectionTimer timer= new CollectionTimer(SetVsArrayList.class);
 		timer.report(report());	
 
-		/** To select your view and format options, OVERWRITE report.render() code BELOW with copy-paste of ONE of the following:
+		/** To select your view and format options, OVERWRITE report.render() code BELOW 
+		**  with copy-paste of ONE of the following:
 		**
 		** For Plain View and Text Format, copy-paste --> report.render(new PlainView(new TextDocument())); 
 		** For Plain View and XML Format, copy-paste --> report.render(new PlainView(new XmlDocument()));
 		** For Swing View, copy-paste --> report.render(new SwingView());  
-		**  NOTE: SwingView restricts itself to TextDocument by default. 
+		** NOTE: SwingView restricts itself to TextDocument by default. 
 		*/
 
 		report.render(new PlainView(new TextDocument()));
@@ -65,8 +66,9 @@ public class AllTests {
 
 	private Report report() {
 		/** You can order the output by collection sizes or by method names.
-		**  To set the order of your output, OVERWRITE THE SINGLE LINE OF CODE THAT DIRECTLY FOLLOWS THESE COMMENTS with 
-		**  copy-paste of one of the following: 
+		**  To set the order of your output, OVERWRITE THE SINGLE LINE OF CODE THAT DIRECTLY FOLLOWS 
+		**  THESE COMMENTS with copy-paste of one of the following: 
+		**
 		** To order by SIZE, copy-paste --> this.report=Order.BY_SIZE.report();
 		** To order by METHOD, copy-paste --> this.report=Order.BY_METHOD.report();
 		*/
