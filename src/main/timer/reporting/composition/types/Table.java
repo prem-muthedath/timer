@@ -20,12 +20,12 @@ public class Table extends Row {
 		super.add(component);
 	}	
 
-	public void validate(Component component) {
+	private void validate(Component component) {
 		if(size() > 0) validate(all()/size(), component.all());
 	}
 
 	private void validate(int expected, int actual) {
 		if(expected==actual) return;
-		throw new RuntimeException("Invalid Row Size: EXPECTED:  "+expected+"  FOUND: "+actual);		
+		throw new RuntimeException("Invalid Table Row -> TOTAL CELLS EXPECTED:  "+expected+"  TOTAL CELLS FOUND: "+actual);		
 	}	
 }

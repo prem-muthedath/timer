@@ -6,12 +6,12 @@ public class TimingTest {
 	private Method method;
 	private TimingTests instance;
 
-	public TimingTest(Method method, TimingTests instance) {
+	TimingTest(Method method, TimingTests instance) {
 		this.method=method;
 		this.instance=instance;
 	}
 
-	public double timing() throws Exception {
+	double timing() throws Exception {
 		return instance.timing(run());
 	}
 
@@ -26,7 +26,7 @@ public class TimingTest {
 		return new TestRun(iterations, totalTime);		
 	}
 
-	public long totalTime(int iterations) throws Exception {
+	long totalTime(int iterations) throws Exception {
  		long start = System.nanoTime();
  		for (int i = 0; i < iterations; i++)
  			method.invoke(instance, new Object[0]);

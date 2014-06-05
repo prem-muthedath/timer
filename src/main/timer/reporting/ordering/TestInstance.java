@@ -9,16 +9,16 @@ public class TestInstance implements Comparable<TestInstance>, Comparator<TestIn
 	private Size size;
 	private Method method;
 
-	public TestInstance(Size size, Method method) {
+	TestInstance(Size size, Method method) {
 		this.size=size;
 		this.method=method;				
 	}
 
-	public void exportBySize(Timing timing, View view) {
+	void exportBySize(Timing timing, View view) {
 		view.add(new Field[]{method, size, timing});
 	}
 
-	public void exportByMethod(Timing timing, View view) {
+	void exportByMethod(Timing timing, View view) {
 		view.add(new Field[]{size, method, timing});
 	}
 

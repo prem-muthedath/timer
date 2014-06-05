@@ -6,7 +6,7 @@ import timer.reporting.base.Format;
 public class Method implements Field, Comparable<Method> {
 	private String name;
 
-	public Method(String name) {
+	Method(String name) {
 		this.name=name;
 	} 
 

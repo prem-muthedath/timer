@@ -9,7 +9,7 @@ public class TableBuilder {
 	private Row header=new Row();
 	private Map<Id, Row> rows=new LinkedHashMap<Id, Row>();
 
-	public void add(Id column, Id row, Cell cell)  {
+	void add(Id column, Id row, Cell cell)  {
 		row(row).add(cell);            					
 		if(repeatColumn()) return;
 		column.addTo(header);
@@ -28,7 +28,7 @@ public class TableBuilder {
 		return rows.size() > 1;
 	}
 
-	public Table table(Id firstRow) {	
+	Table table(Id firstRow) {	
 		Table table=new Table(new TitledComponent(firstRow, header));
 		for(Id each : rows.keySet())
 			table.add(new TitledComponent(each, rows.get(each)));  

@@ -6,7 +6,7 @@ import timer.reporting.base.Format;
 public class Timing implements Field {
 	private double value;
 
-	public Timing(double value) {
+	Timing(double value) {
 		this.value=value;
 	} 
 

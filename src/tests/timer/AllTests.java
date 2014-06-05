@@ -36,9 +36,10 @@ public class AllTests {
 		
 		So don't run these two tests together. Run them seperately, in standalone mode, 
 		by commenting one of them out, as done below.
-
-		tests.runListSearchTest();
-	*/	
+	*/
+		
+	//	tests.runListSearchTest();
+		
 		tests.runSetVsArrayListTest();
 	}
 
@@ -73,7 +74,7 @@ public class AllTests {
 		** To order by METHOD, copy-paste --> this.report=Order.BY_METHOD.report();
 		*/
 
-		this.report=Order.BY_METHOD.report();
+		this.report=Order.BY_SIZE.report();
 		return this.report;
 	}
 }

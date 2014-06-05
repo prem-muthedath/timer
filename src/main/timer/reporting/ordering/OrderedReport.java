@@ -25,6 +25,6 @@ public abstract class OrderedReport extends Report {
 		view.render();
 	}
 
-	protected abstract Map<TestInstance, Timing> sort();
-	protected abstract void export(TestInstance testInstance, Timing timing, View view);
+	abstract Map<TestInstance, Timing> sort();
+	abstract void export(TestInstance testInstance, Timing timing, View view);
 }
