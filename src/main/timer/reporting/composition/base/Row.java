@@ -32,18 +32,18 @@ public class Row implements Component {
 	}
 
 	public int size() {
-		return RowAggregate.size(iterator());
+		return RowAggregate.size(row());
 	}
 
-	private Iterator<Component> iterator() {	
+	private Iterator<Component> row() {	
 		return Collections.unmodifiableCollection(components).iterator();
 	}
 	
 	public int all() {
-		return RowAggregate.all(iterator());
+		return RowAggregate.all(row());
 	}
 
 	public String toString() {
-		return RowAggregate.toString(iterator());
+		return RowAggregate.toString(row());
 	}	
 }

@@ -3,7 +3,7 @@ package timer.reporting.rendering;
 import timer.reporting.base.View;
 import timer.reporting.base.Component;
 
-import timer.reporting.composition.TextDocument;
+import timer.reporting.composition.types.TextDocument;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;

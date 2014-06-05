@@ -1,10 +1,10 @@
 package timer.reporting.composition.base;
 
-import timer.reporting.base.Content;
+import timer.reporting.base.Format;
 import timer.reporting.base.View;
 import timer.reporting.base.Field;
 
-public abstract class Document implements Content {
+public abstract class Document implements Format {
 	private TableBuilder builder=new TableBuilder();
 
 	public void add(Field[] fields) {

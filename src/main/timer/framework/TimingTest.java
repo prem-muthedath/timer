@@ -12,10 +12,10 @@ public class TimingTest {
 	}
 
 	public double timing() throws Exception {
-		return instance.timing(calibrate());
+		return instance.timing(run());
 	}
 
-	private TestRun calibrate() throws Exception {
+	private TestRun run() throws Exception {
 		int iterations=1;
 		long totalTime=0L;
 		while (true) {

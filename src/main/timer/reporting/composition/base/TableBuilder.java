@@ -1,6 +1,6 @@
 package timer.reporting.composition.base;
 
-import timer.reporting.composition.Table;
+import timer.reporting.composition.types.Table;
 
 import java.util.Map;
 import java.util.LinkedHashMap;

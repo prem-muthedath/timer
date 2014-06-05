@@ -5,8 +5,8 @@ import timer.framework.Report;
 
 import timer.reporting.ordering.Order;
 
-import timer.reporting.composition.TextDocument;
-import timer.reporting.composition.XmlDocument;
+import timer.reporting.composition.types.TextDocument;
+import timer.reporting.composition.types.XmlDocument;
 
 import timer.reporting.rendering.PlainView;
 import timer.reporting.rendering.SwingView;

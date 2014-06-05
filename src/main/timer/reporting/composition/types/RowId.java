@@ -1,4 +1,4 @@
-package timer.reporting.composition;
+package timer.reporting.composition.types;
 
 import timer.reporting.composition.base.Id;
 import timer.reporting.composition.base.Cell;
