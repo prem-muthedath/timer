@@ -6,14 +6,8 @@ import timer.reporting.base.Component;
 
 public class Table extends Row {
 	public Table(Component first)  {
-		add(first);
+		super(new Component[]{first});
 	}
-
-	public void add(Component[] components) {
-		for(Component each : components)
-			validate(each);
-		super.add(components);
-	}	
 
 	public void add(Component component) {
 		validate(component);

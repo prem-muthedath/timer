@@ -15,15 +15,11 @@ public class Row implements Component {
 	public Row() {}
 
 	public Row(Component[] components) {
-		add(components);
+		this.components.addAll(Arrays.asList(components));
 	}
 
 	public void add(Component component) {
-		add(new Component[]{component});
-	}	
-
-	public void add(Component[] components) {
-		this.components.addAll(Arrays.asList(components));
+		this.components.add(component);
 	}	
 
 	public void render(View view)  {

@@ -6,13 +6,13 @@ import java.util.Map;
 import java.util.LinkedHashMap;
 
 public class TableBuilder {
-	private Row header=new Row();
+	private Row columns=new Row();
 	private Map<Id, Row> rows=new LinkedHashMap<Id, Row>();
 
 	void add(Id column, Id row, Cell cell)  {
 		row(row).add(cell);            					
 		if(repeatColumn()) return;
-		column.addTo(header);
+		addColumn(column);
 	}
 
 	private Row row(Id row) {  
@@ -28,8 +28,12 @@ public class TableBuilder {
 		return rows.size() > 1;
 	}
 
+	private void addColumn(Id column) {
+		columns.add(new TitledComponent(column, new Row()));
+	}
+
 	Table table(Id firstRow) {	
-		Table table=new Table(new TitledComponent(firstRow, header));
+		Table table=new Table(new TitledComponent(firstRow, columns));
 		for(Id each : rows.keySet())
 			table.add(new TitledComponent(each, rows.get(each)));  
 		return table;

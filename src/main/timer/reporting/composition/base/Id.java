@@ -16,10 +16,6 @@ public abstract class Id {
 		return 41*(41+name().hashCode())+surname().hashCode();
 	}
 
-	public void addTo(Row row)  {
-		row.add(new Component[] {name(), surname()});
-	}
-
 	public Row toRow(Component component)  {
 		return new Row(new Component[] {name(), component, surname()});
 	}
