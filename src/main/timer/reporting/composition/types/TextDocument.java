@@ -23,7 +23,7 @@ public class TextDocument extends Document {
 		add(new RowId(column), new RowId(row, "\n"), new TextCell(content));
 	}
 
-	public Row contents()  {
+	protected Row contents()  {
 		return table(new RowId(FIRST_COLUMN, LAST_COLUMN));
 	}	
 }
