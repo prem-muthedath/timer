@@ -8,7 +8,7 @@ import java.util.Map;
 import java.util.TreeMap;
 import java.util.Comparator;
 
-public abstract class OrderedReport extends Report {
+abstract class OrderedReport extends Report {
 	private Map<TestInstance, Timing> timings;
 
 	OrderedReport(Comparator<TestInstance> comparator) {
