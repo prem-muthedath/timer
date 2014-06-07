@@ -32,7 +32,7 @@ public class XmlDocument extends Document {
 	}		
 
 	protected Row contents()  {
-		String declaration="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
+		final String declaration="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>\n";
 		return new Row(
 			new Component[] {
 				new TextCell(declaration), 
