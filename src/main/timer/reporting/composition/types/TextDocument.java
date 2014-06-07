@@ -21,8 +21,8 @@ public class TextDocument extends Document {
 	}
 
 	protected Row contents()  {
-		final String FIRST_COLUMN=String.format("%-25s", "\n");
-		final String LAST_COLUMN="\n";
-		return table(new RowId(FIRST_COLUMN, LAST_COLUMN));
+		final String firstColumn=String.format("%-25s", "\n");
+		final String lastColumn="\n";
+		return table(new RowId(firstColumn, lastColumn));
 	}	
 }

@@ -22,7 +22,7 @@ public class TestInstance {
 		view.add(new Field[]{size, method, timing});
 	}
 
-	static Comparator<TestInstance> sizeComparator() {
+	static Comparator<TestInstance> sizeOrder() {
 		return new Comparator<TestInstance>() {
 			public int compare(TestInstance one, TestInstance another)  {
 				return one.size.compareTo(another.size)==0  ?  one.method.compareTo(another.method)  :  one.size.compareTo(another.size);
@@ -30,7 +30,7 @@ public class TestInstance {
 		};
 	}
 	
-	static Comparator<TestInstance> methodComparator() {
+	static Comparator<TestInstance> methodOrder() {
 		return new Comparator<TestInstance>() {
 			public int compare(TestInstance one, TestInstance another)  {
 				return one.method.compareTo(another.method)==0  ?  one.size.compareTo(another.size)  :  one.method.compareTo(another.method);				

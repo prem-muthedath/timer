@@ -9,12 +9,12 @@ public enum Order {
 
 	public Report report()  {
 		switch(this)  {
-			case BY_SIZE: return new OrderedReport(TestInstance.sizeComparator()) {
+			case BY_SIZE: return new OrderedReport(TestInstance.sizeOrder()) {
 				void export(TestInstance testInstance, Timing timing, View view) {
 					testInstance.exportBySize(timing, view);
 				}
 			};
-			case BY_METHOD: return new OrderedReport(TestInstance.methodComparator()) {
+			case BY_METHOD: return new OrderedReport(TestInstance.methodOrder()) {
 				void export(TestInstance testInstance, Timing timing, View view) {
 					testInstance.exportByMethod(timing, view);
 				}

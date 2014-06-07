@@ -11,8 +11,8 @@ import java.util.Comparator;
 abstract class OrderedReport extends Report {
 	private Map<TestInstance, Timing> timings;
 
-	OrderedReport(Comparator<TestInstance> comparator) {
-		this.timings=new TreeMap<TestInstance, Timing>(comparator);	
+	OrderedReport(Comparator<TestInstance> order) {
+		this.timings=new TreeMap<TestInstance, Timing>(order);	
 	}
 
 	protected void add(int size, String method, double timing)	{
