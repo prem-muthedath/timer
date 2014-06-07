@@ -4,9 +4,6 @@ import timer.reporting.composition.base.Document;
 import timer.reporting.composition.base.Row;
 
 public class TextDocument extends Document {
-	private static final String FIRST_COLUMN=String.format("%-25s", "\n");
-	private static final String LAST_COLUMN="\n";
-
 	public String method(String method) {
 		return String.format("%-25s", method);		
 	}	
@@ -24,6 +21,8 @@ public class TextDocument extends Document {
 	}
 
 	protected Row contents()  {
+		final String FIRST_COLUMN=String.format("%-25s", "\n");
+		final String LAST_COLUMN="\n";
 		return table(new RowId(FIRST_COLUMN, LAST_COLUMN));
 	}	
 }

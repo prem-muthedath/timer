@@ -15,10 +15,6 @@ abstract class OrderedReport extends Report {
 		this.timings=new TreeMap<TestInstance, Timing>(comparator);	
 	}
 
-	OrderedReport() {
-		this.timings=new TreeMap<TestInstance, Timing>();	
-	}
-
 	protected void add(int size, String method, double timing)	{
 		timings.put(testInstance(size, method), new Timing(timing));
 	}

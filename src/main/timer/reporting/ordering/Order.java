@@ -11,12 +11,12 @@ public enum Order {
 
 	public Report report()  {
 		switch(this)  {
-			case BY_SIZE: return new OrderedReport() {
+			case BY_SIZE: return new OrderedReport(sizeComparator()) {
 				void export(TestInstance testInstance, Timing timing, View view) {
 					testInstance.exportBySize(timing, view);
 				}
 			};
-			case BY_METHOD: return new OrderedReport(comparator()) {
+			case BY_METHOD: return new OrderedReport(methodComparator()) {
 				void export(TestInstance testInstance, Timing timing, View view) {
 					testInstance.exportByMethod(timing, view);
 				}
@@ -25,7 +25,11 @@ public enum Order {
 		throw new RuntimeException("Unknown Order: "+this);
 	}
 
-	private Comparator<TestInstance> comparator() {
-		return new TestInstance(new Size(0), new Method(""));
+	private Comparator<TestInstance> sizeComparator() {
+		return TestInstance.sizeComparator();
+	}
+
+	private Comparator<TestInstance> methodComparator() {
+		return TestInstance.methodComparator();
 	}
 }
