@@ -35,7 +35,8 @@ public class AllTests {
 
 	public void runListSearchTest() throws Exception {
 		/** You can order the output by collection sizes or by method names.
-		**  To set the order of your output, USE THE FOLLOWING VALUES FOR  CollectionTimer.Order PARAMETER IN CollectionTimer.report():
+		**  To set the order of your output, USE THE FOLLOWING VALUES FOR  
+		**  CollectionTimer.Order PARAMETER IN CollectionTimer.report():
 		**		To order by SIZE, use --> CollectionTimer.Order.BY_SIZE
 		** 		To order by METHOD, use --> CollectionTimer.Order.BY_METHOD
 		*/
@@ -43,7 +44,7 @@ public class AllTests {
 		/** To select your view and format options, USE THE FOLLOWING VALUES FOR CollectionTimer.Format PARAMETER IN CollectionTimer.report():
 		** 		For Plain View and Text Format, use --> CollectionTimer.Format.TEXT 
 		** 		For Plain View and XML Format, use --> CollectionTimer.Format.XML
-		**  	For Swing View, use CollectionTimer.Format.JAVA_SWING
+		**		For Swing View, use CollectionTimer.Format.JAVA_SWING
 		**/
 
 		new CollectionTimer().report(ListSearch.class, CollectionTimer.Order.BY_SIZE, CollectionTimer.Format.TEXT);
@@ -51,7 +52,8 @@ public class AllTests {
 
 	public void runSetVsArrayListTest() throws Exception {
 		/** You can order the output by collection sizes or by method names.
-		**  To set the order of your output, USE THE FOLLOWING VALUES FOR  CollectionTimer.Order PARAMETER IN CollectionTimer.report():
+		**  To set the order of your output, USE THE FOLLOWING VALUES FOR  
+		**  CollectionTimer.Order PARAMETER IN CollectionTimer.report():
 		**		To order by SIZE, use --> CollectionTimer.Order.BY_SIZE
 		** 		To order by METHOD, use --> CollectionTimer.Order.BY_METHOD
 		*/
@@ -59,7 +61,7 @@ public class AllTests {
 		/** To select your view and format options, USE THE FOLLOWING VALUES FOR CollectionTimer.Format PARAMETER IN CollectionTimer.report():
 		** 		For Plain View and Text Format, use --> CollectionTimer.Format.TEXT 
 		** 		For Plain View and XML Format, use --> CollectionTimer.Format.XML
-		**  	For Swing View, use CollectionTimer.Format.JAVA_SWING
+		**		For Swing View, use CollectionTimer.Format.JAVA_SWING
 		**/
 
 		new CollectionTimer().report(SetVsArrayList.class, CollectionTimer.Order.BY_SIZE, CollectionTimer.Format.TEXT);
