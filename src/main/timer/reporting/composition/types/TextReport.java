@@ -1,9 +1,9 @@
 package timer.reporting.composition.types;
 
-import timer.reporting.composition.base.Document;
+import timer.reporting.composition.base.Report;
 import timer.reporting.composition.base.Row;
 
-public class TextDocument extends Document {
+public class TextReport extends Report {
 	public String method(String method) {
 		return String.format("%-25s", method);		
 	}	
@@ -16,7 +16,7 @@ public class TextDocument extends Document {
 		return String.format("%-25s", "size="+size);		
 	}
 
-	protected void add(String column, String row, String content) {
+	public void add(String column, String row, String content) {
 		add(new RowId(column), new RowId(row, "\n"), new TextCell(content));
 	}
 

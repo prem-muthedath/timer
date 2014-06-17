@@ -1,12 +1,12 @@
 package timer.reporting.composition.types;
 
-import timer.reporting.composition.base.Document;
+import timer.reporting.composition.base.Report;
 import timer.reporting.composition.base.TitledComponent;
 import timer.reporting.composition.base.Row;
 
 import timer.reporting.base.Component;
 
-public class XmlDocument extends Document {
+public class XmlReport extends Report {
 	public String method(String method) {
 		return String.format("method name=\"%s\"", method);		
 	}	
@@ -19,7 +19,7 @@ public class XmlDocument extends Document {
 		return String.format("size value=\"%s\"", size);		
 	}
 
-	protected void add(String column, String row, String content) {
+	public void add(String column, String row, String content) {
 		add(new RowId(), new Tag(row), cell(column, content));
 	}
 

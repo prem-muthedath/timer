@@ -3,10 +3,10 @@ package timer.framework;
 import java.lang.reflect.Method;
 	
 public abstract class TimingTests {
-	public void run(Report report) throws Exception {
+	public void run(Results results) throws Exception {
 		for (Method each : this.getClass().getMethods()) {
 			if(skip(each)) continue;
-			copy().run(each, report);
+			copy().run(each, results);
 		}
 	}
 
@@ -29,8 +29,8 @@ public abstract class TimingTests {
 	protected abstract TimingTests copy(); 
 	protected abstract int size();
 
-	private void run(Method method, Report report) throws Exception {
-		report.run(method, this);
+	private void run(Method method, Results results) throws Exception {
+		results.run(method, this);
 	}
 
 	double timing(TestRun run) throws Exception {

@@ -1,6 +1,5 @@
-package timer.reporting.ordering;
+package timer.results.base;
 
-import timer.reporting.base.Field;
 import timer.reporting.base.Format;
 
 public class Method implements Field, Comparable<Method> {

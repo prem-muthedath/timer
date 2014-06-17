@@ -1,17 +1,18 @@
-package timer.reporting.ordering;
+package timer.results.base;
 
-import timer.framework.Report;
+import timer.framework.Results;
 
 import timer.reporting.base.View;
+import timer.reporting.base.Format;
 
 import java.util.Map;
 import java.util.TreeMap;
 import java.util.Comparator;
 
-abstract class OrderedReport extends Report {
+public abstract class OrderedResults extends Results {
 	private Map<TestInstance, Timing> timings;
 
-	OrderedReport(Comparator<TestInstance> order) {
+	public OrderedResults(Comparator<TestInstance> order) {
 		this.timings=new TreeMap<TestInstance, Timing>(order);	
 	}
 
@@ -23,11 +24,11 @@ abstract class OrderedReport extends Report {
 		return new TestInstance(new Size(size), new Method(method));
 	}
 
-	public void render(View view) {
+	public void render(View view, Format format) {
 		for(TestInstance each : timings.keySet())
-			export(each, timings.get(each), view);
-		view.render();
+			export(each, timings.get(each), format);
+		format.render(view);
 	}
 
-	abstract void export(TestInstance testInstance, Timing timing, View view);
+	protected abstract void export(TestInstance testInstance, Timing timing, Format format);
 }

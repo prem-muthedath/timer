@@ -1,7 +1,6 @@
-package timer.reporting.ordering;
+package timer.results.base;
 
-import timer.reporting.base.Field;
-import timer.reporting.base.View;
+import timer.reporting.base.Format;
 
 import java.util.Comparator;
 
@@ -14,15 +13,15 @@ public class TestInstance {
 		this.method=method;				
 	}
 
-	void exportBySize(Timing timing, View view) {
-		view.add(new Field[]{method, size, timing});
+	public void exportBySize(Timing timing, Format format) {
+		new TestExport(size, method, timing).dumpTo(format);
 	}
 
-	void exportByMethod(Timing timing, View view) {
-		view.add(new Field[]{size, method, timing});
+	public void exportByMethod(Timing timing, Format format) {
+		new TestExport(method, size, timing).dumpTo(format);
 	}
 
-	static Comparator<TestInstance> sizeOrder() {
+	public static Comparator<TestInstance> sizeOrder() {
 		return new Comparator<TestInstance>() {
 			public int compare(TestInstance one, TestInstance another)  {
 				return one.size.compareTo(another.size)==0  ?  one.method.compareTo(another.method)  :  one.size.compareTo(another.size);
@@ -30,7 +29,7 @@ public class TestInstance {
 		};
 	}
 	
-	static Comparator<TestInstance> methodOrder() {
+	public static Comparator<TestInstance> methodOrder() {
 		return new Comparator<TestInstance>() {
 			public int compare(TestInstance one, TestInstance another)  {
 				return one.method.compareTo(another.method)==0  ?  one.size.compareTo(another.size)  :  one.method.compareTo(another.method);				
