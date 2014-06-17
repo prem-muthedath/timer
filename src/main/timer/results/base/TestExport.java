@@ -5,7 +5,7 @@ import timer.reporting.base.Format;
 import java.util.Map;
 import java.util.EnumMap;
 
-public class TestExport {
+class TestExport {
 	private Field[] fields;
 	private enum Schema {ROW, COLUMN, CONTENT}
 
