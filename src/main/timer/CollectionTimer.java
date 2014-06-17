@@ -17,8 +17,7 @@ public class CollectionTimer {
 	public enum Format {TEXT, XML, JAVA_SWING}
 
 	public void report(Class<? extends TimingTests> tests, 
-		CollectionTimer.Order order, 
-		CollectionTimer.Format format) throws Exception  
+		CollectionTimer.Order order, CollectionTimer.Format format) throws Exception  
 	{
 		Results results=results(order);
 		new timer.framework.CollectionTimer(tests).run(results);
