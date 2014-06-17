@@ -50,7 +50,9 @@ public class AllTests {
 		**		For Swing View, use CollectionTimer.Format.JAVA_SWING
 		**/
 
-		new CollectionTimer().report(ListSearch.class, CollectionTimer.Order.BY_SIZE, CollectionTimer.Format.TEXT);
+		new CollectionTimer().report(ListSearch.class, 
+				CollectionTimer.Order.BY_SIZE, 
+				CollectionTimer.Format.TEXT);
 	}
 
 	public void runSetVsArrayListTest() throws Exception {
@@ -70,6 +72,8 @@ public class AllTests {
 		**		For Swing View, use CollectionTimer.Format.JAVA_SWING
 		**/
 
-		new CollectionTimer().report(SetVsArrayList.class, CollectionTimer.Order.BY_SIZE, CollectionTimer.Format.TEXT);
+		new CollectionTimer().report(SetVsArrayList.class, 
+				CollectionTimer.Order.BY_SIZE, 
+				CollectionTimer.Format.TEXT);
 	} 
 }
