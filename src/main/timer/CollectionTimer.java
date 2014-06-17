@@ -13,8 +13,8 @@ import timer.reporting.rendering.PlainView;
 import timer.reporting.rendering.SwingView;
 
 public class CollectionTimer {
-	public enum Format {TEXT, XML, JAVA_SWING}
 	public enum Order {BY_SIZE, BY_METHOD}
+	public enum Format {TEXT, XML, JAVA_SWING}
 
 	public void report(Class<? extends TimingTests> tests, 
 		CollectionTimer.Order order, 
