@@ -43,16 +43,16 @@ public class AllTests {
 		*/
 
 		/** To select your view and format options, USE THE FOLLOWING VALUES FOR 
-		**  CollectionTimer.Format PARAMETER IN CollectionTimer.report():
+		**  CollectionTimer.Type PARAMETER IN CollectionTimer.report():
 		**
-		** 		For Plain View and Text Format, use --> CollectionTimer.Format.TEXT 
-		** 		For Plain View and XML Format, use --> CollectionTimer.Format.XML
-		**		For Swing View, use CollectionTimer.Format.JAVA_SWING
+		** 		For Plain View and Text Format, use --> CollectionTimer.Type.TEXT 
+		** 		For Plain View and XML Format, use --> CollectionTimer.Type.XML
+		**		For Swing View, use CollectionTimer.Type.JAVA_SWING
 		**/
 
 		new CollectionTimer().report(ListSearch.class, 
 				CollectionTimer.Order.BY_SIZE, 
-				CollectionTimer.Format.TEXT);
+				CollectionTimer.Type.TEXT);
 	}
 
 	public void runSetVsArrayListTest() throws Exception {
@@ -65,15 +65,15 @@ public class AllTests {
 		*/
 
 		/** To select your view and format options, USE THE FOLLOWING VALUES FOR 
-		**  CollectionTimer.Format PARAMETER IN CollectionTimer.report():
+		**  CollectionTimer.Type PARAMETER IN CollectionTimer.report():
 		**
-		** 		For Plain View and Text Format, use --> CollectionTimer.Format.TEXT 
-		** 		For Plain View and XML Format, use --> CollectionTimer.Format.XML
-		**		For Swing View, use CollectionTimer.Format.JAVA_SWING
+		** 		For Plain View and Text Format, use --> CollectionTimer.Type.TEXT 
+		** 		For Plain View and XML Format, use --> CollectionTimer.Type.XML
+		**		For Swing View, use CollectionTimer.Type.JAVA_SWING
 		**/
 
 		new CollectionTimer().report(SetVsArrayList.class, 
 				CollectionTimer.Order.BY_SIZE, 
-				CollectionTimer.Format.TEXT);
+				CollectionTimer.Type.TEXT);
 	} 
 }

@@ -5,7 +5,7 @@ My refactored version of Kent Beck's timer framework for timing collection metho
 
 See Kent Beck's book "Implementation Patterns" (Appendix A) for the timer framework and source code. 
 
-After reading Beck's excellent book, I decided to put my learnings into practice.  Beck's code (see the book) is a masterpiece, but I personally felt, for clarity, a few areas needed refactoring: 
+After reading Beck's excellent book, I decided to put my learnings to practice.  Beck's code (see the book) is a masterpiece, but I personally felt, for clarity, a few areas needed refactoring: 
 
 1. Logic and data not together (mainly related to reflection);
 2. One class -- MethodTimer class in Beck's code -- doing more than one thing;
@@ -21,7 +21,7 @@ Just for fun, I have also designed a reporting model that allows you to:
 2.  Order the output by collection sizes OR by method names;
 3.  Render the output in plain view (i.e., simple multi-line text) or in Java Swing grid layout.
 
-NOTE: You can select your output view, format, and order by passing the right values for order and format in timer/src/main/timer/CollectionTimer.report().  For an example,
+NOTE: You can select your output view, format, and order by passing the right values for order and type in timer/src/main/timer/CollectionTimer.report().  For an example,
 see timer/src/tests/timer/AllTests.java.
 
 

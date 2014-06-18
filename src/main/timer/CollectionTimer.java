@@ -14,14 +14,14 @@ import timer.reporting.rendering.SwingView;
 
 public class CollectionTimer {
 	public enum Order {BY_SIZE, BY_METHOD}
-	public enum Format {TEXT, XML, JAVA_SWING}
+	public enum Type {TEXT, XML, JAVA_SWING}
 
 	public void report(Class<? extends TimingTests> tests, 
-		CollectionTimer.Order order, CollectionTimer.Format format) throws Exception  
+		CollectionTimer.Order order, CollectionTimer.Type type) throws Exception  
 	{
 		Results results=results(order);
 		new timer.framework.CollectionTimer(tests).run(results);
-		render(results, format);
+		report(results, type);
 	}
 
 	private Results results(CollectionTimer.Order order)  {
@@ -32,8 +32,8 @@ public class CollectionTimer {
 		throw new RuntimeException("Unknown Order: "+order);
 	}
 
-	private void render(Results results, CollectionTimer.Format format) {
-		switch(format)  {
+	private void report(Results results, CollectionTimer.Type type) {
+		switch(type)  {
 			case TEXT: results.render(new PlainView(), new TextReport());
 				return;				
 			case XML: results.render(new PlainView(), new XmlReport());
@@ -41,6 +41,6 @@ public class CollectionTimer {
 			case JAVA_SWING: results.render(new SwingView(), new TextReport());
 				return;
 		}
-		throw new RuntimeException("Unknown Format: "+format);
+		throw new RuntimeException("Unknown Type: "+type);
 	}
 }
