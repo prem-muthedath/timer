@@ -14,11 +14,11 @@ public class TestInstance {
 	}
 
 	public void exportBySize(Timing timing, Format format) {
-		new TestExport(size, method, timing).dumpTo(format);
+		new TestResultExport(size, method, timing).dumpTo(format);
 	}
 
 	public void exportByMethod(Timing timing, Format format) {
-		new TestExport(method, size, timing).dumpTo(format);
+		new TestResultExport(method, size, timing).dumpTo(format);
 	}
 
 	public static Comparator<TestInstance> sizeOrder() {

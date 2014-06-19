@@ -10,14 +10,14 @@ import java.util.TreeMap;
 import java.util.Comparator;
 
 public abstract class OrderedResults extends Results {
-	private Map<TestInstance, Timing> timings;
+	private Map<TestInstance, Timing> results;
 
 	public OrderedResults(Comparator<TestInstance> order) {
-		this.timings=new TreeMap<TestInstance, Timing>(order);	
+		this.results=new TreeMap<TestInstance, Timing>(order);	
 	}
 
 	protected void add(int size, String method, double timing)	{
-		timings.put(testInstance(size, method), new Timing(timing));
+		results.put(testInstance(size, method), new Timing(timing));
 	}
 
 	private TestInstance testInstance(int size, String method) {
@@ -25,8 +25,8 @@ public abstract class OrderedResults extends Results {
 	}
 
 	public void render(View view, Format format) {
-		for(TestInstance each : timings.keySet())
-			export(each, timings.get(each), format);
+		for(TestInstance each : results.keySet())
+			export(each, results.get(each), format);
 		format.render(view);
 	}
 

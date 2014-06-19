@@ -5,11 +5,11 @@ import timer.reporting.base.Format;
 import java.util.Map;
 import java.util.EnumMap;
 
-class TestExport {
+class TestResultExport {
 	private Field[] fields;
 	private enum Schema {ROW, COLUMN, TIMING}
 
-	TestExport(Field key, Field subkey, Field timing)  {
+	TestResultExport(Field key, Field subkey, Field timing)  {
 		fields=new Field[]{key, subkey, timing};
 	}
 
