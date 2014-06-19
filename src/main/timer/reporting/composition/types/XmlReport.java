@@ -19,14 +19,14 @@ public class XmlReport extends Report {
 		return String.format("size value=\"%s\"", size);		
 	}
 
-	public void add(String column, String row, String content) {
-		add(new RowId(), new Tag(row), cell(column, content));
+	public void add(String column, String row, String timing) {
+		add(new RowId(), new Tag(row), cell(column, timing));
 	}
 
-	private TextCell cell(String column, String content) {
+	private TextCell cell(String column, String timing) {
 		return new TextCell(
 			new TitledComponent(new Tag(column), 
-				new TitledComponent(new Tag("timing"), new TextCell(content))
+				new TitledComponent(new Tag("timing"), new TextCell(timing))
 			)
 		);
 	}		

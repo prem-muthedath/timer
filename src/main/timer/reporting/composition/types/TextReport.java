@@ -16,8 +16,8 @@ public class TextReport extends Report {
 		return String.format("%-25s", "size="+size);		
 	}
 
-	public void add(String column, String row, String content) {
-		add(new RowId(column), new RowId(row, "\n"), new TextCell(content));
+	public void add(String column, String row, String timing) {
+		add(new RowId(column), new RowId(row, "\n"), new TextCell(timing));
 	}
 
 	protected Row contents()  {
