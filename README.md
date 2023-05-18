@@ -27,8 +27,8 @@ Just for fun, I have also designed a reporting model that allows you to:
    swing format, you will see the output in a java swing frame view.
 
 NOTE: You can select your output order and format by passing the right values 
-for order and format to timer/src/main/timer/CollectionTimer.report().  For an 
-example, see timer/src/tests/timer/AllTests.java.
+for order and format to timer/src/main/timer/Timer.report().  For an example 
+usage, see timer/src/tests/timer/AllTests.java.
 
 I have re-used the tests in Beck's book.
 
