@@ -52,14 +52,14 @@ public abstract class OrderedResults extends Results {
   protected abstract int sort(String oneSize, String anotherSize, String oneMethod, String anotherMethod);
   abstract void report(Report report);
 
-  public double[][] timings() {
+  double[][] timings() {
     this.sort();
-    return this.allTimings();
+    return this.allTimingSlices();
   }
 
-  protected abstract double[][] allTimings();
+  protected abstract double[][] allTimingSlices();
 
-  double[][] timingsSlices(int sliceCount) {
+  double[][] allTimingSlices(int sliceCount) {
     int sliceSize = this.results.size()/sliceCount;
     double[][] timings = new double [sliceCount] [];
     for (int i = 0; i < sliceCount; i ++) {
@@ -77,7 +77,7 @@ public abstract class OrderedResults extends Results {
     return timingsSlice;
   }
 
-  public int[] sortedSizes() {
+  int[] sortedSizes() {
     List<String> uniqueSizes = new ArrayList<String>();
     for (Map<Schema, String> each : this.results) {
       String size=this.getSize(each);
@@ -95,7 +95,7 @@ public abstract class OrderedResults extends Results {
     return result;
   }
 
-  public String[] sortedMethods() {
+  String[] sortedMethods() {
     List<String> uniqueMethods = new ArrayList<String>();
     for (Map<Schema, String> each : this.results) {
       String method = this.getMethod(each);

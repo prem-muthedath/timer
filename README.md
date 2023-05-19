@@ -51,5 +51,5 @@ I have re-used the tests in Beck's book.
      java -classpath bin timer.AllTests
 
 6. Press enter.
-7. Output: method timings (nano secs) in chosen format & order.
+7. Output: method timings (in nanoseconds) in chosen format & order.
 
