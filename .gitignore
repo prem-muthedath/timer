@@ -1,3 +1,5 @@
 *.class
 *.numbers
 *.pages
+/temp
+

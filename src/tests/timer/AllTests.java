@@ -90,7 +90,7 @@ public class AllTests {
       */
 
     new Timer().report(SetVsArrayList.class,
-        Timer.Order.BY_SIZE,
-        Timer.Format.TEXT);
+        Timer.Order.BY_METHOD,
+        Timer.Format.JAVA_SWING);
   }
 }

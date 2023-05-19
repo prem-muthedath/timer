@@ -6,8 +6,8 @@ package timer.reporting;
  * author: Prem Muthedath
  */
 class TextFormat {
-  static String title() {
-    return String.format("%-25s", "********** Test Timings");
+  static String title(String title) {
+    return String.format("%-25s", title);
   }
 
   static String leftMargin() {

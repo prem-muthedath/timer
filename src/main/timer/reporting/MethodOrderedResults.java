@@ -9,7 +9,7 @@ import java.util.Comparator;
  */
 public class MethodOrderedResults extends OrderedResults {
   protected int sort(String oneSize, String anotherSize, String oneMethod, String anotherMethod) {
-    // see /u/ paul mckenzie @ https://tinyurl.com/3fjxenyf (so)
+    /* see /u/ paul mckenzie @ https://tinyurl.com/3fjxenyf (so) */
     return oneMethod.compareTo(anotherMethod) == 0  ?
       Integer.valueOf(oneSize).compareTo(Integer.valueOf(anotherSize)) :
       oneMethod.compareTo(anotherMethod);
@@ -21,12 +21,6 @@ public class MethodOrderedResults extends OrderedResults {
 
   protected double[][] allTimings() {
     int methodCount = this.sortedMethods().length;
-    int step = super.count()/methodCount;
-    double[][] timings = new double [methodCount] [];
-    for (int i = 0; i < methodCount; i ++) {
-      int from = i*step, to = from + step;
-      timings[i] = super.timingsSlice(from, to);
-    }
-    return timings;
+    return super.timingsSlices(methodCount);
   }
 }

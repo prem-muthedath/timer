@@ -39,12 +39,8 @@ public abstract class OrderedResults extends Results {
     return item.get(Schema.TIMING);
   }
 
-  int count() {
-    return this.results.size();
-  }
-
   private void sort() {
-    // see /u/ paul mckenzie @ https://tinyurl.com/3fjxenyf (so)
+    /* see /u/ paul mckenzie @ https://tinyurl.com/3fjxenyf (so) */
     Collections.sort(this.results, new Comparator<Map<Schema, String>>() {
         public int compare(Map<Schema, String> one, Map<Schema, String> another) {
           return sort(one.get(Schema.SIZE), another.get(Schema.SIZE),
@@ -63,7 +59,17 @@ public abstract class OrderedResults extends Results {
 
   protected abstract double[][] allTimings();
 
-  double[] timingsSlice(int from, int to) {
+  double[][] timingsSlices(int sliceCount) {
+    int sliceSize = this.results.size()/sliceCount;
+    double[][] timings = new double [sliceCount] [];
+    for (int i = 0; i < sliceCount; i ++) {
+      int from = i*sliceSize, to = from + sliceSize;
+      timings[i] = this.timingsSlice(from, to);
+    }
+    return timings;
+  }
+
+  private double[] timingsSlice(int from, int to) {
     List<Map<Schema, String>> slice = this.results.subList(from, to);
     double[] timingsSlice = new double [slice.size()];
     for (int i=0; i < slice.size(); i ++)
@@ -97,7 +103,7 @@ public abstract class OrderedResults extends Results {
       uniqueMethods.add(method);
     }
     Collections.sort(uniqueMethods);
-    // see /u/ waxwing @ https://tinyurl.com/5a3dj2ck (so)
+    /* see /u/ waxwing @ https://tinyurl.com/5a3dj2ck (so) */
     return Arrays.copyOf(uniqueMethods.toArray(), uniqueMethods.size(), String[].class);
   }
 
