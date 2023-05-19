@@ -23,9 +23,10 @@ description of his timer framework!
 Just for fun, I have also designed a reporting model that allows you to:
 
 1. Output method timings in different formats (text, xml, java swing);
-2. Order the output by collection sizes OR by method names;
-3. Reports in text and xml formats are printed to console; if you opt for java 
-   swing format, you will see the output in a java swing frame view.
+2. Order the output by collection sizes OR by method names.
+
+Text and xml reports are printed to console; if you opt for java swing format, 
+you will see the output in a java swing frame view.
 
 NOTE: You can select your output order and format by passing the right values 
 for order and format to timer/src/main/timer/Timer.report().  For an example 
