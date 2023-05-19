@@ -11,9 +11,9 @@ import timer.framework.TimingTests;
  * https://docs.oracle.com/en/java/javase/17/docs/api/
  *
  * original source of this code: Kent beck's 'Implementation Patterns' book.
- * Prem modified Beck's code to suit his design here.
+ * Prem slightly modified Beck's code to suit his design here.
  *
- * author: Prem Muthedath
+ * author: Kent Beck, with slight modifications by Prem Muthedath
  */
 public class SetVsArrayList extends TimingTests {
   private Collection<String> set;

@@ -16,11 +16,11 @@ public class SizeOrderedResults extends OrderedResults {
   }
 
   void report(Report report) {
-    report.bySize(this.sortedSizes(), this.timings());
+    report.bySize(super.sortedSizes(), super.timings());
   }
 
   protected double[][] allTimings() {
-    int sizeCount = this.sortedSizes().length;
+    int sizeCount = super.sortedSizes().length;
     return super.timingsSlices(sizeCount);
   }
 }

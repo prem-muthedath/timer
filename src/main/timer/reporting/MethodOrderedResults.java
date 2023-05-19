@@ -16,11 +16,11 @@ public class MethodOrderedResults extends OrderedResults {
   }
 
   void report(Report report) {
-    report.byMethod(this.sortedMethods(), this.timings());
+    report.byMethod(super.sortedMethods(), super.timings());
   }
 
   protected double[][] allTimings() {
-    int methodCount = this.sortedMethods().length;
+    int methodCount = super.sortedMethods().length;
     return super.timingsSlices(methodCount);
   }
 }

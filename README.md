@@ -13,7 +13,8 @@ a few areas needed refactoring:
 2. One class -- MethodTimer in Beck's code -- doing more than one thing;
 3. Class structure for overhead calculations, in Beck's own words, is strange;
 4. Again, in MethodTimer, rate of change principle violation (see Beck's book);
-5. Better object names needed (I felt so).
+5. In Beck's words, temporal dependency between `run()` & querying methods;
+6. Better object names needed (I felt so).
 
 These concerns led me to a wholly different design with a new set of small 
 objects, each doing just 1 thing.  Also, I found my object names in Beck's own 
