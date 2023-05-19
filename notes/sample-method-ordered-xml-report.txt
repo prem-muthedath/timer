@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<timings unit="nanoseconds">
+<method name="arrayListIteration">
+<size value="1"><timing>3.35</timing></size>
+<size value="10"><timing>3.46</timing></size>
+<size value="100"><timing>3.38</timing></size>
+<size value="1000"><timing>3.36</timing></size>
+<size value="10000"><timing>3.55</timing></size>
+<size value="100000"><timing>4.77</timing></size>
+</method>
+<method name="arrayListMembership">
+<size value="1"><timing>5.90</timing></size>
+<size value="10"><timing>25.86</timing></size>
+<size value="100"><timing>224.27</timing></size>
+<size value="1000"><timing>2185.49</timing></size>
+<size value="10000"><timing>30720.25</timing></size>
+<size value="100000"><timing>977134.77</timing></size>
+</method>
+<method name="arrayListModification">
+<size value="1"><timing>9.71</timing></size>
+<size value="10"><timing>28.42</timing></size>
+<size value="100"><timing>179.94</timing></size>
+<size value="1000"><timing>2194.66</timing></size>
+<size value="10000"><timing>36338.17</timing></size>
+<size value="100000"><timing>1691395.51</timing></size>
+</method>
+<method name="setIteration">
+<size value="1"><timing>6.55</timing></size>
+<size value="10"><timing>48.35</timing></size>
+<size value="100"><timing>735.22</timing></size>
+<size value="1000"><timing>8277.76</timing></size>
+<size value="10000"><timing>122736.39</timing></size>
+<size value="100000"><timing>3143000.00</timing></size>
+</method>
+<method name="setMembership">
+<size value="1"><timing>9.45</timing></size>
+<size value="10"><timing>12.92</timing></size>
+<size value="100"><timing>12.32</timing></size>
+<size value="1000"><timing>12.90</timing></size>
+<size value="10000"><timing>12.97</timing></size>
+<size value="100000"><timing>8.56</timing></size>
+</method>
+<method name="setModification">
+<size value="1"><timing>23.55</timing></size>
+<size value="10"><timing>25.14</timing></size>
+<size value="100"><timing>24.14</timing></size>
+<size value="1000"><timing>25.48</timing></size>
+<size value="10000"><timing>23.59</timing></size>
+<size value="100000"><timing>23.59</timing></size>
+</method>
+</timings>
+
