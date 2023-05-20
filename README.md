@@ -37,7 +37,7 @@ I have re-used the tests in Beck's book.
 
 ##### HOW TO RUN THE TESTS FROM A TERMINAL:
 
-1. `cd` to timer directory -- the top directory having this README file.
+1. `cd` to `timer` directory -- the top directory having this `README` file.
 2. If you do not have a `bin` directory, create an empty `bin` directory at the 
    same level as this README file. this is needed for compilation in step 3.
 3. Type the following command to compile:
