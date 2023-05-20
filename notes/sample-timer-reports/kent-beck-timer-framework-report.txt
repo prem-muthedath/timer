@@ -1,0 +1,21 @@
+*********** Timings output by Kent Beck's timer framework.
+*********** Prem ran Beck's code in his machine to generate & format this output.
+
+*********** RUN 1 - Beck timer framework timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setMembership	        9.82	    11.48	11.86	    12.68	13.45	      15.40
+arrayListMembership	6.49	    27.43	227.83	    2197.11	19638.02      940678.22
+setIteration	        6.71	    49.06	361.68	    3237.56	67088.32      1940613.28
+arrayListIteration	2.83	    4.11	3.62	    4.11	3.74	      5.27
+setModification	        26.03	    24.75	26.20	    25.80	24.97	      26.42
+arrayListModification	10.20	    23.42	165.72	    2203.47	36482.85      1017735.35
+
+
+*********** RUN 2 - Beck timer framework timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setMembership	        10.59	    13.91	14.62	    16.68	14.56	      15.86
+arrayListMembership	6.54	    28.03	229.53	    2144.23	31136.63      283396.24
+setIteration	        7.69	    50.00	745.20	    8424.89	130064.33     3351240.23
+arrayListIteration	8.78	    4.68	4.35	    4.69	4.20	      5.10
+setModification	        31.42	    29.59	34.38	    36.41	30.85	      30.58
+arrayListModification	12.64	    23.92	175.40	    2309.98	39637.48      889514.16

@@ -11,7 +11,7 @@ import java.awt.GridLayout;
  *
  * author: Prem Muthedath
  */
-public class  Grid {
+public class GridLayoutExample {
   private JFrame frame=new JFrame("Test Timings");
 
   public void render()  {

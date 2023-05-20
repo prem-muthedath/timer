@@ -1,0 +1,8 @@
+********** Test Timings (nanoseconds):
+                         size=1                   size=10                  size=100                 size=1000                size=10000               size=100000
+arrayListIteration       3.10                     3.23                     4.86                     4.11                     3.60                     2.85
+arrayListMembership      5.79                     25.17                    214.55                   2203.38                  29112.81                 799224.61
+arrayListModification    10.07                    24.72                    165.07                   1654.74                  34261.38                 777040.53
+setIteration             6.49                     49.33                    708.68                   8227.06                  114477.36                2950839.84
+setMembership            9.19                     11.15                    11.11                    11.62                    11.67                    12.50
+setModification          22.78                    23.79                    24.85                    27.98                    22.73                    22.63
