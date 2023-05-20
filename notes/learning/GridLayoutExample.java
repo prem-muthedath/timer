@@ -91,7 +91,7 @@ public class GridLayoutExample {
   }
 
   public static void main(String args[]) {
-    new Grid().render();
+    new GridLayoutExample().render();
   }
 }
 
