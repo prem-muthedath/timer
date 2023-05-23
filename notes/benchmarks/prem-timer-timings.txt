@@ -1,14 +1,18 @@
 ********** Benchmark of Prem's Timer Framework **********
 
 Method:
-  Prem Muthedath recorded these timings output by his timer framework, which is 
-  his refactored version of the original Kent Beck's timer framework.  To generate 
-  benchmarks below, Prem manually ran his timer framework multiple times on his 
-  laptop, each fresh run generating timings for the set of 5 methods tested. The 
-  timing data, manually formatted, for all the 12 runs are below.
+  Prem Muthedath recorded these method timings output by his timer framework, 
+  which is his refactored version of Kent Beck's timer framework.  To generate 
+  the benchmarks below, Prem manually ran his timer framework multiple times on 
+  his laptop, each fresh run generating timings for the set of 5 methods tested. 
+  The timing data, manually formatted, for all the 12 runs are below.
 
 Benchmark Environment:
   Java version 1.7, Macbook Air mid-2012.
+  timer/src` folder contains all of Prem's timer framework code used to generate 
+  below method timings. See, for example, `timer/src/main/timer/Timer.java' and 
+  `timer/src/tests/timer/AllTests.java'.  See also `timer/README` on how to 
+  compile and run this code.
 
 Notes:
   1. Prem's timer framework first computes all timings across all sizes and then 

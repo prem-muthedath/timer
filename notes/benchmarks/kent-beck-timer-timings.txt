@@ -1,17 +1,20 @@
 ********** Benchmark of Kent Beck's Timer Framework **********
 
 Method:
-  Prem Muthedath recorded these timings output by Beck's timer framework.  To 
-  generate the benchmarks below, Prem first assembled Beck's timer framework 
-  code from code fragments Beck provides in his "Implementation Patterns" book. 
-  Beck does not give a full code listing for his framework anywhere in his 
-  book, so Prem wrote a missing part or two himself.  Next, Prem manually ran 
-  this asssembled code multiple times on his laptop, each fresh run generating 
-  timings for the set of 5 methods tested. The timing data, manually formatted, 
-  for all the 10 runs are below.
+  Prem Muthedath recorded these method timings output by Beck's timer framework.  
+  To generate the benchmarks below, Prem first assembled Beck's timer framework 
+  code from code fragments Beck provides in his "Implementation Patterns" book.  
+  Beck does not give a full code listing for his framework anywhere in his book, 
+  so Prem wrote a missing part or two himself. This assembled code is in 
+  `notes/kent-beck` folder (see `notes/kent-beck/MethodsTimer.java`).  Next, 
+  Prem manually ran this asssembled code multiple times on his laptop, each 
+  fresh run generating timings for the set of 5 methods tested. The timing data, 
+  manually formatted, for all the 10 runs are below.
 
 Benchmark Environment:
   Java version 1.7, Macbook Air mid-2012.
+  Kent Beck's timer framework code used to generate the below method timings is 
+  in `notes/kent-beck` folder. See `notes/kent-beck/MethodsTimer.java`.
 
 Notes:
   1. The order of method names in each run below reflects the order in which 
