@@ -9,7 +9,7 @@ import java.lang.reflect.Method;
  * The `main()` method below is something added by Prem.
  *
  * HOW TO RUN BECK'S TIMER AT THE TERMINAL:
- *  1. `cd` to `notes/kent-beck` directory that contains this file;
+ *  1. `cd` to `notes/kent-beck-timer` directory that contains this file;
  *  2. Two collection tests, `ListSearch` and `SetVsArrayList`, are available 
  *     for timing.  You can choose either one to run Beck's timer on by 
  *     commenting or uncommenting the related code in the `main()` method in 

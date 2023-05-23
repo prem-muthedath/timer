@@ -3,7 +3,7 @@ import java.util.List;
 
 /* Kent Beck's code listed in his "Implementation Patterns" book.
  *
- * See instructions given at the top of `notes/kent-beck/MethodsTimer.java` file 
+ * See instructions at the top of `notes/kent-beck-timer/MethodsTimer.java` file 
  * on how to compile and run Beck's timer.
  * */
 public class ListSearch {
