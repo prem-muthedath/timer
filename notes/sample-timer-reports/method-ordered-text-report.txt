@@ -1,4 +1,4 @@
-********** Test Timings (nanoseconds):
+********** Method Timings (nanoseconds):
                          size=1                   size=10                  size=100                 size=1000                size=10000               size=100000
 arrayListIteration       3.10                     3.23                     4.86                     4.11                     3.60                     2.85
 arrayListMembership      5.79                     25.17                    214.55                   2203.38                  29112.81                 799224.61
