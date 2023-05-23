@@ -1,0 +1,110 @@
+********** Benchmark of Kent Beck's Timer Framework **********
+
+Method:
+  Prem Muthedath recorded these timings output by Beck's timer framework.  To 
+  generate the benchmarks below, Prem first assembled Beck's timer framework 
+  code from code fragments Beck provides in his "Implementation Patterns" book. 
+  Beck does not give a full code listing for his framework anywhere in his 
+  book, so Prem wrote a missing part or two himself.  Next, Prem manually ran 
+  this asssembled code multiple times on his laptop, each fresh run generating 
+  timings for the set of 5 methods tested. The timing data, manually formatted, 
+  for all the 10 runs are below.
+
+Benchmark Environment:
+  Java version 1.7, Macbook Air mid-2012.
+
+NOTE: The order of method names in each run below reflects the order in which 
+Beck's timer framework selected and time-tested these methods at runtime. 
+Because Beck's timer framework invokes methods using java reflection API, JVM's 
+reflection mechanism determines the method orders in each run. This is why you 
+see different method orders in the runs below.
+
+********** RUN 1 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setMembership	        9.98	    14.96	14.68	    15.99	14.03	      14.29
+arrayListMembership	6.03	    27.71	223.59	    2201.41	30332.26      305447.75
+setIteration	        8.22	    50.18	356.94	    3261.66	65475.95      1066052.73
+arrayListIteration	3.52	    3.88	3.85	    4.16	3.98	      4.33
+setModification	        24.39	    25.35	26.73	    25.48	25.02	      26.81
+arrayListModification	11.74	    23.38	163.13	    2089.80	35931.70      1320214.84
+
+********** RUN 2 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setIteration	        4.65	    50.75	750.72	    9158.00	101813.84     2464154.30
+arrayListIteration	5.11	    3.79	4.44	    5.56	4.98	      3.98
+setModification         24.72	    24.69	25.50	    25.86	24.50	      24.44
+arrayListModification	9.71	    25.15	163.48	    2137.10	36481.45      1019541.02
+setMembership           13.31	    12.89	12.82	    13.17	13.36	      13.08
+arrayListMembership	7.83	    27.10	226.58	    2181.99	30529.57      898407.23
+
+********** RUN 3 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setMembership           10.25	    15.23	15.55	    16.13	13.99	      14.47
+arrayListMembership	6.19	    27.10	225.44	    2200.42	30255.87      252635.01
+setIteration            6.93	    49.36	345.41	    3208.62	60957.40      1200957.03
+arrayListIteration	3.60	    4.10	4.07	    4.20	3.97	      4.14
+setModification	        25.15	    24.85	25.62	    25.82	25.55	      26.64
+arrayListModification	10.02	    24.01	164.73	    2083.61	35622.77      1336022.46
+
+********** RUN 4 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setMembership	        9.72	    11.44	12.14	    12.66	13.05	      13.83
+arrayListMembership	6.01	    27.73	222.76	    2171.36	30235.03      344700.44
+setIteration	        7.21	    61.99	362.32	    3220.55	62420.90      1310827.15
+arrayListIteration	4.06	    3.15	3.51	    5.21	4.79	      5.96
+setModification	        29.48	    39.15	39.94	    32.52	31.50	      32.88
+arrayListModification	12.88	    32.20	215.18	    2994.04	48474.49      1134892.58
+
+********** RUN 5 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+arrayListIteration	-1.51	    3.34	2.89	    3.07	2.98	      3.50
+setModification	        25.15	    24.93	25.90	    26.09	25.04	      27.22
+arrayListModification	9.98	    26.93	170.34	    2201.49	37850.46      1444808.59
+setMembership	        12.32	    12.29	12.64	    12.57	13.36	      13.34
+arrayListMembership	6.27	    32.70	240.08	    2376.53	31577.48      305287.35
+setIteration	        5.82	    56.59	783.05	    9353.58	136451.90     3223289.06
+
+********** RUN 6 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setIteration	        6.26	    64.20	906.27	    10051.18	169367.31     3002681.64
+arrayListIteration	5.49	    4.72	5.25	    4.92	5.79	      6.10
+setModification	        31.16	    35.83	36.01	    37.66	28.95	      37.35
+setMembership	        17.74	    18.72	15.75	    16.76	19.87	      17.82
+arrayListMembership	6.80	    35.61	249.32	    2825.34	38910.74      345539.06
+arrayListModification	11.83	    27.43	231.23	    2971.12	46150.30      1611289.06
+
+********** RUN 7 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setMembership	        10.19	    15.98	16.62	    16.80	14.11	      14.95
+arrayListMembership	6.78	    30.15	241.56	    2332.37	33608.98      439258.06
+setIteration	        7.20	    51.84	792.67	    8945.79	129205.57     2456919.92
+arrayListIteration	4.39	    4.23	4.33	    3.99	4.26	      5.25
+setModification	        33.11	    29.70	30.79	    29.91	31.61	      30.07
+arrayListModification	10.64	    29.52	186.79	    2391.87	40849.73      1044138.67
+
+********** RUN 8 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+arrayListMembership	-0.81	    30.17	227.00	    2265.09	31791.29      351772.46
+setIteration	        5.76	    51.36	764.74	    8265.75	127516.85     1867549.80
+arrayListIteration	3.33	    3.13	3.05	    3.03	2.16	      2.22
+setModification	        26.38	    24.68	25.96	    26.68	25.31	      23.16
+setMembership	        13.47	    13.01	13.51	    14.60	14.31	      15.31
+arrayListModification	9.27	    27.66	166.69	    1969.91	37646.76      1325477.54
+
+********** RUN 9 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setMembership	        10.02	    15.03	15.60	    16.03	13.63	      14.97
+arrayListMembership	6.46	    28.26	230.61	    2224.55	18963.10      978833.98
+setIteration	        7.25	    50.99	777.00	    8594.88	128378.17     3503939.45
+arrayListIteration	4.19	    4.58	4.24	    4.05	4.53	      5.27
+setModification	        25.37	    25.74	27.10	    27.36	25.64	      23.22
+arrayListModification	9.96	    24.32	165.77	    2208.99	36863.49      1264429.69
+
+********** RUN 10 -- Test Timings (nanoseconds):
+                        size=1      size=10     size=100    size=1000   size=10000    size=100000
+setIteration	        4.97	    49.69	741.23	    9108.96	128253.78     2082382.81
+arrayListIteration	5.46	    4.55	4.17	    4.35	4.15	      3.83
+setModification	        24.99	    24.18	27.14	    25.80	25.04	      26.85
+setMembership	        14.62	    13.93	15.22	    14.72	13.57	      14.72
+arrayListMembership	9.39	    28.27	229.34	    2232.14	31592.83      899599.12
+arrayListModification	12.46	    24.43	164.81	    2073.34	36406.46      494896.97
