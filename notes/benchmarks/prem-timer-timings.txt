@@ -9,9 +9,9 @@ Method:
 
 Benchmark Environment:
   Java version 1.7, Macbook Air mid-2012.
-  timer/src` folder contains all of Prem's timer framework code used to generate 
-  below method timings. See, for example, `timer/src/main/timer/Timer.java' and 
-  `timer/src/tests/timer/AllTests.java'.  See also `timer/README` on how to 
+  `timer/src` folder contains Prem's timer framework code used to generate below 
+  method timings. See, for example, `timer/src/main/timer/Timer.java' and 
+  `timer/src/tests/timer/AllTests.java'.  See also `timer/README` file on how to 
   compile and run this code.
 
 Notes:
