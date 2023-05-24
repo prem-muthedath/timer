@@ -28,8 +28,8 @@ refactor parts of Beck's code that I felt needed clarity, including:
 
 These concerns led me to a wholly different design with a new set of small 
 objects, each doing just 1 thing.  My core framework has 5 objects, compared to 
-2 in Beck's, but I believe in more number of tiny objects than a few big ones.  
-Also, I found my object names in Beck's own description of his timer framework!
+2 in Beck's, but I believe in more tiny objects than a few big ones. Also, I 
+found my object names in Beck's own description of his timer framework!
 
 Just for fun, I have also designed a reporting model that allows you to:
 
@@ -60,8 +60,8 @@ I did these benchmarks on a Macbook Air mid-2012 running Java 1.7.  This stuff
 is quite old, and I suspect the large variations in the data most likely stem 
 from the behavior of the operating system under load.  If I were to bet on what 
 would be the accurate timings, I would go with the lower values reported. To 
-truly reach statistically-valid conclusions on timings, you would need something 
-like the Haskell library Criterion, but that is beyond the scope of this work.
+reach statistically-valid conclusions on timings, you would need something like 
+the Haskell library Criterion, but that is beyond the scope here.
 
 ##### HOW TO RUN THE TIMING TESTS FROM A TERMINAL:
 
