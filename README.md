@@ -57,9 +57,9 @@ elements or more. Despite these variations, reported timings (in nanoseconds)
 from my version agree well with Beck's.
 
 I did these benchmarks on a Macbook Air mid-2012 running Java 1.7.  This stuff 
-is quite old, and I suspect the large variations in the data most likely stem 
-from the behavior of the operating system under load.  If I were to bet on what 
-would be the accurate timings, I would go with the lower values reported. To 
+is quite old, and I suspect the upper swings in the data most likely stem from 
+the behavior of the operating system under load.  So if I were to guess on what 
+would be the accurate timings, I would go with the lower values reported.  To 
 reach statistically-valid conclusions, however, you would need something like 
 the Haskell library Criterion, which is beyond our scope.
 
