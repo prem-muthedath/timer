@@ -50,9 +50,9 @@ I benchmarked both Beck's timer as well as my refactored version to compare how
 they preform. The complete set of benchmark data are in `notes/benchmaks` 
 folder.  Both Beck's timer as well as my version report broad but similar 
 variations for methods whose timings (in nanoseconds) increase with collection 
-size.  These variations become more pronounced for collection sizes >= 1000.  
-Despite these variations, reported timings (in nanoseconds) from my version 
-agree well with Beck's.
+size.  These variations become more pronounced for collection sizes of 1000 
+elements or more. Despite these variations, reported timings (in nanoseconds) 
+from my version agree well with Beck's.
 
 I did these benchmarks on a Macbook Air mid-2012 running Java 1.7.  This stuff 
 is quite old, and I suspect the large variations in the data most likely stem 
