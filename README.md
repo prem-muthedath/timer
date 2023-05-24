@@ -44,21 +44,22 @@ usage, see `timer/src/tests/timer/AllTests.java`.
 
 I have re-used the tests in Beck's book.
 
-###### Benchmarking:
+##### Benchmarking:
 
 I benchmarked both Beck's timer as well as my refactored version to compare how 
 they preform. The complete set of benchmark data are in `notes/benchmaks` 
-folder.  Both Beck's timer as well as my version report braod but similar 
-variations for methods whose timings increase with collection size. These 
-variations become more pronounced for collection sizes >= 1000. Despite these 
-variations, reported timings from my version agree well with Beck's.
+folder.  Both Beck's timer as well as my version report broad but similar 
+variations for methods whose timings (in nanoseconds) increase with collection 
+size.  These variations become more pronounced for collection sizes >= 1000.  
+Despite these variations, reported timings (in nanoseconds) from my version 
+agree well with Beck's.
 
 I did these benchmarks on a Macbook Air mid-2012 running Java 1.7.  This stuff 
 is quite old, and I suspect the large variations in the data most likely stem 
 from the behavior of the operating system under load.  If I were to bet on what 
 would be the accurate timings, I would go with the lower values reported.
 
-###### HOW TO RUN THE TIMING TESTS FROM A TERMINAL:
+##### HOW TO RUN THE TIMING TESTS FROM A TERMINAL:
 
 1. `cd` to `timer` directory -- the top directory having this `README` file.
 2. If you do not have a `bin` directory, create an empty `bin` directory at the 
