@@ -8,7 +8,7 @@ import timer.framework.TimingTests;
 /* java 1.7 API reference
  * https://docs.oracle.com/en/java/javase/17/docs/api/
  *
- * original source of this code: Kent beck's 'Implementation Patterns' book.
+ * original source of this code: Kent Beck's 'Implementation Patterns' book.
  * Prem slightly modified Beck's code to suit his design here.
  *
  * author: Kent Beck, with slight modifications by Prem Muthedath

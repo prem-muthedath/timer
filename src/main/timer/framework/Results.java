@@ -8,7 +8,7 @@ import java.lang.reflect.Method;
  * author: Prem Muthedath
  */
 public abstract class Results {
-  public void run(Method method, TimingTests instance) throws Exception {
+  void run(Method method, TimingTests instance) throws Exception {
     add(instance.size(), method.getName(), new TimingTest(method, instance).timing());
   }
 

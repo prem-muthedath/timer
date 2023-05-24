@@ -5,7 +5,7 @@ import java.lang.reflect.Constructor;
 /* java 1.7 API reference
  * https://docs.oracle.com/en/java/javase/17/docs/api/
  *
- * original idea, algorithm from Kent beck's 'Implementation Patterns' book.
+ * original idea, algorithm from Kent Beck's 'Implementation Patterns' book.
  * Prem created this class as part of his refactoring of Beck's code.
  *
  * author: Prem Muthedath
