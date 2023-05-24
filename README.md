@@ -61,7 +61,7 @@ is quite old, and I suspect the large variations in the data most likely stem
 from the behavior of the operating system under load.  If I were to bet on what 
 would be the accurate timings, I would go with the lower values reported. To 
 reach statistically-valid conclusions on timings, you would need something like 
-the Haskell library Criterion, but that is beyond the scope here.
+the Haskell library Criterion, but that is beyond scope here.
 
 ##### HOW TO RUN THE TIMING TESTS FROM A TERMINAL:
 
