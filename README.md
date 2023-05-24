@@ -7,7 +7,7 @@ See Kent Beck's book "Implementation Patterns" (Appendix A) for a discussion of
 the timer framework. Instead of a full listing of the framework code, Beck gives 
 code fragments as he explains his framework. I have assembled these code pieces 
 together, supplying 1 missing method myself, in `notes/kent-beck-timer` folder, 
-where you can view `MethodsTimer.java`` and `MethodTimer.java`, the two classes 
+where you can view `MethodsTimer.java` and `MethodTimer.java`, the two classes 
 that comprise Beck's framework. The folder also has 2 tests from Beck's book.
 
 Beck keeps his framework deliberately minimal and simple, because his aim is not 
@@ -15,8 +15,8 @@ to develop a robust framework for the public domain with thousands of users but
 to demonstrate certain principles for readers of his book. So Beck tolerates 
 many things that he otherwise would have improved on or redesigned.
 
-Over here, as part of my learning practice, I decided to refactor parts of 
-beck's code that I felt needed clarity, including:
+Over here, as part of my learning, I decided to refactor parts of Beck's code 
+that I felt needed clarity, including:
 
 1. Logic and data not together (mainly related to reflection);
 2. One class -- MethodTimer in Beck's code -- doing more than one thing;
@@ -51,7 +51,7 @@ they preform. The complete set of benchmark data are in `notes/benchmaks`
 folder.  Both Beck's timer as well as my version report braod but similar 
 variations for methods whose timings increase with collection size. These 
 variations become more pronounced for collection sizes >= 1000. Despite these 
-variations, the reported timings from my version agree well with Beck's.
+variations, reported timings from my version agree well with Beck's.
 
 I did these benchmarks on a Macbook Air mid-2012 running Java 1.7.  This stuff 
 is quite old, and I suspect the large variations in the data most likely stem 
