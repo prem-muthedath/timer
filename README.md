@@ -44,7 +44,7 @@ usage, see `timer/src/tests/timer/AllTests.java`.
 
 I have re-used the tests in Beck's book.
 
-##### Benchmarking:
+###### Benchmarking:
 
 I benchmarked both Beck's timer as well as my refactored version to compare how 
 they preform. The complete set of benchmark data are in `notes/benchmaks` 
@@ -58,7 +58,7 @@ is quite old, and I suspect the large variations in the data most likely stem
 from the behavior of the operating system under load.  If I were to bet on what 
 would be the accurate timings, I would go with the lower values reported.
 
-##### HOW TO RUN THE TESTS FROM A TERMINAL:
+###### HOW TO RUN THE TIMING TESTS FROM A TERMINAL:
 
 1. `cd` to `timer` directory -- the top directory having this `README` file.
 2. If you do not have a `bin` directory, create an empty `bin` directory at the 
