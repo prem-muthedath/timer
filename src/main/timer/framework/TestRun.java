@@ -16,13 +16,13 @@ package timer.framework;
   private long totalTime;
 
   TestRun(int iterations, long totalTime)  {
-    this.iterations=iterations;
-    this.totalTime=totalTime;
+    this.iterations = iterations;
+    this.totalTime = totalTime;
   }
 
   double timing(TimingTest overhead)  throws Exception {
-    long overheadTime=overhead.totalTime(iterations);
+    long overheadTime = overhead.totalTime(iterations);
     /* time formula from Kent Beck */
-    return (double) (totalTime - overheadTime) / (double) iterations;
+    return (double) (this.totalTime - overheadTime) / (double) this.iterations;
   }
  }
