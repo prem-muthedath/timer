@@ -12,11 +12,12 @@ that comprise Beck's framework. The folder also has 2 tests from Beck's book.
 
 Beck keeps his framework deliberately minimal and simple, because his aim is not 
 to develop a robust framework for the public domain with thousands of users but 
-to demonstrate certain principles for readers of his book. So Beck tolerates 
-many things that he otherwise would have improved on or redesigned.
+to demonstrate certain principles for readers of his book. So Beck correctly 
+accepts stuff that he otherwise would have improved on or redesigned.
 
-Over here, as part of my learning, I decided to refactor parts of Beck's code 
-that I felt needed clarity, including:
+Over here, my goal is to try and do a good object design by putting stuff that I 
+learned from Beck's book into practice. So, as part of my learning, I decided to 
+refactor parts of Beck's code that I felt needed clarity, including:
 
 1. Logic and data not together (mainly related to reflection);
 2. One class -- MethodTimer in Beck's code -- doing more than one thing;
@@ -26,8 +27,9 @@ that I felt needed clarity, including:
 6. Better object names needed (I felt so).
 
 These concerns led me to a wholly different design with a new set of small 
-objects, each doing just 1 thing.  Also, I found my object names in Beck's own 
-description of his timer framework!
+objects, each doing just 1 thing.  My core framework has 5 objects, compared to 
+2 in Beck's, but I believe in more number of tiny objects than a few big ones.  
+Also, I found my object names in Beck's own description of his timer framework!
 
 Just for fun, I have also designed a reporting model that allows you to:
 
@@ -57,7 +59,9 @@ from my version agree well with Beck's.
 I did these benchmarks on a Macbook Air mid-2012 running Java 1.7.  This stuff 
 is quite old, and I suspect the large variations in the data most likely stem 
 from the behavior of the operating system under load.  If I were to bet on what 
-would be the accurate timings, I would go with the lower values reported.
+would be the accurate timings, I would go with the lower values reported. To 
+truly reach statistically-valid conclusions on timings, you would need something 
+like the Haskell library Criterion, but that is beyond the scope of this work.
 
 ##### HOW TO RUN THE TIMING TESTS FROM A TERMINAL:
 
