@@ -18,11 +18,11 @@ public class XmlReport extends Report {
 
   private void header() {
     System.out.println("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
-    System.out.println("<timings unit=\"nanoseconds\">");
+    System.out.println("<method-timings units=\"nanoseconds\">");
   }
 
   private void footer() {
-    System.out.println("</timings>");
+    System.out.println("</method-timings>");
   }
 
   protected void bySize(int[] sizes, double[][] timings) {

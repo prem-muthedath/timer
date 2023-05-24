@@ -1,52 +1,51 @@
 <?xml version="1.0" encoding="ISO-8859-1"?>
-<timings unit="nanoseconds">
+<method-timings units="nanoseconds">
 <size value="1">
-<method name="arrayListIteration"><timing>3.48</timing></method>
-<method name="arrayListMembership"><timing>6.60</timing></method>
-<method name="arrayListModification"><timing>9.70</timing></method>
-<method name="setIteration"><timing>6.89</timing></method>
-<method name="setMembership"><timing>9.46</timing></method>
-<method name="setModification"><timing>23.24</timing></method>
+<method name="arrayListIteration"><timing>3.66</timing></method>
+<method name="arrayListMembership"><timing>6.11</timing></method>
+<method name="arrayListModification"><timing>9.53</timing></method>
+<method name="setIteration"><timing>6.38</timing></method>
+<method name="setMembership"><timing>9.01</timing></method>
+<method name="setModification"><timing>23.13</timing></method>
 </size>
 <size value="10">
-<method name="arrayListIteration"><timing>3.53</timing></method>
-<method name="arrayListMembership"><timing>27.24</timing></method>
-<method name="arrayListModification"><timing>25.88</timing></method>
-<method name="setIteration"><timing>48.13</timing></method>
-<method name="setMembership"><timing>11.24</timing></method>
-<method name="setModification"><timing>24.65</timing></method>
+<method name="arrayListIteration"><timing>4.40</timing></method>
+<method name="arrayListMembership"><timing>25.50</timing></method>
+<method name="arrayListModification"><timing>24.90</timing></method>
+<method name="setIteration"><timing>48.32</timing></method>
+<method name="setMembership"><timing>11.89</timing></method>
+<method name="setModification"><timing>23.73</timing></method>
 </size>
 <size value="100">
-<method name="arrayListIteration"><timing>4.70</timing></method>
-<method name="arrayListMembership"><timing>227.18</timing></method>
-<method name="arrayListModification"><timing>176.75</timing></method>
-<method name="setIteration"><timing>883.14</timing></method>
-<method name="setMembership"><timing>11.98</timing></method>
-<method name="setModification"><timing>24.71</timing></method>
+<method name="arrayListIteration"><timing>3.90</timing></method>
+<method name="arrayListMembership"><timing>198.90</timing></method>
+<method name="arrayListModification"><timing>163.16</timing></method>
+<method name="setIteration"><timing>332.70</timing></method>
+<method name="setMembership"><timing>13.07</timing></method>
+<method name="setModification"><timing>25.99</timing></method>
 </size>
 <size value="1000">
-<method name="arrayListIteration"><timing>3.56</timing></method>
-<method name="arrayListMembership"><timing>2217.37</timing></method>
-<method name="arrayListModification"><timing>2094.15</timing></method>
-<method name="setIteration"><timing>10173.97</timing></method>
-<method name="setMembership"><timing>12.13</timing></method>
-<method name="setModification"><timing>25.67</timing></method>
+<method name="arrayListIteration"><timing>3.55</timing></method>
+<method name="arrayListMembership"><timing>2132.80</timing></method>
+<method name="arrayListModification"><timing>2039.63</timing></method>
+<method name="setIteration"><timing>3048.84</timing></method>
+<method name="setMembership"><timing>13.16</timing></method>
+<method name="setModification"><timing>24.21</timing></method>
 </size>
 <size value="10000">
-<method name="arrayListIteration"><timing>3.93</timing></method>
-<method name="arrayListMembership"><timing>30711.98</timing></method>
-<method name="arrayListModification"><timing>35951.81</timing></method>
-<method name="setIteration"><timing>127046.75</timing></method>
-<method name="setMembership"><timing>15.53</timing></method>
-<method name="setModification"><timing>24.41</timing></method>
+<method name="arrayListIteration"><timing>3.58</timing></method>
+<method name="arrayListMembership"><timing>28655.79</timing></method>
+<method name="arrayListModification"><timing>33707.61</timing></method>
+<method name="setIteration"><timing>58768.46</timing></method>
+<method name="setMembership"><timing>13.03</timing></method>
+<method name="setModification"><timing>23.59</timing></method>
 </size>
 <size value="100000">
-<method name="arrayListIteration"><timing>3.50</timing></method>
-<method name="arrayListMembership"><timing>870554.69</timing></method>
-<method name="arrayListModification"><timing>1347708.01</timing></method>
-<method name="setIteration"><timing>3016996.09</timing></method>
-<method name="setMembership"><timing>12.47</timing></method>
-<method name="setModification"><timing>23.46</timing></method>
+<method name="arrayListIteration"><timing>3.86</timing></method>
+<method name="arrayListMembership"><timing>221058.35</timing></method>
+<method name="arrayListModification"><timing>1274018.55</timing></method>
+<method name="setIteration"><timing>1748765.63</timing></method>
+<method name="setMembership"><timing>13.77</timing></method>
+<method name="setModification"><timing>24.16</timing></method>
 </size>
-</timings>
-
+</method-timings>

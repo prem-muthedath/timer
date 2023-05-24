@@ -16,7 +16,7 @@ public class TextReport extends Report {
   }
 
   private void printTitle() {
-    System.out.println(TextFormat.title("********** Test Timings (nanoseconds):"));
+    System.out.println(TextFormat.title("********** Method Timings (nanoseconds):"));
   }
 
   protected void bySize(int[] sizes, double[][] timings) {
