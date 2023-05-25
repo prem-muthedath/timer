@@ -16,8 +16,8 @@ import java.lang.reflect.Method;
 public abstract class TimingTests {
   void run(Results results) throws Exception { /* collecting parameter */
     for (Method each : this.getClass().getMethods()) {
-      if(skip(each)) continue;
-      copy().run(each, results);
+      if(this.skip(each)) continue;
+      this.copy().run(each, results);
     }
   }
 
@@ -48,15 +48,15 @@ public abstract class TimingTests {
   }
 
   double timing(TestRun run) throws Exception {
-    return run.timing(overhead());
+    return run.timing(this.overhead());
   }
 
   private TimingTest overhead() throws Exception {
     /* the basic idea of overhead and it's calculation comes from Kent Beck.
      * Prem, however, designed the objects and their interactions here.
      */
-    Method method=getClass().getMethod("nothing", new Class[0]);
-    return new TimingTest(method, copy());
+    Method method = this.getClass().getMethod("nothing", new Class[0]);
+    return new TimingTest(method, this.copy());
   }
 
   public final void nothing() {}
