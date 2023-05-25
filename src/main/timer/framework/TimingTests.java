@@ -22,8 +22,9 @@ public abstract class TimingTests {
   }
 
   private boolean skip(Method method) throws Exception {
-    Class<?> methodClass=method.getDeclaringClass();
-    return (methodClass.equals(Object.class) || methodClass.equals(TimingTests.class));
+    Class<? extends TimingTests> thisClass = this.getClass();
+    Class<?> methodClass = method.getDeclaringClass();
+    return !methodClass.equals(thisClass);
   }
 
   /**
