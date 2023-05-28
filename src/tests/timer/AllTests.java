@@ -2,95 +2,70 @@ package timer;
 
 import timer.Timer;
 
-/* java 1.7 API reference
- * https://docs.oracle.com/en/java/javase/17/docs/api/
+/** This test class acts aa a client of the timer framework, requesting the 
+ *  framework to run sets of tiiming tests encapsulated as classes. The two sets 
+ *  of timing tests, encapsulated as classes, used here all come from Kent 
+ *  Beck's "Implementation Patterns" book, which has many more timing tests 
+ *  classes. I have slightly modified these two classes from Beck's book to fit 
+ *  my needs.  These two classes are in the same package as this class.
  *
- * author: Prem Muthedath
+ *  java 1.7 API reference
+ *  https://docs.oracle.com/en/java/javase/17/docs/api/
+ *
+ *  author: Prem Muthedath (the timing tests classes come from Kent Beck)
  */
 public class AllTests {
-
   /* NOTE:
-   * To compare with Beck's results, run the tests in the SAME WAY AND ORDER as 
-   * you run Beck's tests.  that is, for Beck's code, if you are running both 
-   * ListSearch test and SetVsArrayList test TOGETHER, one after the other, then 
-   * run these tests in the SAME WAY and in the SAME ORDER here AS WELL
-   * (as shown in the main method below).
+   * I have observed that running all sets of timing tests together, 
+   * consecutively, within the same JVM yields slightly different results 
+   * compared to running each set of timing tests separately in standalone mode, 
+   * without sharing JVMs. This holds true for both Beck's timer and mine.
    *
-   * the reason for this advice is this -- for Beck's code AS WELL AS for this 
-   * code, I noticed that the results are slightly different if we run the 
-   * ListSearch test first, followed by SetVsArrayList, one after the other,
-   * in the SAME JVM, VERSUS if we run SetVsArrayList test WITHOUT running the 
-   * ListSearch first.  Specifically, we get slightly different timings for 
-   * sizes 100 and 1000 for the arrayListMembership test. For size 100, we 
-   * notice 160-170 ms vs 200-210 ms, and for size 1000, we notice 1600-1800 vs 
-   * 2000-2100 ms.  The lower values are reported when we run ListSearch first, 
-   * followed immediately by SetVsArrayList in the same JVM, as shown in the 
-   * main method below.  The differences are slight BUT CONSISTENT.
+   * For example, if we run ListSearch.class and SetVsArrayList.class sets of 
+   * timing tests consecutively within the same JVM, we observe slightly 
+   * different results compared to running ListSearch.class separately in 
+   * standalone mode and then running SetVsArrayList.class in separate JVMs.
+   *
+   * Moreover, running in the same JVM has another problem: the order of 
+   * execution seems to affect method timings.  For example, if we ran 
+   * ListSearch.class first followed by SetVsArrayList.class in the same JVM, 
+   * then the method timings reported for both sets of timing tests are somewhat 
+   * different from the ones we get from running SetVsArrayList.class first 
+   * followed by ListSearch.class in the same JVM!
+   *
+   * I am guessing these differences may be due to JVM caching or normal random 
+   * variations caused by OS and other factors.  But in nay case, to eliminate 
+   * unknown factors, I propose that we run each set of timing tests separately 
+   * in standalone mode -- that is, sets of timing tests do not share JVMs.
    */
-
   public static void main(String[] args) throws Exception {
-    AllTests tests=new AllTests();
-
-    /* Commented out one test execution, because, as explained above, if we run 
-     * these two tests, one after the other, in the SAME JVM, we notice slightly 
-     * different results.
+    /* Notes:
+     *  1. Commented out all but one test execution below, because, as explained 
+     *     above, if we run these timing tests together, one after the other, in 
+     *     the SAME JVM, we notice slightly different results.
      *
-     * So don't run these two tests together. Run them seperately, in standalone 
-     * mode, by commenting one of them out, as done below.
+     *     So don't run all timing tests together. Run them seperately, in 
+     *     standalone mode, by commenting out all except the one you want to 
+     *     run, as done below.
+     *
+     *  2. You can order the results (the method timings) by collection size or 
+     *     by method name.  Likewise, you can choose the format of the report as 
+     *     well.  Available formats include plain text, xml, and java swing.
+     *
+     *     The `timer.Timer` class offers methods that you can invoke not only 
+     *     to generate method timings for a set of timing tests but also to 
+     *     order and format the results generated. For example, if you want 
+     *     method timings generated for a set of timing tests defined by the 
+     *     `ListSearch.class` and have the generated results formatted as plain 
+     *     text and ordered by collection size, you can do so by calling:
+     *
+     *        new timer.Timer().sizeOrderedTextReport(ListSearch.class)
+     *
+     *     Note that `timer.Timer` class prints text and xml reports to console, 
+     *     and it displays java swing report in a java swing frame view.
      */
 
-    // tests.runListSearchTest();
-
-    tests.runSetVsArrayListTest();
-  }
-
-  public void runListSearchTest() throws Exception {
-    /* You can order the output by collection sizes or by method names.
-     * To set the order of your output, USE THE FOLLOWING VALUES FOR 
-     * Timer.Order PARAMETER IN Timer.report():
-     *
-     * To order by SIZE, use Timer.Order.BY_SIZE
-     * To order by METHOD, use Timer.Order.BY_METHOD
-     */
-
-     /* To select your report format, USE THE FOLLOWING VALUES FOR 
-      * Timer.Format PARAMETER IN Timer.report():
-      *
-      * For Text report (tabular format printed to console), use 
-      * Timer.Format.TEXT
-      *
-      * For XML report (printed to console), use Timer.Format.XML
-      *
-      * For Java Swing report, use Timer.Format.JAVA_SWING
-      */
-
-    new Timer().report(ListSearch.class,
-        Timer.Order.BY_SIZE,
-        Timer.Format.TEXT);
-  }
-
-  public void runSetVsArrayListTest() throws Exception {
-    /* You can order the output by collection sizes or by method names.
-     * To set the order of your output, USE THE FOLLOWING VALUES FOR 
-     * Timer.Order PARAMETER IN Timer.report():
-     *
-     * To order by SIZE, use Timer.Order.BY_SIZE
-     * To order by METHOD, use Timer.Order.BY_METHOD
-     */
-
-     /* To select your report format, USE THE FOLLOWING VALUES FOR 
-      * Timer.Format PARAMETER IN Timer.report():
-      *
-      * For Text report (tabular format printed to console), use 
-      * Timer.Format.TEXT
-      *
-      * For XML report (printed to console), use Timer.Format.XML
-      *
-      * For Java Swing report, use Timer.Format.JAVA_SWING
-      */
-
-    new Timer().report(SetVsArrayList.class,
-        Timer.Order.BY_SIZE,
-        Timer.Format.TEXT);
+    /* new Timer().sizeOrderedTextReport(ListSearch.class); */
+    new Timer().sizeOrderedTextReport(SetVsArrayList.class);
   }
 }
