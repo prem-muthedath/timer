@@ -37,8 +37,8 @@ in `src/tests/timer/`) with concrete timing tests (i.e., public test methods to
 be timed) resuse this code to time all their timing tests.  The other object, 
 `TimingTest`, is  responsible for timing the test method it encapsulates.  My 
 core framework has 5 objects, compared to 2 in Beck's, but this increase is just 
-fine, because we now have tinier objects with clear responsibilities.  Finally, 
-I found my object names in Beck's own description of his timer framework!
+fine, because we now have tiny objects with clear responsibilities.  Finally, I 
+found my object names in Beck's own description of his timer framework!
 
 The framework here does exactly the same thing as Beck's: it times a set of test 
 methods over a range of collection sizes.  Just for fun, I have also designed a 
@@ -94,7 +94,7 @@ following the below steps:
 3. Invoke your timing tests class in the `main()` method of 
    `src/tests/timer/AllTests.java`.  You can use existing invocations of timing 
    test classes in the `main()` method as a reference;
-4. Finally compile and run the program (see the next section).
+4. Finally, compile and run the program (see the next section).
 
 ##### HOW TO RUN THE TIMING TESTS FROM A TERMINAL:
 
