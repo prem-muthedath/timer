@@ -88,8 +88,9 @@ following the below steps:
 
 1. Create a class that encapsulates the set of your timing tests.  This class 
    must be a subclass of `TimingTests.java` in the `framework` folder. Ensure as 
-   well that all timing tests in your class are public methods. You can use 
-   existing timing tests (such as `SetVsArrayList.java`) as a template;
+   well that all timing tests (i.e., test methods to be timed) in your class are 
+   public methods.  You can use existing set of timing tests (such as 
+   `SetVsArrayList.java`) as a template;
 2. Place the java file of your new class in `src/tests/timer` folder;
 3. Invoke your timing tests class in the `main()` method of 
    `src/tests/timer/AllTests.java`.  You can use existing invocations of timing 
