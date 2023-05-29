@@ -32,7 +32,7 @@ called `TimingTests`, an object that represents a set of timing tests (i.e., the
 set of test methods to be timed) for a given collection size.  Each timing test 
 in `TimingTests` is in turn represented by an object called `TimingTest`.  At 
 the framework level, `TimingTests` is an abstract class with no timing tests but 
-with code to time all timing tests.  Subclasses (such as `ListSearch.java` in 
+with code to time all timing tests.  Subclasses (such as `SetVsArrayList.java` in 
 `src/tests/timer/`) with concrete timing tests resuse this code to time all 
 their timing tests.  The other object, `TimingTest`, is  responsible for timing 
 the test method it encapsulates.  My core framework boils down to 5 objects, 
@@ -78,7 +78,7 @@ the Haskell library Criterion, which is beyond our scope.
 ##### Using the framework:
 
 You use the framework to run a set of timing tests encapsulated in a class. You 
-can see existing sets of timing tests (such as `ListSearch.java`) that I have 
+can see existing sets of timing tests (such as `SetVsArrayList.java`) that I have 
 taken from Beck's book in `src/tests/timer` folder.  These timing tests are 
 invoked from the `main()` method in `src/tests/timer/AllTests.java`.
 
@@ -88,7 +88,7 @@ following the below steps:
 1. Create a class that encapsulates the set of your timing tests.  This class 
    must be a subclass of `TimingTests.java` in the `framework` folder. Ensure as 
    well that all timing tests in your class are public methods. You can use 
-   existing timing tests (such as `ListSearch.java`) as a template;
+   existing timing tests (such as `SetVsArrayList.java`) as a template;
 2. Place the java file of your new class in `src/tests/timer` folder;
 3. Invoke your timing tests class in the `main()` method of 
    `src/tests/timer/AllTests.java`.  You can use existing invocations of timing 
