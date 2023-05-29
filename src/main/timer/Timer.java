@@ -15,9 +15,10 @@ import timer.reporting.SwingReport;
  *  classes to generate method timings for a set of timing tests over a range of 
  *  collection sizes and report those results in multiple formats and orders.
  *
- *  reported results are either collection-size ordered or method-name ordered, 
- *  and printed in text, xml, or java swing formats. text and xml reports are 
- *  printed to console; java swing report is shown in a java swing frame view.
+ *  `Timer` class exposes public methods that clients can invoke to generate 
+ *  method timings and report those results, sorted either by method names or by 
+ *  collection sizes, in plain text, xml, or java swing formats.  text and xml 
+ *  reports are printed to console; swing report is shown in a swing frame view.
  *
  *  java 1.7 API reference
  *  https://docs.oracle.com/en/java/javase/17/docs/api/
