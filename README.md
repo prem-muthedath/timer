@@ -79,7 +79,7 @@ the Haskell library Criterion, which is beyond our scope.
 
 You use the framework to run a set of timing tests encapsulated in a class. You 
 can see existing sets of timing tests (such as `ListSearch.java`) that I have 
-take from Beck's book in `src/tests/timer` folder.  These timing tests are 
+taken from Beck's book in `src/tests/timer` folder.  These timing tests are 
 invoked from the `main()` method in `src/tests/timer/AllTests.java`.
 
 If you would like to add your own set of timing tests, however, you can do so by 
