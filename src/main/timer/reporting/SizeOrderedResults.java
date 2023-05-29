@@ -19,8 +19,8 @@ public class SizeOrderedResults extends OrderedResults {
     report.bySize(super.sortedSizes(), super.timings());
   }
 
-  protected double[][] allTimingSlices() {
+  protected double[][] allSlicesOfTimings() {
     int sizeCount = super.sortedSizes().length;
-    return super.allTimingSlices(sizeCount);
+    return super.allSlicesOfTimings(sizeCount);
   }
 }

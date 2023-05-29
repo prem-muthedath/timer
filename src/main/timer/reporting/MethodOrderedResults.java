@@ -19,8 +19,8 @@ public class MethodOrderedResults extends OrderedResults {
     report.byMethod(super.sortedMethods(), super.timings());
   }
 
-  protected double[][] allTimingSlices() {
+  protected double[][] allSlicesOfTimings() {
     int methodCount = super.sortedMethods().length;
-    return super.allTimingSlices(methodCount);
+    return super.allSlicesOfTimings(methodCount);
   }
 }

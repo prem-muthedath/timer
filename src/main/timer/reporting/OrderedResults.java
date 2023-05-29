@@ -54,27 +54,27 @@ public abstract class OrderedResults extends Results {
 
   double[][] timings() {
     this.sort();
-    return this.allTimingSlices();
+    return this.allSlicesOfTimings();
   }
 
-  protected abstract double[][] allTimingSlices();
+  protected abstract double[][] allSlicesOfTimings();
 
-  double[][] allTimingSlices(int sliceCount) {
+  double[][] allSlicesOfTimings(int sliceCount) {
     int sliceSize = this.results.size()/sliceCount;
     double[][] timings = new double [sliceCount] [];
     for (int i = 0; i < sliceCount; i ++) {
       int from = i*sliceSize, to = from + sliceSize;
-      timings[i] = this.timingsSlice(from, to);
+      timings[i] = this.aSliceOfTimings(from, to);
     }
     return timings;
   }
 
-  private double[] timingsSlice(int from, int to) {
+  private double[] aSliceOfTimings(int from, int to) {
     List<Map<Schema, String>> slice = this.results.subList(from, to);
-    double[] timingsSlice = new double [slice.size()];
+    double[] aSliceOfTimings = new double [slice.size()];
     for (int i=0; i < slice.size(); i ++)
-      timingsSlice[i] = Double.parseDouble(this.getTiming(slice.get(i)));
-    return timingsSlice;
+      aSliceOfTimings[i] = Double.parseDouble(this.getTiming(slice.get(i)));
+    return aSliceOfTimings;
   }
 
   int[] sortedSizes() {
