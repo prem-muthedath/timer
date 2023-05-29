@@ -33,8 +33,8 @@ set of test methods to be timed) for a given collection size.  Each timing test
 in `TimingTests` is in turn represented by an object called `TimingTest`.  At 
 the framework level, `TimingTests` is an abstract class with no timing tests but 
 with code to time all timing tests.  Subclasses (such as `SetVsArrayList.java` 
-in `src/tests/timer/`) with concrete timing tests (i.e., public test methods to 
-be timed) resuse this code to time all their timing tests.  The other object, 
+in `src/tests/timer/`) with concrete timing tests (i.e., the public test methods 
+to be timed) resuse this code to time all their timing tests.  The other object, 
 `TimingTest`, is  responsible for timing the test method it encapsulates.  My 
 core framework has 5 objects, compared to 2 in Beck's, but this increase is just 
 fine, because we now have resolved issues 1 - 6 listed above using tiny objects 
@@ -88,8 +88,8 @@ following the below steps:
 
 1. Create a class that encapsulates the set of your timing tests.  This class 
    must be a subclass of `TimingTests.java` in the `framework` folder. Ensure as 
-   well that all timing tests (i.e., test methods to be timed) in your class are 
-   public methods.  You can use existing set of timing tests (such as 
+   well that all timing tests (i.e., the test methods to be timed) in your class 
+   are public methods.  You can use existing set of timing tests (such as 
    `SetVsArrayList.java`) as a template;
 2. Place the java file of your new class in `src/tests/timer` folder;
 3. Invoke your timing tests class in the `main()` method of 
