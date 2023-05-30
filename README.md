@@ -36,10 +36,10 @@ with code to time all timing tests.  Subclasses (such as `SetVsArrayList.java`
 in `src/tests/timer/`) with concrete timing tests (i.e., the public test methods 
 to be timed) resuse this code to time all their timing tests.  The other object, 
 `TimingTest`, is  responsible for timing the test method it encapsulates.  My 
-core framework has 5 objects, compared to 2 in Beck's, but this increase is just 
-fine, because we now have resolved issues 1 - 6 listed above using tiny objects 
-with clear responsibilities.  Finally, I found my object names in Beck's own 
-description of his timer framework!
+core framework (see `src/main/timer/framework/`) has 5 objects, compared to 2 in 
+Beck's, but this increase is fine, because we now have resolved issues 1 - 6 
+listed above using tiny objects with clear responsibilities.  Finally, I found 
+my object names in Beck's own description of his timer framework!
 
 The framework here does exactly the same thing as Beck's: it times a set of test 
 methods over a range of collection sizes.  Just for fun, I have also designed a 
@@ -53,7 +53,7 @@ java swing frame view. Sample reports are in `notes/sample-timer-reports`
 folder.  This folder also contains a sample output from Beck's timer.
 
 NOTE: `src/main/timer/Timer.java` offers public methods that clients can invoke 
-to not only generate method timings for a set of timing tests over a range of 
+not only to generate method timings for a set of timing tests over a range of 
 collection sizes but also to order and format the results. For example usage, 
 see `src/tests/timer/AllTests.java`.
 
@@ -83,8 +83,9 @@ can see existing sets of timing tests (such as `SetVsArrayList.java`) that I hav
 taken from Beck's book in `src/tests/timer` folder.  These timing tests are 
 invoked from the `main()` method in `src/tests/timer/AllTests.java`.
 
-If you would like to add your own set of timing tests, however, you can do so by 
-following the below steps:
+If you would like to add your own set of timing tests, however, you can follow 
+the steps below. Please note that step 1 is mandatory. For steps 2-4, you can 
+either follow the proposal below or craft your own version to meet your needs.
 
 1. Create a class that encapsulates the set of your timing tests.  This class 
    must be a subclass of `TimingTests.java` in the `framework` folder. Ensure as 
@@ -97,7 +98,7 @@ following the below steps:
    test classes in the `main()` method as a reference;
 4. Finally, compile and run the program (see the next section).
 
-##### HOW TO RUN THE TIMING TESTS FROM A TERMINAL:
+##### HOW TO RUN THE TIMING TESTS IN THIS REPO FROM A TERMINAL:
 
 1. `cd` to `timer` directory -- the top directory having this `README` file.
 2. If you do not have a `bin` directory, create an empty `bin` directory at the 
