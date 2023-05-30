@@ -84,8 +84,8 @@ taken from Beck's book in `src/tests/timer` folder.  These timing tests are
 invoked from the `main()` method in `src/tests/timer/AllTests.java`.
 
 If you would like to add your own set of timing tests, however, you can follow 
-the steps below. Please note that step 1 is mandatory. For steps 2-4, you can 
-either follow the proposal below or craft your own version to meet your needs.
+the steps below. Note that step 1 is mandatory. For steps 2-4, you can either 
+follow the proposal below or craft your own version to meet your needs.
 
 1. Create a class that encapsulates the set of your timing tests.  This class 
    must be a subclass of `TimingTests.java` in the `framework` folder. Ensure as 
