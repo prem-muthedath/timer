@@ -16,7 +16,7 @@ public class MethodOrderedResults extends OrderedResults {
   }
 
   void report(Report report) {
-    report.byMethod(super.sortedMethods(), super.timings());
+    report.viewByMethod(super.sortedMethods(), super.timings());
   }
 
   protected double[][] allSlicesOfTimings() {

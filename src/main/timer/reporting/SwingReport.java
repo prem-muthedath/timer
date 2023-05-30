@@ -24,7 +24,7 @@ public class SwingReport extends Report {
     this.frame.setVisible(true);
   }
 
-  protected void bySize(int[] sizes, double[][] timings) {
+  protected void viewBySize(int[] sizes, double[][] timings) {
     this.resetDisplay(sizes.length + 1);
     this.addMethodHeaders();
     for (int i=0; i < sizes.length; i++)
@@ -38,7 +38,7 @@ public class SwingReport extends Report {
       this.addHeader(TextFormat.methodLabel(methods[i]));
   }
 
-  protected void byMethod(String[] methods, double[][] timings) {
+  protected void viewByMethod(String[] methods, double[][] timings) {
     this.resetDisplay(methods.length + 1);
     this.addSizeHeaders();
     for (int i=0; i < methods.length; i++)

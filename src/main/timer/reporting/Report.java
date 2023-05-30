@@ -24,8 +24,8 @@ public abstract class Report {
     return this.results.sortedMethods();
   }
 
-  protected abstract void bySize(int[] sizes, double[][] timings);
-  protected abstract void byMethod(String[] methods, double[][] timings);
+  protected abstract void viewBySize(int[] sizes, double[][] timings);
+  protected abstract void viewByMethod(String[] methods, double[][] timings);
 
 }
 

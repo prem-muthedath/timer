@@ -11,21 +11,21 @@ public class XmlReport extends Report {
   }
 
   public void view() {
-    this.header();
+    this.printHeader();
     super.view();
-    this.footer();
+    this.printFooter();
   }
 
-  private void header() {
+  private void printHeader() {
     System.out.println("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
     System.out.println("<method-timings units=\"nanoseconds\">");
   }
 
-  private void footer() {
+  private void printFooter() {
     System.out.println("</method-timings>");
   }
 
-  protected void bySize(int[] sizes, double[][] timings) {
+  protected void viewBySize(int[] sizes, double[][] timings) {
     for (int i=0; i < sizes.length; i++)
       System.out.println(this.sizeElements(sizes[i], timings[i]));
   }
@@ -38,7 +38,7 @@ public class XmlReport extends Report {
     return this.sizeElement(size, result);
   }
 
-  protected void byMethod(String[] methods, double[][] timings) {
+  protected void viewByMethod(String[] methods, double[][] timings) {
     for (int i=0; i < methods.length; i++)
       System.out.println(this.methodElements(methods[i], timings[i]));
   }

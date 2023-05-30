@@ -19,7 +19,7 @@ public class TextReport extends Report {
     System.out.println(TextFormat.title("********** Method Timings (nanoseconds):"));
   }
 
-  protected void bySize(int[] sizes, double[][] timings) {
+  protected void viewBySize(int[] sizes, double[][] timings) {
     this.printMethodHeadersRow();
     for (int i=0; i < sizes.length; i++)
       this.printDataRow(TextFormat.sizeLabel(sizes[i]), timings[i]);
@@ -33,7 +33,7 @@ public class TextReport extends Report {
     System.out.println(header);
   }
 
-  protected void byMethod(String[] methods, double[][] timings) {
+  protected void viewByMethod(String[] methods, double[][] timings) {
     this.printSizeHeadersRow();
     for (int i=0; i < methods.length; i++)
       this.printDataRow(TextFormat.methodLabel(methods[i]), timings[i]);

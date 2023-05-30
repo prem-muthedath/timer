@@ -3,11 +3,11 @@ package timer;
 import timer.Timer;
 
 /** This test class acts aa a client of the timer framework, requesting the 
- *  framework to run sets of tiiming tests encapsulated as classes. The two sets 
- *  of timing tests, encapsulated as classes, used here all come from Kent 
- *  Beck's "Implementation Patterns" book, which has many more timing tests 
- *  classes. I have slightly modified these two classes from Beck's book to fit 
- *  my needs.  These two classes are in the same package as this class.
+ *  framework to run sets of tiiming tests encapsulated as classes. The sets of 
+ *  timing tests, encapsulated as classes, used here all come from Kent Beck's 
+ *  "Implementation Patterns" book, which has many more timing tests classes. I 
+ *  have slightly modified these test classes from Beck's book to fit my needs.  
+ *  These test classes are in the same package as this class.
  *
  *  java 1.7 API reference
  *  https://docs.oracle.com/en/java/javase/17/docs/api/
