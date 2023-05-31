@@ -3,7 +3,6 @@ package timer.reporting;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Arrays;
 import java.util.Map;
 import java.util.EnumMap;
 import java.util.Comparator;
@@ -27,18 +26,6 @@ public abstract class OrderedResults extends Results {
     this.results.add(result);
   }
 
-  private String getSize(Map<Schema, String> item) {
-    return item.get(Schema.SIZE);
-  }
-
-  private String getMethod(Map<Schema, String> item) {
-    return item.get(Schema.METHOD);
-  }
-
-  private String getTiming(Map<Schema, String> item) {
-    return item.get(Schema.TIMING);
-  }
-
   private void sort() {
     /* see /u/ paul mckenzie @ https://tinyurl.com/3fjxenyf (so) */
     Collections.sort(this.results, new Comparator<Map<Schema, String>>() {
@@ -52,6 +39,10 @@ public abstract class OrderedResults extends Results {
   protected abstract int sort(String oneSize, String anotherSize, String oneMethod, String anotherMethod);
   abstract void report(Report report);
 
+  private int size() {
+    return this.results.size();
+  }
+
   double[][] timings() {
     this.sort();
     return this.allSlicesOfTimings();
@@ -60,7 +51,7 @@ public abstract class OrderedResults extends Results {
   protected abstract double[][] allSlicesOfTimings();
 
   double[][] allSlicesOfTimings(int sliceCount) {
-    int sliceSize = this.results.size()/sliceCount;
+    int sliceSize = this.size()/sliceCount;
     double[][] timings = new double [sliceCount] [];
     for (int i = 0; i < sliceCount; i ++) {
       int from = i*sliceSize, to = from + sliceSize;
@@ -73,38 +64,21 @@ public abstract class OrderedResults extends Results {
     List<Map<Schema, String>> slice = this.results.subList(from, to);
     double[] aSliceOfTimings = new double [slice.size()];
     for (int i=0; i < slice.size(); i ++)
-      aSliceOfTimings[i] = Double.parseDouble(this.getTiming(slice.get(i)));
+      aSliceOfTimings[i] = Double.parseDouble(slice.get(i).get(Schema.TIMING));
     return aSliceOfTimings;
   }
 
   int[] sortedSizes() {
-    List<String> uniqueSizes = new ArrayList<String>();
-    for (Map<Schema, String> each : this.results) {
-      String size=this.getSize(each);
-      if (uniqueSizes.contains(size)) continue;
-      uniqueSizes.add(size);
-    }
-    return this.sortedSizes(uniqueSizes);
-  }
-
-  private int[] sortedSizes(List<String> uniqueSizes) {
-    int[] result = new int [uniqueSizes.size()];
-    for (int i=0; i < uniqueSizes.size(); i++)
-      result[i] = Integer.parseInt(uniqueSizes.get(i));
-    Arrays.sort(result);
-    return result;
+    String[] sizes = new String [this.size()];
+    for (int i=0; i < sizes.length; i++)
+      sizes[i] = this.results.get(i).get(Schema.SIZE);
+    return new SizeOrMethodParameter().sortedSizes(sizes);
   }
 
   String[] sortedMethods() {
-    List<String> uniqueMethods = new ArrayList<String>();
-    for (Map<Schema, String> each : this.results) {
-      String method = this.getMethod(each);
-      if (uniqueMethods.contains(method)) continue;
-      uniqueMethods.add(method);
-    }
-    Collections.sort(uniqueMethods);
-    /* see /u/ waxwing @ https://tinyurl.com/5a3dj2ck (so) */
-    return Arrays.copyOf(uniqueMethods.toArray(), uniqueMethods.size(), String[].class);
+    String[] methods = new String [this.size()];
+    for (int i=0; i < methods.length; i++)
+      methods[i] = this.results.get(i).get(Schema.METHOD);
+    return new SizeOrMethodParameter().sortedMethods(methods);
   }
-
 }
