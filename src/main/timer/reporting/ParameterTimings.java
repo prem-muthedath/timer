@@ -17,11 +17,11 @@ import java.util.Collection;
 abstract class ParameterTimings {
   abstract int size();
   /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
-  abstract Collection<Double> timingValues();
+  abstract Collection<Double> rawValues();
 
-  double[] timings() {
+  double[] values() {
     double[] timings = new double [this.size()];
-    List <Double> vals = new ArrayList<Double>(this.timingValues());
+    List <Double> vals = new ArrayList<Double>(this.rawValues());
     for (int i=0; i < vals.size(); i++)
       timings[i] = vals.get(i).doubleValue();
     return timings;

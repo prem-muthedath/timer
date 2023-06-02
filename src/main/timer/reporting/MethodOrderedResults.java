@@ -37,7 +37,7 @@ public class MethodOrderedResults extends OrderedResults {
   }
 
   /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
-  java.util.Collection<SizeTimings> timingValues() {
+  java.util.Collection<SizeTimings> parameterTimings() {
     return this.results.values();
   }
 

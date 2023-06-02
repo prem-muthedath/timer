@@ -26,7 +26,7 @@ class MethodTimings extends ParameterTimings {
   }
 
   /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
-  java.util.Collection<Double> timingValues() {
+  java.util.Collection<Double> rawValues() {
     return this.methodTimings.values();
   }
 

@@ -29,9 +29,9 @@ public abstract class OrderedResults extends Results {
    */
   double[][] timings() {
     double[][] timings = new double [this.size()] [];
-    List <ParameterTimings> vals = new ArrayList<ParameterTimings>(this.timingValues());
-    for (int i=0; i < vals.size(); i++)
-      timings[i] = vals.get(i).timings();
+    List <ParameterTimings> parameterTimings = new ArrayList<ParameterTimings>(this.parameterTimings());
+    for (int i=0; i < parameterTimings.size(); i++)
+      timings[i] = parameterTimings.get(i).values();
     return timings;
   }
 
@@ -39,5 +39,5 @@ public abstract class OrderedResults extends Results {
   abstract int size();
 
   /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
-  abstract java.util.Collection<? extends ParameterTimings> timingValues();
+  abstract java.util.Collection<? extends ParameterTimings> parameterTimings();
 }
