@@ -20,14 +20,9 @@ public class SizeOrderedResults extends OrderedResults {
 
   protected void add(int size, String method, double timing) {
     Integer key = Integer.valueOf(size);
-    if (this.results.containsKey(key)) {
-        MethodTimings val = this.results.get(key);
-        val.add(method, timing);
-    } else {
-        MethodTimings val = new MethodTimings();
-        val.add(method, timing);
-        this.results.put(key, val);
-    }
+    MethodTimings val = this.results.containsKey(key) ? this.results.get(key) : new MethodTimings();
+    val.add(method, timing);
+    this.results.put(key, val);
   }
 
   void report(Report report) {

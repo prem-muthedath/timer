@@ -21,14 +21,9 @@ public class MethodOrderedResults extends OrderedResults {
 
   protected void add(int size, String method, double timing) {
     String key = method;
-    if (this.results.containsKey(key)) {
-        SizeTimings val = this.results.get(key);
-        val.add(size, timing);
-    } else {
-        SizeTimings val = new SizeTimings();
-        val.add(size, timing);
-        this.results.put(key, val);
-    }
+    SizeTimings val = this.results.containsKey(key) ? this.results.get(key) : new SizeTimings();
+    val.add(size, timing);
+    this.results.put(key, val);
   }
 
   void report(Report report) {
