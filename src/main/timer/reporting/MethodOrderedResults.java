@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-/** Represents timing tests results ordered by method name.
+/** Represents timing tests results ordered by test method name for reports.
  *  java 1.7 API reference
  *  https://docs.oracle.com/en/java/javase/17/docs/api/
  *
@@ -26,19 +26,21 @@ public class MethodOrderedResults extends OrderedResults {
     this.results.put(key, val);
   }
 
+  /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
   void report(Report report) {
-    report.viewByMethod(this.sortedMethods(), super.timings());
+    /* timings grouped by test method name, which is why it is a 2d array. */
+    double[][] timings = new double [this.size()] [];
+    List<SizeTimings> sizeTimings = new ArrayList<SizeTimings>(this.results.values());
+    for (int i=0; i < sizeTimings.size(); i++)
+      timings[i] = sizeTimings.get(i).values();
+    report.viewByMethod(this.sortedMethods(), timings);
   }
 
+  /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
   String[] sortedMethods() {
     List<String> keys = new ArrayList<String>(this.results.keySet());
     /* see /u/ waxwing @ https://tinyurl.com/5a3dj2ck (so) */
     return Arrays.copyOf(keys.toArray(), keys.size(), String[].class);
-  }
-
-  /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
-  java.util.Collection<SizeTimings> parameterTimings() {
-    return this.results.values();
   }
 
   int[] sortedSizes() {
@@ -46,8 +48,7 @@ public class MethodOrderedResults extends OrderedResults {
     return this.results.get(first).sizes();
   }
 
-  int size() {
+  private int size() {
     return this.results.size();
   }
-
 }

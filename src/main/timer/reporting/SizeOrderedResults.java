@@ -4,7 +4,7 @@ import java.util.TreeMap;
 import java.util.List;
 import java.util.ArrayList;
 
-/** Represents timing tests results ordered by collection size.
+/** Represents timing tests results ordered by collection size for reports.
  *  java 1.7 API reference
  *  https://docs.oracle.com/en/java/javase/17/docs/api/
  *
@@ -25,10 +25,17 @@ public class SizeOrderedResults extends OrderedResults {
     this.results.put(key, val);
   }
 
+  /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
   void report(Report report) {
-    report.viewBySize(this.sortedSizes(), super.timings());
+    /* timings grouped by collection size, which is why it is a 2d array. */
+    double[][] timings = new double [this.size()] [];
+    List<MethodTimings> methodTimings = new ArrayList<MethodTimings>(this.results.values());
+    for (int i=0; i < methodTimings.size(); i++)
+      timings[i] = methodTimings.get(i).values();
+    report.viewBySize(this.sortedSizes(), timings);
   }
 
+  /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
   int[] sortedSizes() {
     int[] sizes = new int [this.size()];
     List<Integer> keys = new ArrayList<Integer>(this.results.keySet());
@@ -37,17 +44,12 @@ public class SizeOrderedResults extends OrderedResults {
     return sizes;
   }
 
-  /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
-  java.util.Collection<MethodTimings> parameterTimings() {
-    return this.results.values();
-  }
-
   String[] sortedMethods() {
     Integer first = this.results.firstKey();
     return this.results.get(first).methods();
   }
 
-  int size() {
+  private int size() {
     return this.results.size();
   }
 }

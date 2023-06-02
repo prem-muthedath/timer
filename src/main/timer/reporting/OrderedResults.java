@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 import timer.framework.Results;
 
-/** Represents timing tests results ordered in some way.
- *  This class has all common code that subclasses use.
+/** Represents timing tests results ordered in some way for reports.
  *
  *  java 1.7 API reference
  *  https://docs.oracle.com/en/java/javase/17/docs/api/
@@ -23,21 +22,4 @@ public abstract class OrderedResults extends Results {
   /* unique sorted methods. */
   abstract String[] sortedMethods();
 
-  /* all recorded timings, grouped by values of ordering parameter (i.e., 
-   * collection size or method name). this grouping is why you have a 
-   * 2-dimensional array as result.
-   */
-  double[][] timings() {
-    double[][] timings = new double [this.size()] [];
-    List <ParameterTimings> parameterTimings = new ArrayList<ParameterTimings>(this.parameterTimings());
-    for (int i=0; i < parameterTimings.size(); i++)
-      timings[i] = parameterTimings.get(i).values();
-    return timings;
-  }
-
-  /* how many timing test results do we have? */
-  abstract int size();
-
-  /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
-  abstract java.util.Collection<? extends ParameterTimings> parameterTimings();
 }
