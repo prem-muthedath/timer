@@ -5,7 +5,7 @@ import java.util.ArrayList;
 
 import timer.framework.Results;
 
-/** Represents timing tests results ordered in some way for reports.
+/** Represents timing tests results ordered in some way for reporting.
  *
  *  java 1.7 API reference
  *  https://docs.oracle.com/en/java/javase/17/docs/api/

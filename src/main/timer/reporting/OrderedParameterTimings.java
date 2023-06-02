@@ -4,8 +4,9 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.Collection;
 
-/** Represents set of timings associated with a range of values of a single 
- *  parameter (such as collection size or timing test method name).
+/** Represents set of method timings associated with a range of values of a 
+ *  single parameter (such as collection size or timing test method name).  
+ *  Subclasses report timings in ascending order of the parameter values.
  *
  *  This class has all common code that subclasses use.
  *
@@ -14,11 +15,12 @@ import java.util.Collection;
  *
  *  author: Prem Muthedath
  */
-abstract class ParameterTimings {
+abstract class OrderedParameterTimings {
   abstract int size();
   /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
   abstract Collection<Double> rawValues();
 
+  /* timings reported in ascending order of the parameter values. */
   double[] values() {
     double[] timings = new double [this.size()];
     List <Double> vals = new ArrayList<Double>(this.rawValues());
