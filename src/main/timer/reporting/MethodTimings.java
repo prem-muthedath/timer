@@ -3,6 +3,7 @@ package timer.reporting;
 import java.util.TreeMap;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /** Represents timings of all timing test methods for a certain collection size. 
  *  The timings are ordered by test method names.
@@ -30,11 +31,9 @@ class MethodTimings extends ParameterTimings {
   }
 
   String[] methods() {
-    String[] methods = new String [this.size()];
     List<String> keys = new ArrayList<String>(this.methodTimings.keySet());
-    for (int i=0; i < keys.size(); i++)
-      methods[i] = keys.get(i);
-    return methods;
+    /* see /u/ waxwing @ https://tinyurl.com/5a3dj2ck (so) */
+    return Arrays.copyOf(keys.toArray(), keys.size(), String[].class);
   }
 
   int size() {
