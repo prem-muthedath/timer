@@ -1,26 +1,58 @@
 package timer.reporting;
 
-import java.util.Comparator;
+import java.util.TreeMap;
+import java.util.List;
+import java.util.ArrayList;
 
-/* java 1.7 API reference
- * https://docs.oracle.com/en/java/javase/17/docs/api/
+/** Represents timing tests results ordered by collection size.
+ *  java 1.7 API reference
+ *  https://docs.oracle.com/en/java/javase/17/docs/api/
  *
- * author: Prem Muthedath
+ *  author: Prem Muthedath
  */
 public class SizeOrderedResults extends OrderedResults {
-  protected int sort(String oneSize, String anotherSize, String oneMethod, String anotherMethod) {
-    /* see /u/ paul mckenzie @ https://tinyurl.com/3fjxenyf (so) */
-    return Integer.valueOf(oneSize).compareTo(Integer.valueOf(anotherSize)) == 0 ?
-      oneMethod.compareTo(anotherMethod) :
-      Integer.valueOf(oneSize).compareTo(Integer.valueOf(anotherSize));
+  /* for TreeMap, see java 1.7 oracle docs @ https://tinyurl.com/54nmsmtk */
+  private TreeMap<Integer, MethodTimings> results;
+
+  public SizeOrderedResults() {
+    this.results = new TreeMap<Integer, MethodTimings>();
+  }
+
+  protected void add(int size, String method, double timing) {
+    Integer key = Integer.valueOf(size);
+    if (this.results.containsKey(key)) {
+        MethodTimings val = this.results.get(key);
+        val.add(method, timing);
+    } else {
+        MethodTimings val = new MethodTimings();
+        val.add(method, timing);
+        this.results.put(key, val);
+    }
   }
 
   void report(Report report) {
-    report.viewBySize(super.sortedSizes(), super.timings());
+    report.viewBySize(this.sortedSizes(), super.timings());
   }
 
-  protected double[][] allSlicesOfTimings() {
-    int sizeCount = super.sortedSizes().length;
-    return super.allSlicesOfTimings(sizeCount);
+  int[] sortedSizes() {
+    int[] sizes = new int [this.size()];
+    List<Integer> keys = new ArrayList<Integer>(this.results.keySet());
+    for (int i=0; i < keys.size(); i++)
+      sizes[i] = keys.get(i).intValue();
+    return sizes;
+  }
+
+  /* https://www3.ntu.edu.sg/home/ehchua/programming/java/JavaGeneric.html */
+  java.util.Collection<MethodTimings> timingValues() {
+    return this.results.values();
+  }
+
+  String[] sortedMethods() {
+    Integer first = this.results.firstKey();
+    return this.results.get(first).methods();
+  }
+
+  int size() {
+    return this.results.size();
   }
 }
