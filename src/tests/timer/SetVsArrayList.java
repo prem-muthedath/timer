@@ -15,7 +15,9 @@ import timer.framework.TimingTests;
  *
  *  Terminology:
  *  Note that `timing test` is same as `timing test method` or `test method`.  
- *  All these terms refer to a public method in this class.
+ *  All these terms refer to a public method in this class that will be run and 
+ *  timed by the `Timer` framework. The `Timer` frammwork, in fact, selects and 
+ *  times all public methods, which are all timing tests, in this class.
  *
  *  original source of this code: Kent Beck's 'Implementation Patterns' book.
  *  Prem slightly modified Beck's code to suit his design here.
