@@ -91,7 +91,7 @@ follow the proposal below or craft your own version to meet your needs.
    must be a subclass of `TimingTests.java` in the `framework` folder. Ensure as 
    well that all timing tests (i.e., the test methods to be timed) in your class 
    are `public` methods taking no arguments and having `void` as return type.  
-   You can use existing set of timing tests (such as `SetVsArrayList.java`) in 
+   You can use existing timing tests (such as `SetVsArrayList.java`) in 
    `src/tests/timer` folder as a template;
 2. Place the java file of your new class in `src/tests/timer` folder;
 3. Invoke your timing tests class in the `main()` method of 
