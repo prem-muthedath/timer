@@ -10,14 +10,28 @@ import timer.framework.TimingTests;
 
 /** Timing tests encapsulated for Set vs ArrayList comparison.
  *
- *  Each public method in this class is a timing test method.
- *  All timing tests have to be public methods.
+ *  NNOTE:
+ *    1. To encapsulate a set of timing tests in a class, your class should 
+ *       first extend the `timer.framework.TimingTests` class. See below code.
+ *    2. Each public method in this class, or in any other class that 
+ *       encapsulates a set of timing tests, is a timing test method.
+ *    3. All timing tests have to be `public` methods taking no arguments and 
+ *       having return type as `void`. They should also be not throwing any  
+ *       exceptions explicitly in their signatures.
+ *    4. Any timing test that modifies a collection in any way must restore that 
+ *       collection back to its original state.  This is very important to avoid 
+ *       dependencies between tests.
+ *    5. Finally, you should implement the abstract methods `copy()` and 
+ *       `size()` defined in `timer.framework.TimingTests` class; see the 
+ *       implementations below for a sample.
  *
  *  Terminology:
- *  Note that `timing test` is same as `timing test method` or `test method`.  
- *  All these terms refer to a public method in this class that will be run and 
- *  timed by the `Timer` framework. The `Timer` frammwork, in fact, selects and 
- *  times all public methods, which are all timing tests, in this class.
+ *    Note that `timing test` is same as `timing test method` or `test method`.  
+ *    All these terms refer to a public method in this class, or in any other 
+ *    class that encapsulates a set of timing tests, that will be run and timed 
+ *    by the `Timer` framework. The `Timer` frammwork, in fact, selects and runs 
+ *    and times all public methods, the timing tests, in this class, or in any 
+ *    other class that encapsulates a set of timing tests.
  *
  *  original source of this code: Kent Beck's 'Implementation Patterns' book.
  *  Prem slightly modified Beck's code to suit his design here.
@@ -45,12 +59,18 @@ public class SetVsArrayList extends TimingTests {/* Prem added this inheritance 
     probe= String.format("a%d", size / 2);
   }
 
-  /* Prem added this method to run the timing tests in his framework. */
+  /* return the collection size associated with this instance.
+   * any class encapsulating a set of timing tests must implement this method.
+   * Prem added this method to run the timing tests in his framework.
+   */
   protected int size()  {
     return arrayList.size();
   }
 
-  /* Prem added this method to run the timing tests in his framework. */
+  /* a new instance of this class having the same size as the current instance.
+   * any class encapsulating a set of timing tests must implement this method.
+   * Prem added this method to run the timing tests in his framework.
+   */
   protected TimingTests copy() {
     return new SetVsArrayList(size());
   }

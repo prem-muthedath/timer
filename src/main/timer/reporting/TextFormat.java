@@ -7,23 +7,23 @@ package timer.reporting;
  */
 class TextFormat {
   static String title(String title) {
-    return String.format("%-25s", title);
+    return String.format("%-30s", title);
   }
 
   static String leftMargin() {
-    return String.format("%-25s", "");
+    return String.format("%-30s", "");
   }
 
   static String sizeLabel(int size) {
-    return String.format("%-25s", "size=" + size);
+    return String.format("%-30s", "size=" + size);
   }
 
   static String methodLabel(String method) {
-    return String.format("%-25s", method);
+    return String.format("%-30s", method);
   }
 
   static String timingValue(double timing) {
-    return String.format("%-25.2f", timing);
+    return String.format("%-30.2f", timing);
   }
 
 }

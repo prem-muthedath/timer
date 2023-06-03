@@ -67,5 +67,7 @@ public class AllTests {
 
     /* new Timer().sizeOrderedTextReport(ListSearch.class); */
     new Timer().sizeOrderedTextReport(SetVsArrayList.class);
+    /* new Timer().sizeOrderedTextReport(Lists.class); */
+    /* new Timer().methodOrderedTextReport(Maps.class); */
   }
 }
