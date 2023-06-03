@@ -10,17 +10,17 @@ import timer.framework.TimingTests;
 
 /** Timing tests encapsulated for Set vs ArrayList comparison.
  *
- *  NNOTE:
+ *  NOTE:
  *    1. To encapsulate a set of timing tests in a class, your class should 
  *       first extend the `timer.framework.TimingTests` class. See below code.
  *    2. Each public method in this class, or in any other class that 
  *       encapsulates a set of timing tests, is a timing test method.
  *    3. All timing tests have to be `public` methods taking no arguments and 
- *       having return type as `void`. They should also be not throwing any  
+ *       having the return type as `void`. They should also be not throwing any  
  *       exceptions explicitly in their signatures.
- *    4. Any timing test that modifies a collection in any way must restore that 
- *       collection back to its original state.  This is very important to avoid 
- *       dependencies between tests.
+ *    4. Any timing test that modifies a collection or the state of your timing 
+ *       tests class in any way must restore the objects back to their original 
+ *       states.  This is very important to avoid dependencies between tests.
  *    5. Finally, you should implement the abstract methods `copy()` and 
  *       `size()` defined in `timer.framework.TimingTests` class; see the 
  *       implementations below for a sample.
