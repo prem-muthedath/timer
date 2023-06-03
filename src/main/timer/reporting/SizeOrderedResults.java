@@ -50,6 +50,8 @@ public class SizeOrderedResults extends OrderedResults {
   }
 
   String[] sortedMethods() {
+    if (this.size() == 0)
+      return new String [0];
     Integer first = this.results.firstKey();
     return this.results.get(first).methods();
   }

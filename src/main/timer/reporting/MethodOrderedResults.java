@@ -48,6 +48,8 @@ public class MethodOrderedResults extends OrderedResults {
   }
 
   int[] sortedSizes() {
+    if (this.size() == 0)
+      return new int [0];
     String first = this.results.firstKey();
     return this.results.get(first).sizes();
   }

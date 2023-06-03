@@ -90,14 +90,16 @@ follow the proposal below or craft your own version to meet your needs.
 1. Create a class that encapsulates the set of your timing tests.  This class 
    must be a subclass of `TimingTests.java` in the `framework` folder, and you 
    should implement `copy()` and `size()`, two abstract methods defined in that 
-   class. Ensure as well that all timing tests (i.e., the test methods to be 
-   timed) in your class are `public` methods taking no arguments and having the 
-   return type as `void`. These methods shouldn't be throwing any explicit 
-   exceptions in their signatures either. Finally, to avoid dependencies between 
-   tests, any timing test you write must ensure that if it modifies the 
-   collection or the state of your class in any way, it will restore the objects 
-   back to their original states. You can use existing timing tests (such as 
-   `SetVsArrayList.java`) in `src/tests/timer` folder as a template;
+   class. Your class must have a single public constructor that takes a single 
+   argument: the collection size for the timing tests as an `int`. Ensure as 
+   well that all timing tests (i.e., the test methods to be timed) in your class 
+   are `public` methods taking no arguments and having `void` as the return 
+   type. These methods shouldn't be throwing any explicit exceptions in their 
+   signatures either.  Finally, to avoid dependencies between tests, any timing 
+   test you write must ensure that if it modifies the collection or the state of 
+   your class in any way, it will restore the objects back to their original 
+   states.  You can use existing timing tests (such as `SetVsArrayList.java`) in 
+   `src/tests/timer` folder as a template;
 2. Place the java file of your new class in `src/tests/timer` folder;
 3. Invoke your timing tests class in the `main()` method of 
    `src/tests/timer/AllTests.java`.  You can use existing invocations of timing 
