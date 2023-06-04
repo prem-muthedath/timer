@@ -12,9 +12,19 @@ public abstract class Report {
     this.results = results;
   }
 
-  public void view() {
+  public void view(Class<?> testClass) {
+    this.viewTitle(testClass.getSimpleName());
+    this.viewData();
+    this.viewFooter();
+  }
+
+  void viewTitle(String testClass) {}
+
+  void viewData() {
     this.results.report(this);
   }
+
+  void viewFooter() {}
 
   int[] sizes() {
     return this.results.sortedSizes();

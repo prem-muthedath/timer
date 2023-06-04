@@ -15,11 +15,15 @@ public class SwingReport extends Report {
   private JFrame frame;
   public SwingReport(OrderedResults results) {
     super(results);
-    this.frame = new JFrame("Method Timings (nanoseconds)");
+    this.frame = new JFrame();
   }
 
-  public void view() {
-    super.view();
+  void viewTitle(String testClass) {
+    this.frame.setTitle(testClass + " Class Method Timings (nanoseconds)");
+  }
+
+  void viewData() {
+    super.viewData();
     this.frame.pack();
     this.frame.setVisible(true);
   }

@@ -54,7 +54,7 @@ public class ListSearch extends TimingTests { /* Prem added this inheritance */
   }
 
   /* timing test method for list search. This method comes from Kent Beck. */
-  public void listSearch() {
+  public void arrayListSearch() {
     numbers.contains(probe);
   }
 

@@ -6,23 +6,23 @@ package timer.reporting;
  * author: Prem Muthedath
  */
 public class XmlReport extends Report {
+  /* define couple of string constants. */
+  private final String TESTS_LABEL="timing-tests";
+  private final String TIMINGS_LABEL="method-timings";
+
   public XmlReport(OrderedResults results) {
     super(results);
   }
 
-  public void view() {
-    this.printHeader();
-    super.view();
-    this.printFooter();
-  }
-
-  private void printHeader() {
+  void viewTitle(String testClass) {
     System.out.println("<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>");
-    System.out.println("<method-timings units=\"nanoseconds\">");
+    System.out.println(this.attrTag(this.TESTS_LABEL, "class", testClass));
+    System.out.println(this.attrTag(this.TIMINGS_LABEL, "units", "nanoseconds"));
   }
 
-  private void printFooter() {
-    System.out.println("</method-timings>");
+  void viewFooter() {
+    System.out.println(this.closeTag(this.TIMINGS_LABEL));
+    System.out.println(this.closeTag(this.TESTS_LABEL));
   }
 
   protected void viewBySize(int[] sizes, double[][] timings) {
@@ -63,6 +63,14 @@ public class XmlReport extends Report {
 
   private String timingElement(double timing) {
     return "<timing>" + String.format("%.2f", timing) + "</timing>";
+  }
+
+  private String attrTag(String name, String attrName, String attrValue) {
+    return "<" + name + " " + attrName + "=\"" + attrValue + "\">";
+  }
+
+  private String closeTag(String name) {
+    return "</" + name + ">";
   }
 
 }

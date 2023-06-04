@@ -10,13 +10,8 @@ public class TextReport extends Report {
     super(results);
   }
 
-  public void view() {
-    this.printTitle();
-    super.view();
-  }
-
-  private void printTitle() {
-    System.out.println(TextFormat.title("********** Method Timings (nanoseconds):"));
+  void viewTitle(String testClass) {
+    System.out.println(TextFormat.title("********** " + testClass + " Class Method Timings (nanoseconds):"));
   }
 
   protected void viewBySize(int[] sizes, double[][] timings) {

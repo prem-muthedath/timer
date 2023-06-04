@@ -65,9 +65,9 @@ public class AllTests {
      *     and it displays java swing report in a java swing frame view.
      */
 
-    new Timer().methodOrderedTextReport(ZeroTimingTests.class);
-    new Timer().methodOrderedTextReport(ListSearch.class);
-    /* new Timer().sizeOrderedTextReport(SetVsArrayList.class); */
+    new Timer().sizeOrderedTextReport(ZeroTimingTests.class);
+    /* new Timer().methodOrderedTextReport(ListSearch.class); */
+    new Timer().sizeOrderedTextReport(SetVsArrayList.class);
     /* new Timer().sizeOrderedTextReport(Lists.class); */
     /* new Timer().methodOrderedTextReport(Maps.class); */
   }

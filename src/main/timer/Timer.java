@@ -91,7 +91,7 @@ public class Timer {
     OrderedResults results = this.results(order);
     new timer.framework.CollectionTimer(tests).run(results);
     Report report = this.report(format, results);
-    report.view();
+    report.view(tests);
   }
 
   /* You can order the output by collection sizes or by method names.
