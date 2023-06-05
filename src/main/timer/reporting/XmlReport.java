@@ -14,7 +14,7 @@ public class XmlReport extends Report {
   }
 
   void viewTitle(String testClass) {
-    this.setRoot(this.tag("timing-tests", "class", testClass));
+    this.setRoot(new Tag("timing-tests", "class", testClass));
     System.out.println(this.prolog);
   }
 
@@ -38,7 +38,7 @@ public class XmlReport extends Report {
   }
 
   private void print(Xml[] allData) {
-    Tag dataRoot = this.tag("method-timings", "units", "nanoseconds");
+    Tag dataRoot = new Tag("method-timings", "units", "nanoseconds");
     Xml xml = new XmlElements(root, new XmlElements(dataRoot, allData));
     System.out.println(xml);
   }
@@ -56,10 +56,6 @@ public class XmlReport extends Report {
     for (int i=0; i < timings.length; i++)
       results[i] = new Size(sizes[i]).toXml(timings[i]);
     return new Method(method).toXml(results);
-  }
-
-  private Tag tag(String name, String attrName, String attrValue) {
-    return new Tag(name, new TagAttribute(attrName, attrValue));
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
@@ -91,7 +87,7 @@ public class XmlReport extends Report {
 
     Tag tag() {
       String formattedValue = String.format("%s", this.value);
-      return new Tag("size", new TagAttribute("value", formattedValue));
+      return new Tag("size", "value", formattedValue);
     }
   }
 
@@ -105,7 +101,7 @@ public class XmlReport extends Report {
 
     Tag tag() {
       String formattedName = String.format("%s", this.name);
-      return new Tag("method", new TagAttribute("name", formattedName));
+      return new Tag("method", "name", formattedName);
     }
   }
 
@@ -207,6 +203,10 @@ public class XmlReport extends Report {
 
     private Tag(String name) {
       this(name, new TagAttribute("", ""));
+    }
+
+    private Tag(String name, String attrName, String attrValue) {
+      this(name, new TagAttribute(attrName, attrValue));
     }
 
     private String open() {
