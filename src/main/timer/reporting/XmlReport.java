@@ -37,9 +37,9 @@ public class XmlReport extends Report {
     return this.sizeElement(size, result);
   }
 
-  private void print(Xml[] xmls) {
+  private void print(Xml[] allData) {
     Tag dataRoot = new Tag("method-timings", new TagAttribute("units", "nanoseconds"));
-    Xml xml = new XmlElements(root, new XmlElements(dataRoot, xmls));
+    Xml xml = new XmlElements(root, new XmlElements(dataRoot, allData));
     System.out.println(xml);
   }
 
