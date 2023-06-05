@@ -6,8 +6,8 @@ package timer.reporting;
  * author: Prem Muthedath
  */
 public class XmlReport extends Report {
-  private final String prolog="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
   private Tag root;
+  private final String prolog="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
 
   public XmlReport(OrderedResults results) {
     super(results);
@@ -31,10 +31,10 @@ public class XmlReport extends Report {
 
   private Xml sizeElements(int size, double[] timings) {
     String[] methods = super.methods();
-    Xml[] result = new Xml [timings.length];
+    Xml[] results = new Xml [timings.length];
     for (int i=0; i < timings.length; i++)
-      result[i] = this.methodElement(methods[i], timingElement(timings[i]));
-    return this.sizeElement(size, result);
+      results[i] = new Method(methods[i]).toXml(timings[i]);
+    return new Size(size).toXml(results);
   }
 
   private void print(Xml[] allData) {
@@ -52,36 +52,74 @@ public class XmlReport extends Report {
 
   private Xml methodElements(String method, double[] timings) {
     int[] sizes = super.sizes();
-    Xml[] result = new Xml [timings.length];
+    Xml[] results = new Xml [timings.length];
     for (int i=0; i < timings.length; i++)
-      result[i] = this.sizeElement(sizes[i], timingElement(timings[i]));
-    return this.methodElement(method, result);
-  }
-
-  private XmlElements sizeElement(int size, Xml[] xmls) {
-    Tag tag = new Tag("size", new TagAttribute("value", String.format("%s", size)));
-    return new XmlElements(tag, xmls);
-  }
-
-  private XmlElements sizeElement(int size, Xml xml) {
-    return this.sizeElement(size, new Xml[] { xml });
-  }
-
-  private XmlElements methodElement(String method, Xml[] xmls) {
-    Tag tag = new Tag("method", new TagAttribute("name", String.format("%s", method)));
-    return new XmlElements(tag, xmls);
-  }
-
-  private XmlElements methodElement(String method, Xml xml) {
-    return this.methodElement(method, new Xml[] { xml });
-  }
-
-  private XmlElement timingElement(double timing) {
-    return new XmlElement(new Tag("timing"), String.format("%.2f", timing));
+      results[i] = new Size(sizes[i]).toXml(timings[i]);
+    return new Method(method).toXml(results);
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  /* +++++++++++++++++ inner claases for XML generation ++++++++++++++++++++ */
+  /* +++++++++++++ helper inner claases for XML generation +++++++++++++++++ */
+  /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+  private abstract class Field {
+    XmlElements toXml(Xml[] xmls) {
+      return new XmlElements(this.tag(), xmls);
+    }
+
+    XmlElements toXml(Xml xml) {
+      return this.toXml(new Xml[] { xml });
+    }
+
+    XmlElements toXml(double timing) {
+      return this.toXml(new Timing(timing).toXml());
+    }
+
+    abstract Tag tag();
+  }
+
+  /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+  private class Size extends Field {
+    private int value;
+
+    private Size(int size) {
+      this.value = size;
+    }
+
+    Tag tag() {
+      String formattedValue = String.format("%s", this.value);
+      return new Tag("size", new TagAttribute("value", formattedValue));
+    }
+  }
+
+  /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+  private class Method extends Field {
+    private String name;
+
+    private Method(String name) {
+      this.name = name;
+    }
+
+    Tag tag() {
+      String formattedName = String.format("%s", this.name);
+      return new Tag("method", new TagAttribute("name", formattedName));
+    }
+  }
+
+  /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+  private class Timing {
+    private double value;
+
+    private Timing(double timing) {
+      this.value = timing;
+    }
+
+    private XmlElement toXml() {
+      return new XmlElement(new Tag("timing"), String.format("%.2f", this.value));
+    }
+  }
+
+  /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+  /* ++++++++++++++ core inner claases for XML generation ++++++++++++++++++ */
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
   private abstract class Xml {
     private Tag tag;
