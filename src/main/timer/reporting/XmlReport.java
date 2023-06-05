@@ -168,8 +168,7 @@ public class XmlReport extends Report {
     }
 
     private String open() {
-      if (name == "")
-        throw new IllegalArgumentException("tag name can not be empty");
+      this.validate();
       String attributesString = "";
       for (int i=0; i < this.attributes.length; i++)
         attributesString += this.attributes[i].toString();
@@ -177,13 +176,17 @@ public class XmlReport extends Report {
     }
 
     private String close() {
-      if (name == "")
-        throw new IllegalArgumentException("tag name can not be empty");
+      this.validate();
       return "</" + name + ">";
     }
 
     private String toString(Xml xml) {
       return xml.toString(open(), close());
+    }
+
+    private void validate() {
+      if (name == "")
+        throw new IllegalArgumentException("tag name can not be empty");
     }
   }
 
