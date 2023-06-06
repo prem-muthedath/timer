@@ -15,7 +15,6 @@ public abstract class Report {
   public void view(Class<?> testClass) {
     this.viewTitle(testClass.getSimpleName());
     this.viewData();
-    this.viewFooter();
   }
 
   void viewTitle(String testClass) {}
@@ -23,8 +22,6 @@ public abstract class Report {
   void viewData() {
     this.results.report(this);
   }
-
-  void viewFooter() {}
 
   int[] sizes() {
     return this.results.sortedSizes();
