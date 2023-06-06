@@ -31,16 +31,14 @@ import timer.reporting.XmlGeneration.Method;
  */
 public class XmlReport extends Report {
   private Tag root;
-  private XmlGeneration xmlGen;
   private final String prolog="<?xml version=\"1.0\" encoding=\"ISO-8859-1\"?>";
 
   public XmlReport(OrderedResults results) {
     super(results);
-    this.xmlGen = new XmlGeneration();
   }
 
   void viewTitle(String testClass) {
-    this.setRoot(xmlGen.new Tag("timing-tests", "class", testClass));
+    this.setRoot(this.xmlGen().new Tag("timing-tests", "class", testClass));
     System.out.println(this.prolog);
   }
 
@@ -52,36 +50,45 @@ public class XmlReport extends Report {
     XmlElementNode[] nodes = new XmlElementNode [sizes.length];
     for (int i=0; i < sizes.length; i++)
       nodes[i] = this.sizeElementNode(sizes[i], timings[i]);
-    this.print(nodes);
+    this.print(this.xmlDocument(nodes));
   }
 
   private XmlElementNode sizeElementNode(int size, double[] timings) {
     String[] methods = super.methods();
     XmlElementNode[] nodes = new XmlElementNode [timings.length];
     for (int i=0; i < timings.length; i++)
-      nodes[i] = xmlGen.new Method(methods[i]).toXml(timings[i]);
-    return xmlGen.new Size(size).toXml(nodes);
+      nodes[i] = this.xmlGen().new Method(methods[i]).toXml(timings[i]);
+    return this.xmlGen().new Size(size).toXml(nodes);
   }
 
-  private void print(XmlNode[] nodes) {
-    Tag dataRoot = xmlGen.new Tag("method-timings", "units", "nanoseconds");
-    XmlNode xml = xmlGen.new XmlElementNode(root, xmlGen.new XmlElementNode(dataRoot, nodes));
-    System.out.println(xml);
+  private XmlNode xmlDocument(XmlNode[] nodes) {
+    Tag dataRoot = this.xmlGen().new Tag("method-timings", "units", "nanoseconds");
+    XmlNode xmlDoc = this.xmlGen().new XmlElementNode(root,
+        this.xmlGen().new XmlElementNode(dataRoot, nodes));
+    return xmlDoc;
+  }
+
+  private void print(XmlNode document) {
+    System.out.println(document);
   }
 
   protected void viewByMethod(String[] methods, double[][] timings) {
     XmlElementNode[] nodes = new XmlElementNode [methods.length];
     for (int i=0; i < methods.length; i++)
       nodes[i] = this.methodElementNode(methods[i], timings[i]);
-    this.print(nodes);
+    this.print(this.xmlDocument(nodes));
   }
 
   private XmlElementNode methodElementNode(String method, double[] timings) {
     int[] sizes = super.sizes();
     XmlElementNode[] nodes = new XmlElementNode [timings.length];
     for (int i=0; i < timings.length; i++)
-      nodes[i] = xmlGen.new Size(sizes[i]).toXml(timings[i]);
-    return xmlGen.new Method(method).toXml(nodes);
+      nodes[i] = this.xmlGen().new Size(sizes[i]).toXml(timings[i]);
+    return this.xmlGen().new Method(method).toXml(nodes);
+  }
+
+  private XmlGeneration xmlGen() {
+    return new XmlGeneration();
   }
 
 }
