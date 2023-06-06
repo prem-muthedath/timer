@@ -26,6 +26,7 @@ import timer.reporting.XmlGeneration.Method;
  *  XML terminology:
  *    https://nlp.stanford.edu/IR-book/html/htmledition/basic-xml-concepts-1.html
  *    https://docs.oracle.com/en/cloud/saas/marketing/responsys-develop/RPL/XMLTerminology.htm
+ *    https://sbnwiki.astro.umd.edu/wiki/Anatomy_of_the_XML_Prolog
  *
  *  author: Prem Muthedath
  */

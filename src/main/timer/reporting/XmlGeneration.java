@@ -29,17 +29,14 @@ package timer.reporting;
  *  XML terminology:
  *    https://nlp.stanford.edu/IR-book/html/htmledition/basic-xml-concepts-1.html
  *    https://docs.oracle.com/en/cloud/saas/marketing/responsys-develop/RPL/XMLTerminology.htm
+ *    https://sbnwiki.astro.umd.edu/wiki/Anatomy_of_the_XML_Prolog
  *
  *  author: Prem Muthedath
  */
 class XmlGeneration {
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  /* ++++++++++++++ core inner classes for XML generation ++++++++++++++++++ */
+  /* +++++++++ core inner classes for XML modeling and generation ++++++++++ */
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  /* XML terminology:
-   *  https://nlp.stanford.edu/IR-book/html/htmledition/basic-xml-concepts-1.html
-   *  https://docs.oracle.com/en/cloud/saas/marketing/responsys-develop/RPL/XMLTerminology.htm
-   */
   abstract class XmlNode {
     private Tag tag;
 
@@ -168,12 +165,8 @@ class XmlGeneration {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  /* +++++++++++++ helper inner classes for XML generation +++++++++++++++++ */
+  /* ++++++++ helper inner classes for XML node creation from data +++++++++ */
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  /* XML terminology:
-   *  https://nlp.stanford.edu/IR-book/html/htmledition/basic-xml-concepts-1.html
-   *  https://docs.oracle.com/en/cloud/saas/marketing/responsys-develop/RPL/XMLTerminology.htm
-   */
   private abstract class TimingParameter {
     XmlElementNode toXml(XmlNode[] children) {
       return new XmlElementNode(this.tag(), children);
