@@ -23,65 +23,65 @@ public class XmlReport extends Report {
   }
 
   protected void viewBySize(int[] sizes, double[][] timings) {
-    Xml[] result = new Xml [sizes.length];
+    XmlNode[] results = new XmlNode [sizes.length];
     for (int i=0; i < sizes.length; i++)
-      result[i] = this.sizeElements(sizes[i], timings[i]);
-    this.print(result);
+      results[i] = this.sizeNode(sizes[i], timings[i]);
+    this.print(results);
   }
 
-  private Xml sizeElements(int size, double[] timings) {
+  private XmlNode sizeNode(int size, double[] timings) {
     String[] methods = super.methods();
-    Xml[] results = new Xml [timings.length];
+    XmlNode[] results = new XmlNode [timings.length];
     for (int i=0; i < timings.length; i++)
-      results[i] = new Method(methods[i]).toXml(timings[i]);
-    return new Size(size).toXml(results);
+      results[i] = new MethodElement(methods[i]).toXml(timings[i]);
+    return new SizeElement(size).toXml(results);
   }
 
-  private void print(Xml[] allData) {
+  private void print(XmlComponent[] allData) {
     Tag dataRoot = new Tag("method-timings", "units", "nanoseconds");
-    Xml xml = new XmlElements(root, new XmlElements(dataRoot, allData));
+    XmlComponent xml = new XmlNode(root, new XmlNode(dataRoot, allData));
     System.out.println(xml);
   }
 
   protected void viewByMethod(String[] methods, double[][] timings) {
-    Xml[] result = new Xml [methods.length];
+    XmlNode[] results = new XmlNode [methods.length];
     for (int i=0; i < methods.length; i++)
-      result[i] = this.methodElements(methods[i], timings[i]);
-    this.print(result);
+      results[i] = this.methodNode(methods[i], timings[i]);
+    this.print(results);
   }
 
-  private Xml methodElements(String method, double[] timings) {
+  private XmlNode methodNode(String method, double[] timings) {
     int[] sizes = super.sizes();
-    Xml[] results = new Xml [timings.length];
+    XmlNode[] results = new XmlNode [timings.length];
     for (int i=0; i < timings.length; i++)
-      results[i] = new Size(sizes[i]).toXml(timings[i]);
-    return new Method(method).toXml(results);
+      results[i] = new SizeElement(sizes[i]).toXml(timings[i]);
+    return new MethodElement(method).toXml(results);
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  /* +++++++++++++ helper inner claases for XML generation +++++++++++++++++ */
+  /* +++++++++++++ helper inner classes for XML generation +++++++++++++++++ */
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
   private abstract class Field {
-    XmlElements toXml(Xml[] xmls) {
-      return new XmlElements(this.tag(), xmls);
+    XmlNode toXml(XmlComponent[] components) {
+      return new XmlNode(this.tag(), components);
     }
 
-    XmlElements toXml(Xml xml) {
-      return this.toXml(new Xml[] { xml });
+    XmlNode toXml(XmlComponent component) {
+      return this.toXml(new XmlComponent[] { component });
     }
 
-    XmlElements toXml(double timing) {
-      return this.toXml(new Timing(timing).toXml());
+    XmlNode toXml(double timing) {
+      return this.toXml(new TimingLeafElement(timing).toXml());
     }
 
     abstract Tag tag();
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class Size extends Field {
+  private class SizeElement extends Field {
     private int value;
 
-    private Size(int size) {
+    private SizeElement(int size) {
       this.value = size;
     }
 
@@ -92,10 +92,10 @@ public class XmlReport extends Report {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class Method extends Field {
+  private class MethodElement extends Field {
     private String name;
 
-    private Method(String name) {
+    private MethodElement(String name) {
       this.name = name;
     }
 
@@ -106,25 +106,25 @@ public class XmlReport extends Report {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class Timing {
+  private class TimingLeafElement {
     private double value;
 
-    private Timing(double timing) {
+    private TimingLeafElement(double timing) {
       this.value = timing;
     }
 
-    private XmlElement toXml() {
-      return new XmlElement(new Tag("timing"), String.format("%.2f", this.value));
+    private XmlLeafNode toXml() {
+      return new XmlLeafNode(new Tag("timing"), String.format("%.2f", this.value));
     }
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  /* ++++++++++++++ core inner claases for XML generation ++++++++++++++++++ */
+  /* ++++++++++++++ core inner classes for XML generation ++++++++++++++++++ */
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private abstract class Xml {
+  private abstract class XmlComponent {
     private Tag tag;
 
-    private Xml(Tag tag) {
+    private XmlComponent(Tag tag) {
       this.tag = tag;
     }
 
@@ -136,10 +136,10 @@ public class XmlReport extends Report {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class XmlElement extends Xml {
+  private class XmlLeafNode extends XmlComponent {
     private String value;
 
-    private XmlElement(Tag tag, String value) {
+    private XmlLeafNode(Tag tag, String value) {
       super(tag);
       /* NOTE: see /u/ ernest_k @ https://tinyurl.com/4jk52rea (so)
        * instead of `trim()`, which trims everything, including "\n", you could 
@@ -156,18 +156,18 @@ public class XmlReport extends Report {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class XmlElements extends Xml {
+  private class XmlNode extends XmlComponent {
     private Tag tag;
-    private Xml[] children;
+    private XmlComponent[] children;
 
-    private XmlElements(Tag tag, Xml[] children) {
+    private XmlNode(Tag tag, XmlComponent[] children) {
       super(tag);
       this.children = children;
     }
 
-    private XmlElements(Tag tag, Xml child) {
+    private XmlNode(Tag tag, XmlComponent child) {
       super(tag);
-      this.children = new Xml[] { child };
+      this.children = new XmlComponent[] { child };
     }
 
     String toString(String open, String close) {
@@ -181,7 +181,7 @@ public class XmlReport extends Report {
       int size = this.children.length;
       if (size > 1) return "\n";
       if (size == 0) return "";
-      if (children[0] instanceof XmlElements) return "\n";
+      if (children[0] instanceof XmlNode) return "\n";
       return "";
     }
   }
@@ -222,8 +222,8 @@ public class XmlReport extends Report {
       return "</" + name + ">";
     }
 
-    private String toString(Xml xml) {
-      return xml.toString(open(), close());
+    private String toString(XmlComponent component) {
+      return component.toString(open(), close());
     }
 
     private void validate() {
