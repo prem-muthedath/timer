@@ -2,7 +2,9 @@ package timer.reporting;
 
 /* java 1.7 API reference
  * https://docs.oracle.com/en/java/javase/17/docs/api/
- *
+ * XML terminology:
+ *  https://nlp.stanford.edu/IR-book/html/htmledition/basic-xml-concepts-1.html
+ *  https://docs.oracle.com/en/cloud/saas/marketing/responsys-develop/RPL/XMLTerminology.htm
  * author: Prem Muthedath
  */
 public class XmlReport extends Report {
@@ -23,65 +25,69 @@ public class XmlReport extends Report {
   }
 
   protected void viewBySize(int[] sizes, double[][] timings) {
-    XmlNode[] results = new XmlNode [sizes.length];
+    XmlElementNode[] nodes = new XmlElementNode [sizes.length];
     for (int i=0; i < sizes.length; i++)
-      results[i] = this.sizeNode(sizes[i], timings[i]);
-    this.print(results);
+      nodes[i] = this.sizeElementNode(sizes[i], timings[i]);
+    this.print(nodes);
   }
 
-  private XmlNode sizeNode(int size, double[] timings) {
+  private XmlElementNode sizeElementNode(int size, double[] timings) {
     String[] methods = super.methods();
-    XmlNode[] results = new XmlNode [timings.length];
+    XmlElementNode[] nodes = new XmlElementNode [timings.length];
     for (int i=0; i < timings.length; i++)
-      results[i] = new MethodElement(methods[i]).toXml(timings[i]);
-    return new SizeElement(size).toXml(results);
+      nodes[i] = new Method(methods[i]).toXml(timings[i]);
+    return new Size(size).toXml(nodes);
   }
 
-  private void print(XmlComponent[] allData) {
+  private void print(XmlNode[] nodes) {
     Tag dataRoot = new Tag("method-timings", "units", "nanoseconds");
-    XmlComponent xml = new XmlNode(root, new XmlNode(dataRoot, allData));
+    XmlNode xml = new XmlElementNode(root, new XmlElementNode(dataRoot, nodes));
     System.out.println(xml);
   }
 
   protected void viewByMethod(String[] methods, double[][] timings) {
-    XmlNode[] results = new XmlNode [methods.length];
+    XmlElementNode[] nodes = new XmlElementNode [methods.length];
     for (int i=0; i < methods.length; i++)
-      results[i] = this.methodNode(methods[i], timings[i]);
-    this.print(results);
+      nodes[i] = this.methodElementNode(methods[i], timings[i]);
+    this.print(nodes);
   }
 
-  private XmlNode methodNode(String method, double[] timings) {
+  private XmlElementNode methodElementNode(String method, double[] timings) {
     int[] sizes = super.sizes();
-    XmlNode[] results = new XmlNode [timings.length];
+    XmlElementNode[] nodes = new XmlElementNode [timings.length];
     for (int i=0; i < timings.length; i++)
-      results[i] = new SizeElement(sizes[i]).toXml(timings[i]);
-    return new MethodElement(method).toXml(results);
+      nodes[i] = new Size(sizes[i]).toXml(timings[i]);
+    return new Method(method).toXml(nodes);
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
   /* +++++++++++++ helper inner classes for XML generation +++++++++++++++++ */
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private abstract class Field {
-    XmlNode toXml(XmlComponent[] components) {
-      return new XmlNode(this.tag(), components);
+  /* XML terminology:
+   *  https://nlp.stanford.edu/IR-book/html/htmledition/basic-xml-concepts-1.html
+   *  https://docs.oracle.com/en/cloud/saas/marketing/responsys-develop/RPL/XMLTerminology.htm
+   */
+  private abstract class TimingParameter {
+    XmlElementNode toXml(XmlNode[] children) {
+      return new XmlElementNode(this.tag(), children);
     }
 
-    XmlNode toXml(XmlComponent component) {
-      return this.toXml(new XmlComponent[] { component });
+    XmlElementNode toXml(XmlNode child) {
+      return this.toXml(new XmlNode[] { child });
     }
 
-    XmlNode toXml(double timing) {
-      return this.toXml(new TimingLeafElement(timing).toXml());
+    XmlElementNode toXml(double timing) {
+      return this.toXml(new Timing(timing).toXml());
     }
 
     abstract Tag tag();
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class SizeElement extends Field {
+  private class Size extends TimingParameter {
     private int value;
 
-    private SizeElement(int size) {
+    private Size(int size) {
       this.value = size;
     }
 
@@ -92,10 +98,10 @@ public class XmlReport extends Report {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class MethodElement extends Field {
+  private class Method extends TimingParameter {
     private String name;
 
-    private MethodElement(String name) {
+    private Method(String name) {
       this.name = name;
     }
 
@@ -106,10 +112,10 @@ public class XmlReport extends Report {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class TimingLeafElement {
+  private class Timing {
     private double value;
 
-    private TimingLeafElement(double timing) {
+    private Timing(double timing) {
       this.value = timing;
     }
 
@@ -121,10 +127,14 @@ public class XmlReport extends Report {
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
   /* ++++++++++++++ core inner classes for XML generation ++++++++++++++++++ */
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private abstract class XmlComponent {
+  /* XML terminology:
+   *  https://nlp.stanford.edu/IR-book/html/htmledition/basic-xml-concepts-1.html
+   *  https://docs.oracle.com/en/cloud/saas/marketing/responsys-develop/RPL/XMLTerminology.htm
+   */
+  private abstract class XmlNode {
     private Tag tag;
 
-    private XmlComponent(Tag tag) {
+    private XmlNode(Tag tag) {
       this.tag = tag;
     }
 
@@ -136,7 +146,7 @@ public class XmlReport extends Report {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class XmlLeafNode extends XmlComponent {
+  private class XmlLeafNode extends XmlNode {
     private String value;
 
     private XmlLeafNode(Tag tag, String value) {
@@ -156,18 +166,18 @@ public class XmlReport extends Report {
   }
 
   /* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
-  private class XmlNode extends XmlComponent {
+  private class XmlElementNode extends XmlNode {
     private Tag tag;
-    private XmlComponent[] children;
+    private XmlNode[] children;
 
-    private XmlNode(Tag tag, XmlComponent[] children) {
+    private XmlElementNode(Tag tag, XmlNode[] children) {
       super(tag);
       this.children = children;
     }
 
-    private XmlNode(Tag tag, XmlComponent child) {
+    private XmlElementNode(Tag tag, XmlNode child) {
       super(tag);
-      this.children = new XmlComponent[] { child };
+      this.children = new XmlNode[] { child };
     }
 
     String toString(String open, String close) {
@@ -181,7 +191,7 @@ public class XmlReport extends Report {
       int size = this.children.length;
       if (size > 1) return "\n";
       if (size == 0) return "";
-      if (children[0] instanceof XmlNode) return "\n";
+      if (children[0] instanceof XmlElementNode) return "\n";
       return "";
     }
   }
@@ -222,8 +232,8 @@ public class XmlReport extends Report {
       return "</" + name + ">";
     }
 
-    private String toString(XmlComponent component) {
-      return component.toString(open(), close());
+    private String toString(XmlNode node) {
+      return node.toString(open(), close());
     }
 
     private void validate() {
