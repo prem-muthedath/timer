@@ -31,6 +31,11 @@ public abstract class Report {
     return this.results.sortedMethods();
   }
 
+  /* default print method; prints to the console. */
+  void print(Object object) {
+    System.out.println(object);
+ }
+
   protected abstract void viewBySize(int[] sizes, double[][] timings);
   protected abstract void viewByMethod(String[] methods, double[][] timings);
 

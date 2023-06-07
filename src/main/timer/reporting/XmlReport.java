@@ -40,7 +40,7 @@ public class XmlReport extends Report {
 
   void viewTitle(String testClass) {
     this.setRoot(this.xmlGen().new Tag("timing-tests", "class", testClass));
-    System.out.println(this.prolog);
+    super.print(this.prolog); /* in XML, prolog not part of document root. */
   }
 
   private void setRoot(Tag root) {
@@ -51,7 +51,7 @@ public class XmlReport extends Report {
     XmlElementNode[] nodes = new XmlElementNode [sizes.length];
     for (int i=0; i < sizes.length; i++)
       nodes[i] = this.sizeElementNode(sizes[i], timings[i]);
-    this.print(this.xmlDocument(nodes));
+    super.print(this.xmlDocument(nodes));
   }
 
   private XmlElementNode sizeElementNode(int size, double[] timings) {
@@ -69,15 +69,11 @@ public class XmlReport extends Report {
     return xmlDoc;
   }
 
-  private void print(XmlNode document) {
-    System.out.println(document);
-  }
-
   protected void viewByMethod(String[] methods, double[][] timings) {
     XmlElementNode[] nodes = new XmlElementNode [methods.length];
     for (int i=0; i < methods.length; i++)
       nodes[i] = this.methodElementNode(methods[i], timings[i]);
-    this.print(this.xmlDocument(nodes));
+    super.print(this.xmlDocument(nodes));
   }
 
   private XmlElementNode methodElementNode(String method, double[] timings) {
