@@ -11,7 +11,7 @@ public class TextReport extends Report {
   }
 
   void viewTitle(String testClass) {
-    System.out.println(TextFormat.title("********** " + testClass + " Class Method Timings (nanoseconds):"));
+    super.print(TextFormat.title("********** " + testClass + " Class Method Timings (nanoseconds):"));
   }
 
   protected void viewBySize(int[] sizes, double[][] timings) {
@@ -25,7 +25,7 @@ public class TextReport extends Report {
     String header = TextFormat.leftMargin();
     for (int i=0; i < methods.length; i++)
       header += TextFormat.methodLabel(methods[i]);
-    System.out.println(header);
+    super.print(header);
   }
 
   protected void viewByMethod(String[] methods, double[][] timings) {
@@ -39,14 +39,14 @@ public class TextReport extends Report {
     String header = TextFormat.leftMargin();
     for (int i=0; i < sizes.length; i++)
       header += TextFormat.sizeLabel(sizes[i]);
-    System.out.println(header);
+    super.print(header);
   }
 
   private void printDataRow(String label, double[] timings) {
     String row = label;
     for (int i=0; i < timings.length; i++)
       row += TextFormat.timingValue(timings[i]);
-    System.out.println(row);
+    super.print(row);
   }
 
 }
