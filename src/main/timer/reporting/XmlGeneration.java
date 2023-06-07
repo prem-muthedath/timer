@@ -15,6 +15,12 @@ package timer.reporting;
  *  classes, allowing for better code organization and maintaining the single 
  *  responsibility principle. This wrapper acts much like a module in Haskell.
  *
+ *  Also, you may wonder why have inner classes at all?
+ *  Well, at this time, only `XmlReport` class has the need for XML generation.  
+ *  No other class here in the entire codebase needs or uses XML data in any 
+ *  way.  So to avoid namespace pollution, we have the XML modeling and 
+ *  generation code organized as inner classes within this wrapper class.
+ *
  *  Usage:
  *  To use this class, create an instance of XmlGeneration and access its inner 
  *  classes to model and generate the XML structures.
