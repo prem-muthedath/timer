@@ -22,17 +22,12 @@ public class SwingReport extends Report {
     this.frame.setTitle(testClass + " Class Method Timings (nanoseconds)");
   }
 
-  void viewData() {
-    super.viewData();
-    this.frame.pack();
-    this.frame.setVisible(true);
-  }
-
   protected void viewBySize(int[] sizes, double[][] timings) {
     this.resetDisplay(sizes.length + 1);
     this.addMethodHeaders();
     for (int i=0; i < sizes.length; i++)
       addValues(TextFormat.sizeLabel(sizes[i]), timings[i]);
+    this.viewFrame();
   }
 
   private void addMethodHeaders() {
@@ -47,6 +42,7 @@ public class SwingReport extends Report {
     this.addSizeHeaders();
     for (int i=0; i < methods.length; i++)
       addValues(TextFormat.methodLabel(methods[i]), timings[i]);
+    this.viewFrame();
   }
 
   private void addSizeHeaders() {
@@ -81,6 +77,11 @@ public class SwingReport extends Report {
 
   private void addText(String text) {
     this.frame.getContentPane().add(new JTextField(text));
+  }
+
+  private void viewFrame() {
+    this.frame.pack();
+    this.frame.setVisible(true);
   }
 
 }
